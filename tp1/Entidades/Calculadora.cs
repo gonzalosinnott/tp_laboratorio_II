@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Calculadora
+    static class Calculadora
     {
+        public static void Operar()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public static void ValidarOperador()
+        {
+            throw new System.NotImplementedException();
+        }
     }
+
 }
