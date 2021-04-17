@@ -6,36 +6,82 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Numero
+    public class Numero
     {
-        private int numero;
+        private double numero;
 
-        public int SetNumero
+        public Numero()
         {
-            get => default;
-            set
+            this.numero = 0;
+        }
+
+        public Numero(double numero)
+        {
+            this.numero = numero;
+        }
+
+        public Numero(string strNumero)
+        {
+            this.numero = double.Parse(strNumero.Replace(",", "."));
+        }
+
+        private double ValidarNumero(string txtNumero)
+        {
+            double num;
+
+            if(double.TryParse(txtNumero, out num) == true)
             {
+                return num;
+            }
+            else
+            {
+                num = 0;
+                return num;
             }
         }
 
-        public void BinarioDecimal()
+        public string SetNumero
         {
-            throw new System.NotImplementedException();
+            set
+            {
+                this.numero = ValidarNumero(value);
+            }
         }
 
-        public void DecimalBinario()
+        public static double operator +(Numero n1, Numero n2)
         {
-            throw new System.NotImplementedException();
+            return n1.numero + n2.numero;
         }
 
-        public void DecimalBinario()
+        public static double operator -(Numero n1, Numero n2)
         {
-            throw new System.NotImplementedException();
+            return n1.numero - n2.numero;
         }
 
-        public void EsBinario()
+        public static double operator /(Numero n1, Numero n2)
         {
-            throw new System.NotImplementedException();
+            if (n2.numero == 0)
+            {
+                return double.MinValue;
+            }
+            else
+            {
+                return n1.numero / n2.numero;
+            }
         }
+
+        public static double operator *(Numero n1, Numero n2)
+        {
+            return n1.numero * n2.numero;
+        }
+
+
+
+
+
+
+
+
+
     }
 }

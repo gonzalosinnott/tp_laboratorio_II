@@ -8,15 +8,40 @@ namespace Entidades
 {
     static class Calculadora
     {
-        public static void Operar()
+        private static string ValidarOperador(char operador)
         {
-            throw new System.NotImplementedException();
+            switch (operador)
+            {
+                case '+':
+                    return operador.ToString();
+                case '-':
+                    return operador.ToString();
+                case '/':
+                    return operador.ToString();
+                case '*':
+                    return operador.ToString();
+                default:
+                    return "+";
+            }
+        }
+        public static double Operar(Numero num1, Numero num2, string operador)
+        {
+            char operadorAux = operador[0];
+
+            switch(ValidarOperador(operadorAux))
+            {
+                default:
+                    return num1 + num2;
+                case "-":
+                    return num1 - num2;
+                case "*":
+                    return num1 * num2;
+                case "/":
+                    return num1 / num2;
+            }
         }
 
-        public static void ValidarOperador()
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 
 }

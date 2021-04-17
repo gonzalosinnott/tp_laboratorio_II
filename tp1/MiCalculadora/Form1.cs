@@ -17,6 +17,11 @@ namespace MiCalculadora
             InitializeComponent();
         }
 
-        
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }
