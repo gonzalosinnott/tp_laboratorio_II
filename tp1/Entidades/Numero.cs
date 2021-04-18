@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Entidades
 {
@@ -78,7 +79,7 @@ namespace Entidades
 
         public string DecimalBinario(string numero)
         {
-            if (string.IsNullOrEmpty(numero))
+            if (string.IsNullOrEmpty(numero) || string.Compare(numero, "Valor Invalido")==0)
             {
                 return "Valor Invalido";
             }
@@ -104,5 +105,36 @@ namespace Entidades
 
             return binario;            
         }
+
+        public string BinarioDecimal(string binario)
+        {
+            if (EsBinario(binario) == false)
+            {
+                return "Valor Invalido";
+            }
+
+            int numero = int.Parse(binario);
+            int residuo = 0;
+            int exponente = 0;
+            int resultado = 0;
+
+            do
+            {
+                residuo = numero % 10;
+                numero = numero / 10;
+                resultado = resultado + (int)(residuo * Math.Pow(2, exponente));
+                exponente++;
+            } while (numero != 0);
+
+            return resultado.ToString();          
+        }
+
+        private bool EsBinario(string binario)
+        {
+            return Regex.IsMatch(binario, "^[0-1]+$");
+        }
+
+        
+
     }
 }
