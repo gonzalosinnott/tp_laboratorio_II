@@ -23,6 +23,8 @@ namespace MiCalculadora
         /// <summary>
         /// Ejecuta el metodo operar al clickear el boton
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperar_Click(object sender, EventArgs e)
         {
             lblResultado.Text = this.Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.Text).ToString();
@@ -32,6 +34,10 @@ namespace MiCalculadora
         /// <summary>
         /// Metodo Operar
         /// </summary>
+        /// <param name="numero1">Numero Uno</param>
+        /// <param name="numero2">Numero Dos</param>
+        /// <param name="operador">Operador Matematico</param>
+        /// <returns>Operacion matematica de los parametros dados</returns>
         private double Operar(string numero1, string numero2, string operador)
         {
             Numero numeroUno = new Numero();
@@ -44,26 +50,32 @@ namespace MiCalculadora
         /// <summary>
         /// Ejecuta el metodo decimal a binario al clickear el boton
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirABinario_Click(object sender, EventArgs e)
         {
             Numero resultado = new Numero();
-            lblResultado.Text = resultado.DecimalBinario(lblResultado.Text.Replace(".", ",")) + "(B)";
+            lblResultado.Text = resultado.DecimalBinario(lblResultado.Text.Replace(".", ","));
             btnConvertirABinario.Enabled = false;
             btnConvertirADecimal.Enabled = true;
         }
         /// <summary>
         /// Ejecuta el metodo binario a decimal al clickear el boton
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConvertirADecimal_Click(object sender, EventArgs e)
         {
             Numero resultado = new Numero();
-            lblResultado.Text = resultado.BinarioDecimal(lblResultado.Text) + "(D)";
+            lblResultado.Text = resultado.BinarioDecimal(lblResultado.Text);
             btnConvertirABinario.Enabled = true;
             btnConvertirADecimal.Enabled = false;
         }
         /// <summary>
         /// Cierra el programa
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -71,6 +83,8 @@ namespace MiCalculadora
         /// <summary>
         /// Ejecuta el metodo limpiar al clickear el boton
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
@@ -87,6 +101,5 @@ namespace MiCalculadora
             cmbOperador.SelectedItem = null;
             lblResultado.Text = "";
         }
-
     }
 }
