@@ -139,7 +139,14 @@ namespace Entidades
         /// </summary>
         public string BinarioDecimal(string binario)
         {
+
             string aux = binario.Trim('(', 'B', ')');
+
+            if (double.Parse(aux) > int.MaxValue)
+            {
+                return "El valor del numero a convertir excede el int.MaxValue";
+            }
+
             if (EsBinario(aux) == false)
             {
                 return "Valor Invalido";
@@ -149,7 +156,7 @@ namespace Entidades
             int residuo = 0;
             int exponente = 0;
             int resultado = 0;
-
+            
             do
             {
                 residuo = numero % 10;
