@@ -25,11 +25,19 @@ namespace Entidades
             this.numero = double.Parse(strNumero);
         }
 
+        
+        public string SetNumero
+        {
+            set
+            {
+                this.numero = ValidarNumero(value);
+            }
+        }
         private double ValidarNumero(string txtNumero)
         {
             double num;
 
-            if(double.TryParse(txtNumero, out num) == true)
+            if (double.TryParse(txtNumero, out num) == true)
             {
                 return num;
             }
@@ -40,13 +48,6 @@ namespace Entidades
             }
         }
 
-        public string SetNumero
-        {
-            set
-            {
-                this.numero = ValidarNumero(value);
-            }
-        }
 
         public static double operator +(Numero n1, Numero n2)
         {
@@ -73,6 +74,35 @@ namespace Entidades
         public static double operator *(Numero n1, Numero n2)
         {
             return n1.numero * n2.numero;
+        }
+
+        public string DecimalBinario(string numero)
+        {
+            if (string.IsNullOrEmpty(numero))
+            {
+                return "Valor Invalido";
+            }
+            return DecimalBinario(double.Parse(numero));
+        }
+
+        public string DecimalBinario(double numero)
+        {
+            int numeroAux = Math.Abs((int)numero);
+
+            string binario = "";
+
+            if (numeroAux == 0)
+            {
+                binario = "0";
+            }
+
+            while (numeroAux > 0)
+            {
+                binario = numeroAux % 2 + binario;
+                numeroAux = numeroAux / 2;
+            } 
+
+            return binario;            
         }
     }
 }

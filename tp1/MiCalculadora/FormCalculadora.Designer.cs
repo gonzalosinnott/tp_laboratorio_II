@@ -71,6 +71,7 @@ namespace MiCalculadora
             this.btnConvertirABinario.TabIndex = 8;
             this.btnConvertirABinario.Text = "CONVERTIR A BINARIO";
             this.btnConvertirABinario.UseVisualStyleBackColor = true;
+            this.btnConvertirABinario.Click += new System.EventHandler(this.btnConvertirABinario_Click);
             // 
             // btnConvertirADecimal
             // 
@@ -81,6 +82,7 @@ namespace MiCalculadora
             this.btnConvertirADecimal.TabIndex = 9;
             this.btnConvertirADecimal.Text = "CONVERTIR A DECIMAL";
             this.btnConvertirADecimal.UseVisualStyleBackColor = true;
+            this.btnConvertirADecimal.Click += new System.EventHandler(this.btnConvertirADecimal_Click);
             // 
             // cmbOperador
             // 

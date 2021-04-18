@@ -12,11 +12,6 @@ namespace Entidades
         {
             string operadorAux = operador.ToString();
 
-            if (operadorAux == "")
-            {
-                operadorAux = " ";
-            }
-
             switch (operadorAux)
             {
                 case "+":
@@ -33,13 +28,16 @@ namespace Entidades
         }
         public static double Operar(Numero num1, Numero num2, string operador)
         {
-            ///Ver como validar eleccion de operador
-            if(operador[0].Equals(""))
-            {
-                operador[0] = " ";
-            }
-            char operadorAux = operador[0];
+            char operadorAux;
 
+            if (operador == "")
+            {
+                operadorAux = ' ';
+            }
+            else
+            {
+                operadorAux = operador[0];
+            }
             switch(ValidarOperador(operadorAux))
             {
                 default:

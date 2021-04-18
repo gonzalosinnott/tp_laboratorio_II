@@ -18,27 +18,10 @@ namespace MiCalculadora
             InitializeComponent();
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-
-        private void Limpiar()
-        {
-            txtNumero1.Text = string.Empty;
-            txtNumero2.Text = string.Empty;
-            cmbOperador.SelectedItem = null;
-            lblResultado.Text = "";
-        }
-
         private void btnOperar_Click(object sender, EventArgs e)
         {
             lblResultado.Text = this.Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.Text).ToString();
+            btnConvertirABinario.Enabled = true;
         }
 
         private double Operar(string numero1, string numero2, string operador)
@@ -50,5 +33,38 @@ namespace MiCalculadora
 
             return Calculadora.Operar(numeroUno, numeroDos, operador);
         }
+
+        private void btnConvertirABinario_Click(object sender, EventArgs e)
+        {
+            Numero resultado = new Numero();
+            lblResultado.Text = resultado.DecimalBinario(lblResultado.Text.Replace(".", ","));
+            btnConvertirABinario.Enabled = false;    
+        }
+
+        private void btnConvertirADecimal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            btnConvertirABinario.Enabled = true;
+        }
+
+        private void Limpiar()
+        {
+            txtNumero1.Text = string.Empty;
+            txtNumero2.Text = string.Empty;
+            cmbOperador.SelectedItem = null;
+            lblResultado.Text = "";
+        }
+
+        
     }
 }
