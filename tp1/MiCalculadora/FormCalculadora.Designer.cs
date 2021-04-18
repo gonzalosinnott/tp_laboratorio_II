@@ -64,6 +64,7 @@ namespace MiCalculadora
             // 
             // btnConvertirABinario
             // 
+            this.btnConvertirABinario.Enabled = false;
             this.btnConvertirABinario.Location = new System.Drawing.Point(15, 172);
             this.btnConvertirABinario.Margin = new System.Windows.Forms.Padding(4);
             this.btnConvertirABinario.Name = "btnConvertirABinario";
@@ -75,6 +76,7 @@ namespace MiCalculadora
             // 
             // btnConvertirADecimal
             // 
+            this.btnConvertirADecimal.Enabled = false;
             this.btnConvertirADecimal.Location = new System.Drawing.Point(258, 172);
             this.btnConvertirADecimal.Margin = new System.Windows.Forms.Padding(4);
             this.btnConvertirADecimal.Name = "btnConvertirADecimal";
@@ -103,7 +105,7 @@ namespace MiCalculadora
             // lblResultado
             // 
             this.lblResultado.BackColor = System.Drawing.Color.Transparent;
-            this.lblResultado.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultado.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResultado.Location = new System.Drawing.Point(21, 22);
             this.lblResultado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResultado.Name = "lblResultado";

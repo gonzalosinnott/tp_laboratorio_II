@@ -8,24 +8,9 @@ namespace Entidades
 {
     static public class Calculadora
     {
-        private static string ValidarOperador(char operador)
-        {
-            string operadorAux = operador.ToString();
-
-            switch (operadorAux)
-            {
-                case "+":
-                    return operadorAux;
-                case "-":
-                    return operadorAux;
-                case "/":
-                    return operadorAux;
-                case "*":
-                    return operadorAux;
-                default:
-                    return "+";
-            }
-        }
+        /// <summary>
+        /// Relaiza una operacion entre dos numeros y llama al metodo para validar el operador
+        /// </summary>        
         public static double Operar(Numero num1, Numero num2, string operador)
         {
             char operadorAux;
@@ -50,8 +35,30 @@ namespace Entidades
                     return num1 / num2;
             }
         }
+        /// <summary>
+        /// Valida el operador a utilizar
+        /// </summary>
+        private static string ValidarOperador(char operador)
+        {
+            string operadorAux = operador.ToString();
 
-        
+            switch (operadorAux)
+            {
+                case "+":
+                    return operadorAux;
+                case "-":
+                    return operadorAux;
+                case "/":
+                    return operadorAux;
+                case "*":
+                    return operadorAux;
+                default:
+                    return "+";
+            }
+        }
+
+
+
     }
 
 }
