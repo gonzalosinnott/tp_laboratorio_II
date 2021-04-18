@@ -8,3 +8,6 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp1\MiCalculadora\obj\Debug\MiCalculadora.csproj.CoreCompileInputs.cache
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp1\MiCalculadora\obj\Debug\MiCalculadora.exe
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp1\MiCalculadora\obj\Debug\MiCalculadora.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp1\MiCalculadora\bin\Debug\Entidades.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp1\MiCalculadora\bin\Debug\Entidades.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp1\MiCalculadora\obj\Debug\MiCalculadora.csproj.CopyComplete

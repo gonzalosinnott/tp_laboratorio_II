@@ -22,7 +22,7 @@ namespace Entidades
 
         public Numero(string strNumero)
         {
-            this.numero = double.Parse(strNumero.Replace(",", "."));
+            this.numero = double.Parse(strNumero);
         }
 
         private double ValidarNumero(string txtNumero)
@@ -74,14 +74,5 @@ namespace Entidades
         {
             return n1.numero * n2.numero;
         }
-
-
-
-
-
-
-
-
-
     }
 }

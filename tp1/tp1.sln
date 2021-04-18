@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{4C8D46E1-C472-43AB-8344-7091A592A98E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiCalculadora", "MiCalculadora\MiCalculadora.csproj", "{05A26C4D-4E8D-439E-BE8D-F7B446F77099}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4C8D46E1-C472-43AB-8344-7091A592A98E} = {4C8D46E1-C472-43AB-8344-7091A592A98E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
