@@ -165,7 +165,7 @@ namespace Entidades
 
             string aux = binario.Trim('(', 'B', ')');
             
-            if (EsBinario(aux) == false)
+            if (EsBinario(aux) == false || string.Compare(aux, "Valor Invalido") == 0)
             {
                 return "Valor Invalido";
             }         
