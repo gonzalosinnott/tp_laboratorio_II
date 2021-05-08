@@ -11,46 +11,55 @@ namespace Entidades
     /// </summary>
     public abstract class Vehiculo
     {
-        /// <summary>
-        /// Atributos
-        /// </summary>
+        #region "Atributos"
+
         EMarca marca;
         string chasis;
         ConsoleColor color;
-
+        /// <summary>
+        /// Enumerado de Marcas
+        /// </summary>
         public enum EMarca
         {
             Chevrolet,
-            Ford, 
+            Ford,
             Renault,
-            Toyota, 
-            BMW, 
-            Honda, 
+            Toyota,
+            BMW,
+            Honda,
             HarleyDavidson
         }
+        /// <summary>
+        /// Enumerado de Tamaños
+        /// </summary>
         public enum ETamanio
         {
             Chico,
             Mediano,
             Grande
         }
+        #endregion
 
-        /// <summary>
-        /// COsntructores
-        /// </summary>
-        /// <param name="chasis"></param>
-        /// <param name="marca"></param>
-        /// <param name="color"></param>
+        #region "Constructores"
         public Vehiculo(string chasis, EMarca marca, ConsoleColor color)
         {
             this.chasis = chasis;
             this.marca = marca;
             this.color = color;
         }
+
+        #endregion
+
+        #region "Propiedades"
+
         /// <summary>
         /// ReadOnly: Retornará el tamaño
-        /// </summary>
-        protected abstract ETamanio Tamanio { get;}
+        /// </summary>        
+        protected abstract ETamanio Tamanio { get; }
+
+        #endregion
+
+        #region "Metodos"
 
         /// <summary>
         /// Publica todos los datos del Vehiculo.
@@ -61,6 +70,14 @@ namespace Entidades
             return (string)this;
         }
 
+        #endregion
+
+        #region "Operadores"
+
+        /// <summary>
+        /// Devuelve la inforamcion de un vehiculo como string
+        /// </summary>
+        /// <param name="p"></param>
         public static explicit operator string(Vehiculo p)
         {
             StringBuilder sb = new StringBuilder();
@@ -97,5 +114,8 @@ namespace Entidades
         {
             return (!(v1.chasis == v2.chasis));
         }
+
+
+        #endregion
     }
 }

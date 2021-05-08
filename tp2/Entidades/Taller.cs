@@ -11,15 +11,20 @@ namespace Entidades
     /// </summary>
     public sealed class Taller
     {
+        #region "Atributos
         List<Vehiculo> vehiculos;
         int espacioDisponible;
+        /// <summary>
+        /// Enumerado de tipos de vehiculos que puede tener el taller
+        /// </summary>
         public enum ETipo
         {
-            Ciclomotor, 
-            Sedan, 
-            SUV, 
+            Ciclomotor,
+            Sedan,
+            SUV,
             Todos
         }
+        #endregion
 
         #region "Constructores"
         private Taller()
@@ -94,7 +99,7 @@ namespace Entidades
         /// <summary>
         /// Agregará un elemento a la lista
         /// </summary>
-        /// <param name="taller">Objeto donde se agregará el elemento</param>
+        /// <param name="t">Objeto donde se agregará el elemento</param>
         /// <param name="vehiculo">Objeto a agregar</param>
         /// <returns></returns>
         public static Taller operator +(Taller t, Vehiculo vehiculo)
@@ -119,7 +124,7 @@ namespace Entidades
         /// <summary>
         /// Quitará un elemento de la lista
         /// </summary>
-        /// <param name="taller">Objeto donde se quitará el elemento</param>
+        /// <param name="t">Objeto donde se quitará el elemento</param>
         /// <param name="vehiculo">Objeto a quitar</param>
         /// <returns></returns>
         public static Taller operator -(Taller t, Vehiculo vehiculo)

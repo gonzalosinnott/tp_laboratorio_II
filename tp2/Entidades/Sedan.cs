@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Drawing;
 
 namespace Entidades
 {
     public class Sedan : Vehiculo
     {
+        #region "Atributos"
+        ETipo tipo;
+        /// <summary>
+        /// Tipos de Sedan
+        /// </summary>
         public enum ETipo
         {
-            CuatroPuertas, 
+            CuatroPuertas,
             CincoPuertas
         }
-        ETipo tipo;
+        #endregion
 
+        #region "Constructores"
         /// <summary>
         /// Por defecto, TIPO será CuatroPuertas
         /// </summary>
@@ -33,6 +38,10 @@ namespace Entidades
         {
             this.tipo = tipo;
         }
+
+        #endregion
+
+        #region "Propiedades"
         /// <summary>
         /// Sedan son 'Mediano'
         /// </summary>
@@ -44,18 +53,25 @@ namespace Entidades
             }
         }
 
+        #endregion
+
+        #region "Metodos"
+        /// <summary>
+        /// Muestra la informacion de un Sedan en un string
+        /// </summary>
+        /// <returns></returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("SEDAN");
             sb.AppendLine(base.Mostrar());
-            sb.AppendLine($"TAMAÑO : {this.Tamanio}");
-            sb.AppendLine("TIPO : " + this.tipo);
+            sb.AppendFormat("TAMAÑO : {0} TIPO : {1}", this.Tamanio, this.tipo);
             sb.AppendLine("");
             sb.AppendLine("---------------------");
 
             return sb.ToString();
         }
+        #endregion
     }
 }

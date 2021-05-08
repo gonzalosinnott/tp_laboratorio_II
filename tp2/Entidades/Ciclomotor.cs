@@ -8,10 +8,14 @@ namespace Entidades
 {
     public class Ciclomotor : Vehiculo
     {
-        public Ciclomotor(EMarca marca, string chasis, ConsoleColor color) : base(chasis, marca, color)
-        {
-        }
-        
+        #region "Constructores"
+
+        public Ciclomotor(EMarca marca, string chasis, ConsoleColor color) : base(chasis, marca, color) { }
+
+        #endregion
+
+        #region "Propiedades"
+
         /// <summary>
         /// Ciclomotor son 'Chico'
         /// </summary>
@@ -23,6 +27,13 @@ namespace Entidades
             }
         }
 
+        #endregion
+
+        #region "Metodos"
+        /// <summary>
+        /// Muestra la informacion de un Ciclomotor en un string
+        /// </summary>
+        /// <returns></returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
@@ -35,5 +46,7 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        #endregion
     }
 }
