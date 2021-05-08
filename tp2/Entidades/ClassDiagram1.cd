@@ -29,5 +29,12 @@
       <FileName>Suv.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Entidades.Ciclomotor">
+    <Position X="5.5" Y="2.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ciclomotor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
