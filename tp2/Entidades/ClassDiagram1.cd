@@ -22,5 +22,12 @@
       <FileName>Vehiculo.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Entidades.Suv">
+    <Position X="5.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Suv.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
