@@ -20,11 +20,19 @@ namespace Entidades
 
         public enum EMarca
         {
-            Chevrolet, Ford, Renault, Toyota, BMW, Honda, HarleyDavidson
+            Chevrolet,
+            Ford, 
+            Renault,
+            Toyota, 
+            BMW, 
+            Honda, 
+            HarleyDavidson
         }
         public enum ETamanio
         {
-            Chico, Mediano, Grande
+            Chico,
+            Mediano,
+            Grande
         }
 
         /// <summary>
@@ -75,7 +83,7 @@ namespace Entidades
         {
             if (!(v1 is null) && !(v2 is null))
             {
-                return (v1.chasis == v2.chasis);
+                return v1.chasis == v2.chasis;
             }
             return false;
         }

@@ -24,3 +24,10 @@ D:\Federico\VB .Net\Visual C#\utn\TPs\2018\TP-N2\TP-02\TP-02\obj\Debug\TP-02.exe
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\obj\Debug\TP-02.csprojAssemblyReference.cache
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\obj\Debug\TP-02.csproj.CoreCompileInputs.cache
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\obj\Debug\TP-02.exe
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\bin\Debug\TP-02.exe.config
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\bin\Debug\TP-02.exe
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\bin\Debug\TP-02.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\bin\Debug\Entidades.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\bin\Debug\Entidades.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\obj\Debug\TP-02.csproj.CopyComplete
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp2\TP-02\obj\Debug\TP-02.pdb
