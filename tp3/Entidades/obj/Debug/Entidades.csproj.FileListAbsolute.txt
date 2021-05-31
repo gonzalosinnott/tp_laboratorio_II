@@ -1,0 +1,9 @@
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\bin\Debug\Entidades.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\bin\Debug\Entidades.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\bin\Debug\MaterialSkin.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\bin\Debug\MetroSet UI.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\obj\Debug\Entidades.csproj.CopyComplete
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\obj\Debug\Entidades.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\Entidades\obj\Debug\Entidades.pdb
