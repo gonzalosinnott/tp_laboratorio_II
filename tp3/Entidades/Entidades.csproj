@@ -48,10 +48,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Electronics.cs" />
+    <Compile Include="Enumerados.cs" />
+    <Compile Include="Guitar.cs" />
+    <Compile Include="LesPaul.cs" />
+    <Compile Include="Part.cs" />
+    <Compile Include="Pickup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Telecaster.cs" />
+    <Compile Include="SG.cs" />
+    <Compile Include="Tremolo.cs" />
+    <Compile Include="Tuners.cs" />
+    <Compile Include="Wood.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EntidadesDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

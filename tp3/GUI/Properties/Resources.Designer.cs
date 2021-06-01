@@ -63,6 +63,16 @@ namespace GUI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4d6b53_solid_color_background_icolorpalette {
+            get {
+                object obj = ResourceManager.GetObject("4d6b53_solid_color_background_icolorpalette", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_512 {
             get {
                 object obj = ResourceManager.GetObject("search-512", resourceCulture);
