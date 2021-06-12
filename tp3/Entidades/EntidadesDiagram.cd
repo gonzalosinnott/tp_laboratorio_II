@@ -57,7 +57,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Telecaster">
-    <Position X="7.75" Y="11.25" Width="2.75" />
+    <Position X="5.75" Y="11.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAEECEAAAAgAAAAAAAA=</HashCode>
       <FileName>Telecaster.cs</FileName>

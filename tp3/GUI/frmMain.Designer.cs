@@ -31,32 +31,17 @@ namespace GUI
         {
             this.tbMain = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tbStock = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.pnlPieceProperties = new System.Windows.Forms.Panel();
-            this.txtOrigin = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.cmbManufacturer = new MetroSet_UI.Controls.MetroSetComboBox();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.nudAmount = new System.Windows.Forms.NumericUpDown();
-            this.cmbCustomType = new MetroSet_UI.Controls.MetroSetComboBox();
-            this.txtName = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.lblOrigin = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lblManufacturer = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lblDate = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lblAmount = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lblType = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lbName = new MetroSet_UI.Controls.MetroSetLabel();
-            this.btnAddStock = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnReloadStock = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnSearchPieces = new MetroSet_UI.Controls.MetroSetTile();
             this.lblTipoPieza = new MetroSet_UI.Controls.MetroSetLabel();
             this.cmbPieceType = new MetroSet_UI.Controls.MetroSetComboBox();
-            this.btnSearchPieces = new MetroSet_UI.Controls.MetroSetTile();
-            this.txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtSearchPiece = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnDeleteStock = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAddStock = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tbAssembly = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.btnReloadProduct = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCreate = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSearchGuitars = new MetroSet_UI.Controls.MetroSetTile();
-            this.txtSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtSearchProduct = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnDispatch = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -66,14 +51,12 @@ namespace GUI
             this.lblGuitarModel = new MetroSet_UI.Controls.MetroSetLabel();
             this.cmbGuitarModel = new MetroSet_UI.Controls.MetroSetComboBox();
             this.tbQuality = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.btnReloadProductQty = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnReloadStockQty = new MaterialSkin.Controls.MaterialRaisedButton();
             this.metroSetTile2 = new MetroSet_UI.Controls.MetroSetTile();
-            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtSearchProductRecall = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnRecallProduct = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.metroSetTile1 = new MetroSet_UI.Controls.MetroSetTile();
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtSearchItemRecall = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnRecallStock = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
@@ -82,10 +65,23 @@ namespace GUI
             this.btnSendedProducts = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnProductReport = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnStockReport = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lbName = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lblType = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lblAmount = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lblDate = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lblManufacturer = new MetroSet_UI.Controls.MetroSetLabel();
+            this.lblOrigin = new MetroSet_UI.Controls.MetroSetLabel();
+            this.cmbCustomType = new MetroSet_UI.Controls.MetroSetComboBox();
+            this.nudAmount = new System.Windows.Forms.NumericUpDown();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.cmbManufacturer = new MetroSet_UI.Controls.MetroSetComboBox();
+            this.txtOrigin = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.pnlPieceProperties = new System.Windows.Forms.Panel();
+            this.txtName = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tbMain.SuspendLayout();
             this.tbStock.SuspendLayout();
-            this.pnlPieceProperties.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbAssembly.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -94,6 +90,8 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tbReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
+            this.pnlPieceProperties.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbMain
@@ -131,11 +129,10 @@ namespace GUI
             // 
             this.tbStock.BaseColor = System.Drawing.Color.White;
             this.tbStock.Controls.Add(this.pnlPieceProperties);
-            this.tbStock.Controls.Add(this.btnReloadStock);
+            this.tbStock.Controls.Add(this.btnSearchPieces);
             this.tbStock.Controls.Add(this.lblTipoPieza);
             this.tbStock.Controls.Add(this.cmbPieceType);
-            this.tbStock.Controls.Add(this.btnSearchPieces);
-            this.tbStock.Controls.Add(this.txt);
+            this.tbStock.Controls.Add(this.txtSearchPiece);
             this.tbStock.Controls.Add(this.btnDeleteStock);
             this.tbStock.Controls.Add(this.dataGridView1);
             this.tbStock.Controls.Add(this.btnAddStock);
@@ -154,283 +151,38 @@ namespace GUI
             this.tbStock.ThemeName = "MetroLite";
             this.tbStock.ToolTipText = null;
             // 
-            // pnlPieceProperties
+            // btnSearchPieces
             // 
-            this.pnlPieceProperties.Controls.Add(this.txtOrigin);
-            this.pnlPieceProperties.Controls.Add(this.cmbManufacturer);
-            this.pnlPieceProperties.Controls.Add(this.dtpDate);
-            this.pnlPieceProperties.Controls.Add(this.nudAmount);
-            this.pnlPieceProperties.Controls.Add(this.cmbCustomType);
-            this.pnlPieceProperties.Controls.Add(this.txtName);
-            this.pnlPieceProperties.Controls.Add(this.lblOrigin);
-            this.pnlPieceProperties.Controls.Add(this.lblManufacturer);
-            this.pnlPieceProperties.Controls.Add(this.lblDate);
-            this.pnlPieceProperties.Controls.Add(this.lblAmount);
-            this.pnlPieceProperties.Controls.Add(this.lblType);
-            this.pnlPieceProperties.Controls.Add(this.lbName);
-            this.pnlPieceProperties.Location = new System.Drawing.Point(5, 159);
-            this.pnlPieceProperties.Name = "pnlPieceProperties";
-            this.pnlPieceProperties.Size = new System.Drawing.Size(346, 200);
-            this.pnlPieceProperties.TabIndex = 26;
-            // 
-            // txtOrigin
-            // 
-            this.txtOrigin.AutoCompleteCustomSource = null;
-            this.txtOrigin.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtOrigin.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtOrigin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtOrigin.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtOrigin.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtOrigin.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.txtOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtOrigin.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtOrigin.Image = null;
-            this.txtOrigin.IsDerivedStyle = true;
-            this.txtOrigin.Lines = null;
-            this.txtOrigin.Location = new System.Drawing.Point(107, 161);
-            this.txtOrigin.MaxLength = 32767;
-            this.txtOrigin.Multiline = false;
-            this.txtOrigin.Name = "txtOrigin";
-            this.txtOrigin.ReadOnly = false;
-            this.txtOrigin.Size = new System.Drawing.Size(235, 30);
-            this.txtOrigin.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtOrigin.StyleManager = null;
-            this.txtOrigin.TabIndex = 24;
-            this.txtOrigin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtOrigin.ThemeAuthor = "Narwin";
-            this.txtOrigin.ThemeName = "MetroLite";
-            this.txtOrigin.UseSystemPasswordChar = false;
-            this.txtOrigin.WatermarkText = "";
-            // 
-            // cmbManufacturer
-            // 
-            this.cmbManufacturer.AllowDrop = true;
-            this.cmbManufacturer.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.cmbManufacturer.BackColor = System.Drawing.Color.Transparent;
-            this.cmbManufacturer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.cmbManufacturer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.cmbManufacturer.CausesValidation = false;
-            this.cmbManufacturer.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.cmbManufacturer.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.cmbManufacturer.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.cmbManufacturer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbManufacturer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cmbManufacturer.FormattingEnabled = true;
-            this.cmbManufacturer.IsDerivedStyle = true;
-            this.cmbManufacturer.ItemHeight = 20;
-            this.cmbManufacturer.Items.AddRange(new object[] {
-            "CLAVIJAS",
-            "CUERDAS",
-            "ELECTRONICA",
-            "MADERA",
-            "MASTIL",
-            "PICKUPS",
-            "TREMOLO"});
-            this.cmbManufacturer.Location = new System.Drawing.Point(107, 129);
-            this.cmbManufacturer.Name = "cmbManufacturer";
-            this.cmbManufacturer.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.cmbManufacturer.SelectedItemForeColor = System.Drawing.Color.White;
-            this.cmbManufacturer.Size = new System.Drawing.Size(235, 26);
-            this.cmbManufacturer.Style = MetroSet_UI.Enums.Style.Light;
-            this.cmbManufacturer.StyleManager = null;
-            this.cmbManufacturer.TabIndex = 23;
-            this.cmbManufacturer.ThemeAuthor = "Narwin";
-            this.cmbManufacturer.ThemeName = "MetroLite";
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.Location = new System.Drawing.Point(86, 100);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(256, 23);
-            this.dtpDate.TabIndex = 22;
-            this.dtpDate.Value = new System.DateTime(2021, 5, 31, 0, 0, 0, 0);
-            // 
-            // nudAmount
-            // 
-            this.nudAmount.Location = new System.Drawing.Point(107, 71);
-            this.nudAmount.Name = "nudAmount";
-            this.nudAmount.Size = new System.Drawing.Size(235, 23);
-            this.nudAmount.TabIndex = 21;
-            // 
-            // cmbCustomType
-            // 
-            this.cmbCustomType.AllowDrop = true;
-            this.cmbCustomType.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.cmbCustomType.BackColor = System.Drawing.Color.Transparent;
-            this.cmbCustomType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.cmbCustomType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.cmbCustomType.CausesValidation = false;
-            this.cmbCustomType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.cmbCustomType.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.cmbCustomType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.cmbCustomType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbCustomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCustomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cmbCustomType.FormattingEnabled = true;
-            this.cmbCustomType.IsDerivedStyle = true;
-            this.cmbCustomType.ItemHeight = 20;
-            this.cmbCustomType.Items.AddRange(new object[] {
-            "CLAVIJAS",
-            "CUERDAS",
-            "ELECTRONICA",
-            "MADERA",
-            "MASTIL",
-            "PICKUPS",
-            "TREMOLO"});
-            this.cmbCustomType.Location = new System.Drawing.Point(70, 39);
-            this.cmbCustomType.Name = "cmbCustomType";
-            this.cmbCustomType.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.cmbCustomType.SelectedItemForeColor = System.Drawing.Color.White;
-            this.cmbCustomType.Size = new System.Drawing.Size(272, 26);
-            this.cmbCustomType.Style = MetroSet_UI.Enums.Style.Light;
-            this.cmbCustomType.StyleManager = null;
-            this.cmbCustomType.TabIndex = 20;
-            this.cmbCustomType.ThemeAuthor = "Narwin";
-            this.cmbCustomType.ThemeName = "MetroLite";
-            // 
-            // txtName
-            // 
-            this.txtName.AutoCompleteCustomSource = null;
-            this.txtName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtName.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txtName.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.txtName.Image = null;
-            this.txtName.IsDerivedStyle = true;
-            this.txtName.Lines = null;
-            this.txtName.Location = new System.Drawing.Point(86, 3);
-            this.txtName.MaxLength = 32767;
-            this.txtName.Multiline = false;
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = false;
-            this.txtName.Size = new System.Drawing.Size(256, 30);
-            this.txtName.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtName.StyleManager = null;
-            this.txtName.TabIndex = 19;
-            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtName.ThemeAuthor = "Narwin";
-            this.txtName.ThemeName = "MetroLite";
-            this.txtName.UseSystemPasswordChar = false;
-            this.txtName.WatermarkText = "";
-            // 
-            // lblOrigin
-            // 
-            this.lblOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblOrigin.IsDerivedStyle = true;
-            this.lblOrigin.Location = new System.Drawing.Point(0, 168);
-            this.lblOrigin.Name = "lblOrigin";
-            this.lblOrigin.Size = new System.Drawing.Size(74, 23);
-            this.lblOrigin.Style = MetroSet_UI.Enums.Style.Light;
-            this.lblOrigin.StyleManager = null;
-            this.lblOrigin.TabIndex = 18;
-            this.lblOrigin.Text = "ORIGEN:";
-            this.lblOrigin.ThemeAuthor = "Narwin";
-            this.lblOrigin.ThemeName = "MetroLite";
-            // 
-            // lblManufacturer
-            // 
-            this.lblManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblManufacturer.IsDerivedStyle = true;
-            this.lblManufacturer.Location = new System.Drawing.Point(0, 132);
-            this.lblManufacturer.Name = "lblManufacturer";
-            this.lblManufacturer.Size = new System.Drawing.Size(109, 23);
-            this.lblManufacturer.Style = MetroSet_UI.Enums.Style.Light;
-            this.lblManufacturer.StyleManager = null;
-            this.lblManufacturer.TabIndex = 17;
-            this.lblManufacturer.Text = "FABRICANTE:";
-            this.lblManufacturer.ThemeAuthor = "Narwin";
-            this.lblManufacturer.ThemeName = "MetroLite";
-            // 
-            // lblDate
-            // 
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblDate.IsDerivedStyle = true;
-            this.lblDate.Location = new System.Drawing.Point(0, 106);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(85, 23);
-            this.lblDate.Style = MetroSet_UI.Enums.Style.Light;
-            this.lblDate.StyleManager = null;
-            this.lblDate.TabIndex = 16;
-            this.lblDate.Text = "INGRESO:";
-            this.lblDate.ThemeAuthor = "Narwin";
-            this.lblDate.ThemeName = "MetroLite";
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblAmount.IsDerivedStyle = true;
-            this.lblAmount.Location = new System.Drawing.Point(0, 71);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(85, 23);
-            this.lblAmount.Style = MetroSet_UI.Enums.Style.Light;
-            this.lblAmount.StyleManager = null;
-            this.lblAmount.TabIndex = 15;
-            this.lblAmount.Text = "CANTIDAD:";
-            this.lblAmount.ThemeAuthor = "Narwin";
-            this.lblAmount.ThemeName = "MetroLite";
-            // 
-            // lblType
-            // 
-            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblType.IsDerivedStyle = true;
-            this.lblType.Location = new System.Drawing.Point(0, 42);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(50, 23);
-            this.lblType.Style = MetroSet_UI.Enums.Style.Light;
-            this.lblType.StyleManager = null;
-            this.lblType.TabIndex = 14;
-            this.lblType.Text = "TIPO:";
-            this.lblType.ThemeAuthor = "Narwin";
-            this.lblType.ThemeName = "MetroLite";
-            // 
-            // lbName
-            // 
-            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbName.IsDerivedStyle = true;
-            this.lbName.Location = new System.Drawing.Point(0, 10);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(74, 23);
-            this.lbName.Style = MetroSet_UI.Enums.Style.Light;
-            this.lbName.StyleManager = null;
-            this.lbName.TabIndex = 13;
-            this.lbName.Text = "NOMBRE:";
-            this.lbName.ThemeAuthor = "Narwin";
-            this.lbName.ThemeName = "MetroLite";
-            // 
-            // btnAddStock
-            // 
-            this.btnAddStock.Depth = 0;
-            this.btnAddStock.Location = new System.Drawing.Point(3, 365);
-            this.btnAddStock.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAddStock.Name = "btnAddStock";
-            this.btnAddStock.Primary = true;
-            this.btnAddStock.Size = new System.Drawing.Size(348, 27);
-            this.btnAddStock.TabIndex = 5;
-            this.btnAddStock.Text = "AGREGAR";
-            this.btnAddStock.UseVisualStyleBackColor = true;
-            // 
-            // btnReloadStock
-            // 
-            this.btnReloadStock.Depth = 0;
-            this.btnReloadStock.Location = new System.Drawing.Point(357, 365);
-            this.btnReloadStock.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnReloadStock.Name = "btnReloadStock";
-            this.btnReloadStock.Primary = true;
-            this.btnReloadStock.Size = new System.Drawing.Size(160, 27);
-            this.btnReloadStock.TabIndex = 25;
-            this.btnReloadStock.Text = "RECARGAR";
-            this.btnReloadStock.UseVisualStyleBackColor = true;
+            this.btnSearchPieces.BackgroundImage = global::GUI.Properties.Resources.search;
+            this.btnSearchPieces.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnSearchPieces.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.btnSearchPieces.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.btnSearchPieces.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSearchPieces.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnSearchPieces.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSearchPieces.HoverTextColor = System.Drawing.Color.White;
+            this.btnSearchPieces.IsDerivedStyle = true;
+            this.btnSearchPieces.Location = new System.Drawing.Point(657, 16);
+            this.btnSearchPieces.Name = "btnSearchPieces";
+            this.btnSearchPieces.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSearchPieces.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSearchPieces.NormalTextColor = System.Drawing.Color.White;
+            this.btnSearchPieces.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSearchPieces.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnSearchPieces.PressTextColor = System.Drawing.Color.White;
+            this.btnSearchPieces.Size = new System.Drawing.Size(34, 23);
+            this.btnSearchPieces.Style = MetroSet_UI.Enums.Style.Light;
+            this.btnSearchPieces.StyleManager = null;
+            this.btnSearchPieces.TabIndex = 10;
+            this.btnSearchPieces.ThemeAuthor = "Narwin";
+            this.btnSearchPieces.ThemeName = "MetroLite";
+            this.btnSearchPieces.TileAlign = MetroSet_UI.Enums.TileAlign.Topleft;
             // 
             // lblTipoPieza
             // 
             this.lblTipoPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblTipoPieza.IsDerivedStyle = true;
-            this.lblTipoPieza.Location = new System.Drawing.Point(3, 16);
+            this.lblTipoPieza.Location = new System.Drawing.Point(0, 96);
             this.lblTipoPieza.Name = "lblTipoPieza";
             this.lblTipoPieza.Size = new System.Drawing.Size(51, 23);
             this.lblTipoPieza.Style = MetroSet_UI.Enums.Style.Light;
@@ -459,13 +211,11 @@ namespace GUI
             this.cmbPieceType.ItemHeight = 20;
             this.cmbPieceType.Items.AddRange(new object[] {
             "CLAVIJAS",
-            "CUERDAS",
             "ELECTRONICA",
             "MADERA",
-            "MASTIL",
             "PICKUPS",
             "TREMOLO"});
-            this.cmbPieceType.Location = new System.Drawing.Point(73, 13);
+            this.cmbPieceType.Location = new System.Drawing.Point(79, 93);
             this.cmbPieceType.Name = "cmbPieceType";
             this.cmbPieceType.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.cmbPieceType.SelectedItemForeColor = System.Drawing.Color.White;
@@ -475,58 +225,32 @@ namespace GUI
             this.cmbPieceType.TabIndex = 11;
             this.cmbPieceType.ThemeAuthor = "Narwin";
             this.cmbPieceType.ThemeName = "MetroLite";
+            this.cmbPieceType.SelectedIndexChanged += new System.EventHandler(this.cmbPieceType_SelectedIndexChanged);
             // 
-            // btnSearchPieces
+            // txtSearchPiece
             // 
-            this.btnSearchPieces.BackgroundImage = global::GUI.Properties.Resources.search_512;
-            this.btnSearchPieces.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnSearchPieces.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.btnSearchPieces.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.btnSearchPieces.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnSearchPieces.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnSearchPieces.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSearchPieces.HoverTextColor = System.Drawing.Color.White;
-            this.btnSearchPieces.IsDerivedStyle = true;
-            this.btnSearchPieces.Location = new System.Drawing.Point(652, 16);
-            this.btnSearchPieces.Name = "btnSearchPieces";
-            this.btnSearchPieces.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSearchPieces.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSearchPieces.NormalTextColor = System.Drawing.Color.White;
-            this.btnSearchPieces.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSearchPieces.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSearchPieces.PressTextColor = System.Drawing.Color.White;
-            this.btnSearchPieces.Size = new System.Drawing.Size(34, 23);
-            this.btnSearchPieces.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnSearchPieces.StyleManager = null;
-            this.btnSearchPieces.TabIndex = 10;
-            this.btnSearchPieces.ThemeAuthor = "Narwin";
-            this.btnSearchPieces.ThemeName = "MetroLite";
-            this.btnSearchPieces.TileAlign = MetroSet_UI.Enums.TileAlign.Topleft;
-            // 
-            // txt
-            // 
-            this.txt.Depth = 0;
-            this.txt.Hint = "";
-            this.txt.Location = new System.Drawing.Point(357, 16);
-            this.txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txt.Name = "txt";
-            this.txt.PasswordChar = '\0';
-            this.txt.SelectedText = "";
-            this.txt.SelectionLength = 0;
-            this.txt.SelectionStart = 0;
-            this.txt.Size = new System.Drawing.Size(289, 23);
-            this.txt.TabIndex = 7;
-            this.txt.Text = "Buscar...";
-            this.txt.UseSystemPasswordChar = false;
+            this.txtSearchPiece.Depth = 0;
+            this.txtSearchPiece.Hint = "";
+            this.txtSearchPiece.Location = new System.Drawing.Point(357, 16);
+            this.txtSearchPiece.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtSearchPiece.Name = "txtSearchPiece";
+            this.txtSearchPiece.PasswordChar = '\0';
+            this.txtSearchPiece.SelectedText = "";
+            this.txtSearchPiece.SelectionLength = 0;
+            this.txtSearchPiece.SelectionStart = 0;
+            this.txtSearchPiece.Size = new System.Drawing.Size(289, 23);
+            this.txtSearchPiece.TabIndex = 7;
+            this.txtSearchPiece.Text = "Buscar...";
+            this.txtSearchPiece.UseSystemPasswordChar = false;
             // 
             // btnDeleteStock
             // 
             this.btnDeleteStock.Depth = 0;
-            this.btnDeleteStock.Location = new System.Drawing.Point(526, 365);
+            this.btnDeleteStock.Location = new System.Drawing.Point(357, 365);
             this.btnDeleteStock.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDeleteStock.Name = "btnDeleteStock";
             this.btnDeleteStock.Primary = true;
-            this.btnDeleteStock.Size = new System.Drawing.Size(160, 27);
+            this.btnDeleteStock.Size = new System.Drawing.Size(329, 27);
             this.btnDeleteStock.TabIndex = 4;
             this.btnDeleteStock.Text = "ELIMINAR";
             this.btnDeleteStock.UseVisualStyleBackColor = true;
@@ -539,13 +263,24 @@ namespace GUI
             this.dataGridView1.Size = new System.Drawing.Size(329, 314);
             this.dataGridView1.TabIndex = 0;
             // 
+            // btnAddStock
+            // 
+            this.btnAddStock.Depth = 0;
+            this.btnAddStock.Location = new System.Drawing.Point(3, 365);
+            this.btnAddStock.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAddStock.Name = "btnAddStock";
+            this.btnAddStock.Primary = true;
+            this.btnAddStock.Size = new System.Drawing.Size(348, 27);
+            this.btnAddStock.TabIndex = 5;
+            this.btnAddStock.Text = "AGREGAR";
+            this.btnAddStock.UseVisualStyleBackColor = true;
+            // 
             // tbAssembly
             // 
             this.tbAssembly.BaseColor = System.Drawing.Color.White;
-            this.tbAssembly.Controls.Add(this.btnReloadProduct);
             this.tbAssembly.Controls.Add(this.btnCreate);
             this.tbAssembly.Controls.Add(this.btnSearchGuitars);
-            this.tbAssembly.Controls.Add(this.txtSearch);
+            this.tbAssembly.Controls.Add(this.txtSearchProduct);
             this.tbAssembly.Controls.Add(this.btnDispatch);
             this.tbAssembly.Controls.Add(this.dataGridView2);
             this.tbAssembly.Controls.Add(this.dateTimePicker1);
@@ -555,7 +290,7 @@ namespace GUI
             this.tbAssembly.Controls.Add(this.lblGuitarModel);
             this.tbAssembly.Controls.Add(this.cmbGuitarModel);
             this.tbAssembly.Font = null;
-            this.tbAssembly.ImageIndex = 0;
+            this.tbAssembly.ImageIndex = 1;
             this.tbAssembly.ImageKey = null;
             this.tbAssembly.IsDerivedStyle = true;
             this.tbAssembly.Location = new System.Drawing.Point(4, 42);
@@ -568,18 +303,6 @@ namespace GUI
             this.tbAssembly.ThemeAuthor = "Narwin";
             this.tbAssembly.ThemeName = "MetroLite";
             this.tbAssembly.ToolTipText = null;
-            // 
-            // btnReloadProduct
-            // 
-            this.btnReloadProduct.Depth = 0;
-            this.btnReloadProduct.Location = new System.Drawing.Point(0, 368);
-            this.btnReloadProduct.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnReloadProduct.Name = "btnReloadProduct";
-            this.btnReloadProduct.Primary = true;
-            this.btnReloadProduct.Size = new System.Drawing.Size(340, 27);
-            this.btnReloadProduct.TabIndex = 44;
-            this.btnReloadProduct.Text = "RECARGAR";
-            this.btnReloadProduct.UseVisualStyleBackColor = true;
             // 
             // btnCreate
             // 
@@ -595,7 +318,7 @@ namespace GUI
             // 
             // btnSearchGuitars
             // 
-            this.btnSearchGuitars.BackgroundImage = global::GUI.Properties.Resources.search_512;
+            this.btnSearchGuitars.BackgroundImage = global::GUI.Properties.Resources.search;
             this.btnSearchGuitars.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnSearchGuitars.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.btnSearchGuitars.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -620,30 +343,30 @@ namespace GUI
             this.btnSearchGuitars.ThemeName = "MetroLite";
             this.btnSearchGuitars.TileAlign = MetroSet_UI.Enums.TileAlign.Topleft;
             // 
-            // txtSearch
+            // txtSearchProduct
             // 
-            this.txtSearch.Depth = 0;
-            this.txtSearch.Hint = "";
-            this.txtSearch.Location = new System.Drawing.Point(3, 127);
-            this.txtSearch.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.SelectionLength = 0;
-            this.txtSearch.SelectionStart = 0;
-            this.txtSearch.Size = new System.Drawing.Size(641, 23);
-            this.txtSearch.TabIndex = 41;
-            this.txtSearch.Text = "Buscar...";
-            this.txtSearch.UseSystemPasswordChar = false;
+            this.txtSearchProduct.Depth = 0;
+            this.txtSearchProduct.Hint = "";
+            this.txtSearchProduct.Location = new System.Drawing.Point(3, 127);
+            this.txtSearchProduct.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtSearchProduct.Name = "txtSearchProduct";
+            this.txtSearchProduct.PasswordChar = '\0';
+            this.txtSearchProduct.SelectedText = "";
+            this.txtSearchProduct.SelectionLength = 0;
+            this.txtSearchProduct.SelectionStart = 0;
+            this.txtSearchProduct.Size = new System.Drawing.Size(641, 23);
+            this.txtSearchProduct.TabIndex = 41;
+            this.txtSearchProduct.Text = "Buscar...";
+            this.txtSearchProduct.UseSystemPasswordChar = false;
             // 
             // btnDispatch
             // 
             this.btnDispatch.Depth = 0;
-            this.btnDispatch.Location = new System.Drawing.Point(344, 368);
+            this.btnDispatch.Location = new System.Drawing.Point(0, 368);
             this.btnDispatch.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDispatch.Name = "btnDispatch";
             this.btnDispatch.Primary = true;
-            this.btnDispatch.Size = new System.Drawing.Size(340, 27);
+            this.btnDispatch.Size = new System.Drawing.Size(684, 27);
             this.btnDispatch.TabIndex = 40;
             this.btnDispatch.Text = "DESPACHAR";
             this.btnDispatch.UseVisualStyleBackColor = true;
@@ -749,18 +472,16 @@ namespace GUI
             // tbQuality
             // 
             this.tbQuality.BaseColor = System.Drawing.Color.White;
-            this.tbQuality.Controls.Add(this.btnReloadProductQty);
-            this.tbQuality.Controls.Add(this.btnReloadStockQty);
             this.tbQuality.Controls.Add(this.metroSetTile2);
-            this.tbQuality.Controls.Add(this.materialSingleLineTextField2);
+            this.tbQuality.Controls.Add(this.txtSearchProductRecall);
             this.tbQuality.Controls.Add(this.btnRecallProduct);
             this.tbQuality.Controls.Add(this.dataGridView4);
             this.tbQuality.Controls.Add(this.metroSetTile1);
-            this.tbQuality.Controls.Add(this.materialSingleLineTextField1);
+            this.tbQuality.Controls.Add(this.txtSearchItemRecall);
             this.tbQuality.Controls.Add(this.btnRecallStock);
             this.tbQuality.Controls.Add(this.dataGridView3);
             this.tbQuality.Font = null;
-            this.tbQuality.ImageIndex = 0;
+            this.tbQuality.ImageIndex = 2;
             this.tbQuality.ImageKey = null;
             this.tbQuality.IsDerivedStyle = true;
             this.tbQuality.Location = new System.Drawing.Point(4, 42);
@@ -774,33 +495,9 @@ namespace GUI
             this.tbQuality.ThemeName = "MetroLite";
             this.tbQuality.ToolTipText = null;
             // 
-            // btnReloadProductQty
-            // 
-            this.btnReloadProductQty.Depth = 0;
-            this.btnReloadProductQty.Location = new System.Drawing.Point(0, 377);
-            this.btnReloadProductQty.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnReloadProductQty.Name = "btnReloadProductQty";
-            this.btnReloadProductQty.Primary = true;
-            this.btnReloadProductQty.Size = new System.Drawing.Size(340, 27);
-            this.btnReloadProductQty.TabIndex = 52;
-            this.btnReloadProductQty.Text = "RECARGAR";
-            this.btnReloadProductQty.UseVisualStyleBackColor = true;
-            // 
-            // btnReloadStockQty
-            // 
-            this.btnReloadStockQty.Depth = 0;
-            this.btnReloadStockQty.Location = new System.Drawing.Point(0, 173);
-            this.btnReloadStockQty.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnReloadStockQty.Name = "btnReloadStockQty";
-            this.btnReloadStockQty.Primary = true;
-            this.btnReloadStockQty.Size = new System.Drawing.Size(340, 27);
-            this.btnReloadStockQty.TabIndex = 51;
-            this.btnReloadStockQty.Text = "RECARGAR";
-            this.btnReloadStockQty.UseVisualStyleBackColor = true;
-            // 
             // metroSetTile2
             // 
-            this.metroSetTile2.BackgroundImage = global::GUI.Properties.Resources.search_512;
+            this.metroSetTile2.BackgroundImage = global::GUI.Properties.Resources.search;
             this.metroSetTile2.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.metroSetTile2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.metroSetTile2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -825,30 +522,30 @@ namespace GUI
             this.metroSetTile2.ThemeName = "MetroLite";
             this.metroSetTile2.TileAlign = MetroSet_UI.Enums.TileAlign.Topleft;
             // 
-            // materialSingleLineTextField2
+            // txtSearchProductRecall
             // 
-            this.materialSingleLineTextField2.Depth = 0;
-            this.materialSingleLineTextField2.Hint = "";
-            this.materialSingleLineTextField2.Location = new System.Drawing.Point(3, 216);
-            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
-            this.materialSingleLineTextField2.PasswordChar = '\0';
-            this.materialSingleLineTextField2.SelectedText = "";
-            this.materialSingleLineTextField2.SelectionLength = 0;
-            this.materialSingleLineTextField2.SelectionStart = 0;
-            this.materialSingleLineTextField2.Size = new System.Drawing.Size(641, 23);
-            this.materialSingleLineTextField2.TabIndex = 49;
-            this.materialSingleLineTextField2.Text = "Buscar...";
-            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            this.txtSearchProductRecall.Depth = 0;
+            this.txtSearchProductRecall.Hint = "";
+            this.txtSearchProductRecall.Location = new System.Drawing.Point(3, 216);
+            this.txtSearchProductRecall.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtSearchProductRecall.Name = "txtSearchProductRecall";
+            this.txtSearchProductRecall.PasswordChar = '\0';
+            this.txtSearchProductRecall.SelectedText = "";
+            this.txtSearchProductRecall.SelectionLength = 0;
+            this.txtSearchProductRecall.SelectionStart = 0;
+            this.txtSearchProductRecall.Size = new System.Drawing.Size(641, 23);
+            this.txtSearchProductRecall.TabIndex = 49;
+            this.txtSearchProductRecall.Text = "Buscar...";
+            this.txtSearchProductRecall.UseSystemPasswordChar = false;
             // 
             // btnRecallProduct
             // 
             this.btnRecallProduct.Depth = 0;
-            this.btnRecallProduct.Location = new System.Drawing.Point(346, 377);
+            this.btnRecallProduct.Location = new System.Drawing.Point(3, 377);
             this.btnRecallProduct.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRecallProduct.Name = "btnRecallProduct";
             this.btnRecallProduct.Primary = true;
-            this.btnRecallProduct.Size = new System.Drawing.Size(341, 27);
+            this.btnRecallProduct.Size = new System.Drawing.Size(684, 27);
             this.btnRecallProduct.TabIndex = 48;
             this.btnRecallProduct.Text = "RETIRAR PRODUCTO";
             this.btnRecallProduct.UseVisualStyleBackColor = true;
@@ -864,7 +561,7 @@ namespace GUI
             // 
             // metroSetTile1
             // 
-            this.metroSetTile1.BackgroundImage = global::GUI.Properties.Resources.search_512;
+            this.metroSetTile1.BackgroundImage = global::GUI.Properties.Resources.search;
             this.metroSetTile1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.metroSetTile1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.metroSetTile1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -889,30 +586,30 @@ namespace GUI
             this.metroSetTile1.ThemeName = "MetroLite";
             this.metroSetTile1.TileAlign = MetroSet_UI.Enums.TileAlign.Topleft;
             // 
-            // materialSingleLineTextField1
+            // txtSearchItemRecall
             // 
-            this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "";
-            this.materialSingleLineTextField1.Location = new System.Drawing.Point(3, 12);
-            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-            this.materialSingleLineTextField1.PasswordChar = '\0';
-            this.materialSingleLineTextField1.SelectedText = "";
-            this.materialSingleLineTextField1.SelectionLength = 0;
-            this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(641, 23);
-            this.materialSingleLineTextField1.TabIndex = 45;
-            this.materialSingleLineTextField1.Text = "Buscar...";
-            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            this.txtSearchItemRecall.Depth = 0;
+            this.txtSearchItemRecall.Hint = "";
+            this.txtSearchItemRecall.Location = new System.Drawing.Point(3, 12);
+            this.txtSearchItemRecall.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtSearchItemRecall.Name = "txtSearchItemRecall";
+            this.txtSearchItemRecall.PasswordChar = '\0';
+            this.txtSearchItemRecall.SelectedText = "";
+            this.txtSearchItemRecall.SelectionLength = 0;
+            this.txtSearchItemRecall.SelectionStart = 0;
+            this.txtSearchItemRecall.Size = new System.Drawing.Size(641, 23);
+            this.txtSearchItemRecall.TabIndex = 45;
+            this.txtSearchItemRecall.Text = "Buscar...";
+            this.txtSearchItemRecall.UseSystemPasswordChar = false;
             // 
             // btnRecallStock
             // 
             this.btnRecallStock.Depth = 0;
-            this.btnRecallStock.Location = new System.Drawing.Point(344, 173);
+            this.btnRecallStock.Location = new System.Drawing.Point(0, 173);
             this.btnRecallStock.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRecallStock.Name = "btnRecallStock";
             this.btnRecallStock.Primary = true;
-            this.btnRecallStock.Size = new System.Drawing.Size(340, 27);
+            this.btnRecallStock.Size = new System.Drawing.Size(684, 27);
             this.btnRecallStock.TabIndex = 44;
             this.btnRecallStock.Text = "RETIRAR DEL INVENTARIO";
             this.btnRecallStock.UseVisualStyleBackColor = true;
@@ -935,7 +632,7 @@ namespace GUI
             this.tbReports.Controls.Add(this.btnProductReport);
             this.tbReports.Controls.Add(this.btnStockReport);
             this.tbReports.Font = null;
-            this.tbReports.ImageIndex = 0;
+            this.tbReports.ImageIndex = 3;
             this.tbReports.ImageKey = null;
             this.tbReports.IsDerivedStyle = true;
             this.tbReports.Location = new System.Drawing.Point(4, 42);
@@ -1009,21 +706,249 @@ namespace GUI
             this.btnStockReport.Text = "INFORME DE STOCK DE MATERIALES";
             this.btnStockReport.UseVisualStyleBackColor = true;
             // 
+            // btnOpen
+            // 
+            this.btnOpen.BackgroundImage = global::GUI.Properties.Resources.open;
+            this.btnOpen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOpen.Location = new System.Drawing.Point(608, 27);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(45, 35);
+            this.btnOpen.TabIndex = 27;
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackgroundImage = global::GUI.Properties.Resources.save;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.Location = new System.Drawing.Point(659, 27);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(45, 35);
+            this.btnSave.TabIndex = 28;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lbName
+            // 
+            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbName.IsDerivedStyle = true;
+            this.lbName.Location = new System.Drawing.Point(0, 10);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(74, 23);
+            this.lbName.Style = MetroSet_UI.Enums.Style.Light;
+            this.lbName.StyleManager = null;
+            this.lbName.TabIndex = 13;
+            this.lbName.Text = "NOMBRE:";
+            this.lbName.ThemeAuthor = "Narwin";
+            this.lbName.ThemeName = "MetroLite";
+            // 
+            // lblType
+            // 
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblType.IsDerivedStyle = true;
+            this.lblType.Location = new System.Drawing.Point(0, 42);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(50, 23);
+            this.lblType.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblType.StyleManager = null;
+            this.lblType.TabIndex = 14;
+            this.lblType.Text = "TIPO:";
+            this.lblType.ThemeAuthor = "Narwin";
+            this.lblType.ThemeName = "MetroLite";
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblAmount.IsDerivedStyle = true;
+            this.lblAmount.Location = new System.Drawing.Point(0, 71);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(85, 23);
+            this.lblAmount.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblAmount.StyleManager = null;
+            this.lblAmount.TabIndex = 15;
+            this.lblAmount.Text = "CANTIDAD:";
+            this.lblAmount.ThemeAuthor = "Narwin";
+            this.lblAmount.ThemeName = "MetroLite";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblDate.IsDerivedStyle = true;
+            this.lblDate.Location = new System.Drawing.Point(0, 106);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(85, 23);
+            this.lblDate.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblDate.StyleManager = null;
+            this.lblDate.TabIndex = 16;
+            this.lblDate.Text = "INGRESO:";
+            this.lblDate.ThemeAuthor = "Narwin";
+            this.lblDate.ThemeName = "MetroLite";
+            // 
+            // lblManufacturer
+            // 
+            this.lblManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblManufacturer.IsDerivedStyle = true;
+            this.lblManufacturer.Location = new System.Drawing.Point(0, 132);
+            this.lblManufacturer.Name = "lblManufacturer";
+            this.lblManufacturer.Size = new System.Drawing.Size(109, 23);
+            this.lblManufacturer.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblManufacturer.StyleManager = null;
+            this.lblManufacturer.TabIndex = 17;
+            this.lblManufacturer.Text = "FABRICANTE:";
+            this.lblManufacturer.ThemeAuthor = "Narwin";
+            this.lblManufacturer.ThemeName = "MetroLite";
+            // 
+            // lblOrigin
+            // 
+            this.lblOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblOrigin.IsDerivedStyle = true;
+            this.lblOrigin.Location = new System.Drawing.Point(0, 168);
+            this.lblOrigin.Name = "lblOrigin";
+            this.lblOrigin.Size = new System.Drawing.Size(74, 23);
+            this.lblOrigin.Style = MetroSet_UI.Enums.Style.Light;
+            this.lblOrigin.StyleManager = null;
+            this.lblOrigin.TabIndex = 18;
+            this.lblOrigin.Text = "ORIGEN:";
+            this.lblOrigin.ThemeAuthor = "Narwin";
+            this.lblOrigin.ThemeName = "MetroLite";
+            // 
+            // cmbCustomType
+            // 
+            this.cmbCustomType.AllowDrop = true;
+            this.cmbCustomType.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.cmbCustomType.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCustomType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.cmbCustomType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.cmbCustomType.CausesValidation = false;
+            this.cmbCustomType.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.cmbCustomType.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.cmbCustomType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.cmbCustomType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCustomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCustomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.cmbCustomType.FormattingEnabled = true;
+            this.cmbCustomType.IsDerivedStyle = true;
+            this.cmbCustomType.ItemHeight = 20;
+            this.cmbCustomType.Location = new System.Drawing.Point(70, 39);
+            this.cmbCustomType.Name = "cmbCustomType";
+            this.cmbCustomType.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.cmbCustomType.SelectedItemForeColor = System.Drawing.Color.White;
+            this.cmbCustomType.Size = new System.Drawing.Size(272, 26);
+            this.cmbCustomType.Style = MetroSet_UI.Enums.Style.Light;
+            this.cmbCustomType.StyleManager = null;
+            this.cmbCustomType.TabIndex = 20;
+            this.cmbCustomType.ThemeAuthor = "Narwin";
+            this.cmbCustomType.ThemeName = "MetroLite";
+            // 
+            // nudAmount
+            // 
+            this.nudAmount.Location = new System.Drawing.Point(107, 71);
+            this.nudAmount.Name = "nudAmount";
+            this.nudAmount.Size = new System.Drawing.Size(235, 23);
+            this.nudAmount.TabIndex = 21;
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.Location = new System.Drawing.Point(86, 100);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(256, 23);
+            this.dtpDate.TabIndex = 22;
+            this.dtpDate.Value = new System.DateTime(2021, 5, 31, 0, 0, 0, 0);
+            // 
+            // cmbManufacturer
+            // 
+            this.cmbManufacturer.AllowDrop = true;
+            this.cmbManufacturer.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.cmbManufacturer.BackColor = System.Drawing.Color.Transparent;
+            this.cmbManufacturer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.cmbManufacturer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.cmbManufacturer.CausesValidation = false;
+            this.cmbManufacturer.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.cmbManufacturer.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.cmbManufacturer.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.cmbManufacturer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbManufacturer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.cmbManufacturer.FormattingEnabled = true;
+            this.cmbManufacturer.IsDerivedStyle = true;
+            this.cmbManufacturer.ItemHeight = 20;
+            this.cmbManufacturer.Location = new System.Drawing.Point(107, 129);
+            this.cmbManufacturer.Name = "cmbManufacturer";
+            this.cmbManufacturer.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.cmbManufacturer.SelectedItemForeColor = System.Drawing.Color.White;
+            this.cmbManufacturer.Size = new System.Drawing.Size(235, 26);
+            this.cmbManufacturer.Style = MetroSet_UI.Enums.Style.Light;
+            this.cmbManufacturer.StyleManager = null;
+            this.cmbManufacturer.TabIndex = 23;
+            this.cmbManufacturer.ThemeAuthor = "Narwin";
+            this.cmbManufacturer.ThemeName = "MetroLite";
+            // 
+            // txtOrigin
+            // 
+            this.txtOrigin.Depth = 0;
+            this.txtOrigin.Hint = "";
+            this.txtOrigin.Location = new System.Drawing.Point(86, 168);
+            this.txtOrigin.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtOrigin.Name = "txtOrigin";
+            this.txtOrigin.PasswordChar = '\0';
+            this.txtOrigin.SelectedText = "";
+            this.txtOrigin.SelectionLength = 0;
+            this.txtOrigin.SelectionStart = 0;
+            this.txtOrigin.Size = new System.Drawing.Size(260, 23);
+            this.txtOrigin.TabIndex = 27;
+            this.txtOrigin.UseSystemPasswordChar = false;
+            // 
+            // pnlPieceProperties
+            // 
+            this.pnlPieceProperties.BackColor = System.Drawing.Color.White;
+            this.pnlPieceProperties.Controls.Add(this.txtOrigin);
+            this.pnlPieceProperties.Controls.Add(this.txtName);
+            this.pnlPieceProperties.Controls.Add(this.cmbManufacturer);
+            this.pnlPieceProperties.Controls.Add(this.dtpDate);
+            this.pnlPieceProperties.Controls.Add(this.nudAmount);
+            this.pnlPieceProperties.Controls.Add(this.cmbCustomType);
+            this.pnlPieceProperties.Controls.Add(this.lblOrigin);
+            this.pnlPieceProperties.Controls.Add(this.lblManufacturer);
+            this.pnlPieceProperties.Controls.Add(this.lblDate);
+            this.pnlPieceProperties.Controls.Add(this.lblAmount);
+            this.pnlPieceProperties.Controls.Add(this.lblType);
+            this.pnlPieceProperties.Controls.Add(this.lbName);
+            this.pnlPieceProperties.Location = new System.Drawing.Point(5, 159);
+            this.pnlPieceProperties.Name = "pnlPieceProperties";
+            this.pnlPieceProperties.Size = new System.Drawing.Size(346, 200);
+            this.pnlPieceProperties.TabIndex = 26;
+            // 
+            // txtName
+            // 
+            this.txtName.Depth = 0;
+            this.txtName.Hint = "";
+            this.txtName.Location = new System.Drawing.Point(80, 10);
+            this.txtName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtName.Name = "txtName";
+            this.txtName.PasswordChar = '\0';
+            this.txtName.SelectedText = "";
+            this.txtName.SelectionLength = 0;
+            this.txtName.SelectionStart = 0;
+            this.txtName.Size = new System.Drawing.Size(262, 23);
+            this.txtName.TabIndex = 24;
+            this.txtName.UseSystemPasswordChar = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 531);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbMain);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GUITAR CUSTOM SHOP";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.tbMain.ResumeLayout(false);
             this.tbStock.ResumeLayout(false);
-            this.pnlPieceProperties.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tbAssembly.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -1032,6 +957,8 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tbReports.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
+            this.pnlPieceProperties.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1043,13 +970,13 @@ namespace GUI
         private MetroSet_UI.Child.MetroSetSetTabPage tbAssembly;
         private MetroSet_UI.Child.MetroSetSetTabPage tbQuality;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtSearchPiece;
         private MaterialSkin.Controls.MaterialRaisedButton btnDeleteStock;
         private MetroSet_UI.Controls.MetroSetTile btnSearchPieces;
         private MetroSet_UI.Controls.MetroSetComboBox cmbPieceType;
         private MetroSet_UI.Controls.MetroSetLabel lblTipoPieza;
         private MetroSet_UI.Controls.MetroSetTile btnSearchGuitars;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtSearch;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtSearchProduct;
         private MaterialSkin.Controls.MaterialRaisedButton btnDispatch;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -1061,11 +988,11 @@ namespace GUI
         private MaterialSkin.Controls.MaterialRaisedButton btnCreate;
         private MetroSet_UI.Child.MetroSetSetTabPage tbReports;
         private MetroSet_UI.Controls.MetroSetTile metroSetTile2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtSearchProductRecall;
         private MaterialSkin.Controls.MaterialRaisedButton btnRecallProduct;
         private System.Windows.Forms.DataGridView dataGridView4;
         private MetroSet_UI.Controls.MetroSetTile metroSetTile1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtSearchItemRecall;
         private MaterialSkin.Controls.MaterialRaisedButton btnRecallStock;
         private System.Windows.Forms.DataGridView dataGridView3;
         private MaterialSkin.Controls.MaterialRaisedButton btnRecalledProducts;
@@ -1073,24 +1000,22 @@ namespace GUI
         private MaterialSkin.Controls.MaterialRaisedButton btnSendedProducts;
         private MaterialSkin.Controls.MaterialRaisedButton btnProductReport;
         private MaterialSkin.Controls.MaterialRaisedButton btnStockReport;
-        private MaterialSkin.Controls.MaterialRaisedButton btnReloadStock;
-        private MaterialSkin.Controls.MaterialRaisedButton btnReloadProduct;
-        private MaterialSkin.Controls.MaterialRaisedButton btnReloadProductQty;
-        private MaterialSkin.Controls.MaterialRaisedButton btnReloadStockQty;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAddStock;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel pnlPieceProperties;
-        private MetroSet_UI.Controls.MetroSetTextBox txtOrigin;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtOrigin;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtName;
         private MetroSet_UI.Controls.MetroSetComboBox cmbManufacturer;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.NumericUpDown nudAmount;
         private MetroSet_UI.Controls.MetroSetComboBox cmbCustomType;
-        private MetroSet_UI.Controls.MetroSetTextBox txtName;
         private MetroSet_UI.Controls.MetroSetLabel lblOrigin;
         private MetroSet_UI.Controls.MetroSetLabel lblManufacturer;
         private MetroSet_UI.Controls.MetroSetLabel lblDate;
         private MetroSet_UI.Controls.MetroSetLabel lblAmount;
         private MetroSet_UI.Controls.MetroSetLabel lblType;
         private MetroSet_UI.Controls.MetroSetLabel lbName;
-        private MaterialSkin.Controls.MaterialRaisedButton btnAddStock;
     }
 }
 

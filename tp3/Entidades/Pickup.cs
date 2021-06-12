@@ -13,7 +13,7 @@ namespace Entidades
         public Pickup() : base()
         {
             this.maker = Maker;
-            this.pickupType = PickupType;
+            this.pickupType = Type;
         }
 
         public PickupsMaker Maker
@@ -28,7 +28,7 @@ namespace Entidades
             }
         }
 
-        public PickupsType PickupType
+        public PickupsType Type
         {
             get
             {

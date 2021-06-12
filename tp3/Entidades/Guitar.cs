@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Guitar
+    public abstract class Guitar : IGuitar
     {
         protected string body;
         protected string neck;
@@ -23,7 +23,6 @@ namespace Entidades
             this.pickups = Pickups;
             this.tuners = Tuners;
             this.electronics = Electronics;
-            this.serialNumber = SerialNumber;
             this.manufactureDate = ManufactureDate;
         }
 
@@ -32,7 +31,16 @@ namespace Entidades
         public abstract string Pickups { get; set; }
         public abstract string Tuners { get; set; }
         public abstract string Electronics { get; set; }
-        public abstract string SerialNumber { get; set; }
-        public string ManufactureDate { get; set; }
+        public string ManufactureDate
+        {
+            get
+            {
+                return this.manufactureDate;
+            }
+            set
+            {
+                this.manufactureDate = value;
+            }
+        }       
     }
 }

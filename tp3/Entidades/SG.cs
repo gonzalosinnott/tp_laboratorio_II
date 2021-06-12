@@ -17,69 +17,58 @@ namespace Entidades
         {
             get
             {
-                return this.body;
+                return WoodType.Caoba.ToString();
             }
             set
             {
-                this.body = WoodType.Caoba.ToString();
+                this.body = value;
             }
         }
         public override string Neck
         {
             get
             {
-                return this.neck;
+                return WoodType.Caoba.ToString();
             }
             set
             {
-                this.neck = WoodType.Caoba.ToString();
+                this.neck = value;
             }
         }
         public override string Pickups
         {
             get
             {
-                return this.pickups;
+                return PickupsType.P90.ToString();
             }
             set
             {
-                this.pickups = PickupsType.P90.ToString();
+                this.pickups = value;
             }
         }
         public override string Tuners
         {
             get
             {
-                return this.tuners;
+                return TunersMakers.Gotoh.ToString();
             }
             set
             {
-                this.tuners = TunersMakers.Gotoh.ToString();
+                this.tuners = value;
             }
+
         }
         public override string Electronics
         {
             get
             {
-                return this.electronics;
+                return ElectronicType.Gibson.ToString();
             }
             set
             {
-                this.electronics = ElectronicType.Gibson.ToString();
+                this.electronics = value;
             }
-        }
-        public override string SerialNumber
-        {
-            get
-            {
-                return this.serialNumber;
-            }
-            set
-            {
-                Random rd = new Random();
-                int rand_num = rd.Next(1, 1000);
-                this.serialNumber = $"SG{rand_num}";
-            }
+
         }
     }
 }

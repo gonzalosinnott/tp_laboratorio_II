@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroSet_UI.Forms;
 using MaterialSkin.Animations;
 using MaterialSkin.Controls;
+using Entidades;
 
 namespace GUI
 {
@@ -17,18 +18,57 @@ namespace GUI
     {
         public frmMain()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
 
-            /*Paleta de Colores
-            var materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.BlueGrey800,
-                                                                           MaterialSkin.Primary.BlueGrey900,
-                                                                           MaterialSkin.Primary.BlueGrey500,
-                                                                           MaterialSkin.Accent.LightBlue200,
-                                                                           MaterialSkin.TextShade.WHITE);
-            */
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            tbMain.Enabled = false;
+            tbMain.SelectTab(0);
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            tbMain.Enabled = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            tbMain.Enabled = false;
+        }
+
+        private void cmbPieceType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbCustomType.Enabled = true;
+            cmbManufacturer.Enabled = true;
+
+            switch (cmbPieceType.SelectedIndex)
+            {
+                case 0:
+                    cmbCustomType.DataSource = null;
+                    cmbCustomType.Enabled = false;
+                    cmbManufacturer.DataSource = Enum.GetNames(typeof(TunersMakers));
+                    break;
+                case 1:
+                    cmbManufacturer.DataSource = null;
+                    cmbManufacturer.Enabled = false;
+                    cmbCustomType.DataSource = Enum.GetNames(typeof(ElectronicType));
+                    break;
+                case 2:
+                    cmbManufacturer.DataSource = null;
+                    cmbManufacturer.Enabled = false;
+                    cmbCustomType.DataSource = Enum.GetNames(typeof(WoodType));
+                    break;
+                case 3:
+                    cmbCustomType.DataSource = Enum.GetNames(typeof(PickupsType));
+                    cmbManufacturer.DataSource = Enum.GetNames(typeof(PickupsMaker));
+                    break;
+                case 4:
+                    cmbManufacturer.DataSource = null;
+                    cmbManufacturer.Enabled = false;
+                    cmbCustomType.DataSource = Enum.GetNames(typeof(TremoloType));
+                    break;
+            }
         }
 
         private void btnRecallStock_Click(object sender, EventArgs e)
@@ -47,9 +87,5 @@ namespace GUI
             form.ShowDialog();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            pnlPieceProperties.BackColor = Color.FromArgb(0, 0, 0, 0);
-        }
     }
 }

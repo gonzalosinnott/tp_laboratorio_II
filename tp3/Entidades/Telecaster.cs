@@ -18,81 +18,69 @@ namespace Entidades
         {
             get
             {
-                return this.body;
+                return WoodType.Fresno.ToString();
             }
             set
             {
-                this.body = WoodType.Fresno.ToString();
+                this.body = value;
             }
         }
         public override string Neck
         {
             get
             {
-                return this.neck;
+                return WoodType.Nogal.ToString();
             }
             set
             {
-                this.neck = WoodType.Nogal.ToString();
+                this.neck = value;
             }
         }
         public override string Pickups
         {
             get
             {
-                return this.pickups;
+                return PickupsType.SingleCoil.ToString();
             }
             set
             {
-                this.pickups = PickupsType.SingleCoil.ToString();
+                this.pickups = value;
             }
         }
         public override string Tuners
         {
             get
             {
-                return this.tuners;
+                return TunersMakers.Grover.ToString();
             }
             set
             {
-                this.tuners = TunersMakers.Grover.ToString();
+                this.tuners = value;
             }
+
         }
         public override string Electronics
         {
             get
             {
-                return this.electronics;
+                return ElectronicType.Fender.ToString();
             }
             set
             {
-                this.electronics = ElectronicType.Fender.ToString();
+                this.electronics = value;
             }
-        }
-        public override string SerialNumber
-        {
-            get
-            {
-                return this.serialNumber;
-            }
-            set
-            {
-                Random rd = new Random();
-                int rand_num = rd.Next(1, 1000);
-                this.serialNumber = $"TE{rand_num}";
-            }
+
         }
         public string Tremolo
-        {
+        {           
             get
             {
-                return this.tremolo;
+                return TremoloType.Bigsby.ToString();
             }
             set
             {
-                this.tremolo = TremoloType.Bigsby.ToString();
+                this.tremolo = value;
             }
-        }
-
+        }        
     }
 }
