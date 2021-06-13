@@ -11,14 +11,17 @@ using MetroSet_UI.Forms;
 using MaterialSkin.Animations;
 using MaterialSkin.Controls;
 using Entidades;
+using SerializationAndFiles;
 
 namespace GUI
 {
     public partial class frmMain : MaterialForm
     {
+        
         public frmMain()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            Factory miFabrica = new Factory();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -34,28 +37,29 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            tbMain.Enabled = false;
+            ///SerializationAndFiles.XmlSerializer<Factory>.Save(@"..\files\file.xml", Factory.partsList);
         }
 
         private void cmbPieceType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbCustomType.Enabled = true;
             cmbManufacturer.Enabled = true;
+            string[] emptyComboBox = new[] { "N/A" };
 
             switch (cmbPieceType.SelectedIndex)
             {
                 case 0:
-                    cmbCustomType.DataSource = null;
+                    cmbCustomType.DataSource = emptyComboBox;
                     cmbCustomType.Enabled = false;
                     cmbManufacturer.DataSource = Enum.GetNames(typeof(TunersMakers));
                     break;
                 case 1:
-                    cmbManufacturer.DataSource = null;
+                    cmbManufacturer.DataSource = emptyComboBox; ;
                     cmbManufacturer.Enabled = false;
                     cmbCustomType.DataSource = Enum.GetNames(typeof(ElectronicType));
                     break;
                 case 2:
-                    cmbManufacturer.DataSource = null;
+                    cmbManufacturer.DataSource = emptyComboBox;
                     cmbManufacturer.Enabled = false;
                     cmbCustomType.DataSource = Enum.GetNames(typeof(WoodType));
                     break;
@@ -63,12 +67,25 @@ namespace GUI
                     cmbCustomType.DataSource = Enum.GetNames(typeof(PickupsType));
                     cmbManufacturer.DataSource = Enum.GetNames(typeof(PickupsMaker));
                     break;
-                case 4:
-                    cmbManufacturer.DataSource = null;
-                    cmbManufacturer.Enabled = false;
-                    cmbCustomType.DataSource = Enum.GetNames(typeof(TremoloType));
-                    break;
+                
             }
+        }
+       
+
+        private void btnAddStock_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                Factory.AddPart(cmbPieceType.Text, txtName.Text, cmbCustomType.Text, dtpDate.Value.Date, cmbManufacturer.Text);
+                dgvPieces.DataSource = Factory.PartsList.ToList();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("ASEGURESE DE COMPLETAR TODOS LOS CAMPOS", "Error", MessageBoxButtons.OK);
+            }
+            
+
         }
 
         private void btnRecallStock_Click(object sender, EventArgs e)
@@ -87,5 +104,13 @@ namespace GUI
             form.ShowDialog();
         }
 
+        private void ShowError()
+        {
+            MessageBox.Show("ASEGURESE DE COMPLETAR TODOS LOS CAMPOS", "Error", MessageBoxButtons.OK);
+        }
+
+      
+
+        
     }
 }

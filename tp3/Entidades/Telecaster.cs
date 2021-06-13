@@ -8,10 +8,8 @@ namespace Entidades
 {
     class Telecaster : Guitar
     {
-        private string tremolo;
         public Telecaster() : base()
         {
-            this.tremolo = Tremolo;
         }
 
         public override string Body
@@ -70,17 +68,6 @@ namespace Entidades
                 this.electronics = value;
             }
 
-        }
-        public string Tremolo
-        {           
-            get
-            {
-                return TremoloType.Bigsby.ToString();
-            }
-            set
-            {
-                this.tremolo = value;
-            }
-        }        
+        }       
     }
 }

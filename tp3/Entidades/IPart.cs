@@ -8,7 +8,11 @@ namespace Entidades
 {
     public interface IParts
     {
+        string ClassType { get; }
         string Name { get; set; }
+        string Type { get; set; }
         DateTime EntryDate { get; set; }
+        string Manufacturer { get; set; }
+        string getClassType();
     }
 }

@@ -84,6 +84,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Entidades.Electronics.datasource" />
+    <None Include="Properties\DataSources\Entidades.Part.datasource" />
+    <None Include="Properties\DataSources\Entidades.Pickup.datasource" />
+    <None Include="Properties\DataSources\Entidades.Tremolo.datasource" />
+    <None Include="Properties\DataSources\Entidades.Tuners.datasource" />
+    <None Include="Properties\DataSources\Entidades.Wood.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

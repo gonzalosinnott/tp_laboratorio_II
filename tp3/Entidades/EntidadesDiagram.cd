@@ -3,75 +3,84 @@
   <Class Name="Entidades.Part">
     <Position X="0.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAASAAAAEgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAQAAIAAAAAAAAAAAAAASAAAAFhAAAAQAAAAAAAEA=</HashCode>
       <FileName>Part.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.Pickup">
-    <Position X="3" Y="3.75" Width="2.75" />
+    <Position X="0.5" Y="4.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAACAAAAAg=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Pickup.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Wood">
-    <Position X="6" Y="3.75" Width="2.25" />
+    <Position X="3.5" Y="4.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Wood.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Tuners">
-    <Position X="8.5" Y="3.75" Width="3" />
+    <Position X="6.25" Y="4.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Tuners.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Entidades.Tremolo">
-    <Position X="0.5" Y="3.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Tremolo.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Entidades.Electronics">
-    <Position X="11.75" Y="3.75" Width="2.25" />
+    <Position X="9.5" Y="4.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Electronics.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Guitar">
-    <Position X="0.5" Y="6.75" Width="2.75" />
+    <Position X="0.5" Y="7" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AQAAAAGAAAEAgAAAAAABAAQAAQEEAEAAAABBAAAAAQA=</HashCode>
+      <HashCode>AQAAAAGAAAEAgAAAAAABAAQAAQAEAEAAAABBAAAAAQA=</HashCode>
       <FileName>Guitar.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.LesPaul">
     <Position X="0.5" Y="11.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAEEAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAAEAEAAAAAAAAAAAAA=</HashCode>
       <FileName>LesPaul.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Telecaster">
-    <Position X="5.75" Y="11.5" Width="2.75" />
+    <Position X="7.25" Y="11.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAEECEAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAAECEAAAAAAAAAAAAA=</HashCode>
       <FileName>Telecaster.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.SG">
-    <Position X="4" Y="11.5" Width="1.5" />
+    <Position X="3.75" Y="11.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAEEAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAAEAEAAAAAAAAAAAAA=</HashCode>
       <FileName>SG.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Interface Name="Entidades.IGuitar">
+    <Position X="3.5" Y="7" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAAAAAAAAABAAAAAAAEAEAAAAABAAAAAAA=</HashCode>
+      <FileName>IGuitar.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.IParts">
+    <Position X="3.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAQAAAAAAAAAAAAAAAAASAAAAABAAAAQAAAAAAAAA=</HashCode>
+      <FileName>IPart.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="Entidades.PickupsType">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="8.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enumerados.cs</FileName>
@@ -85,7 +94,7 @@
     </TypeIdentifier>
   </Enum>
   <Enum Name="Entidades.PickupsMaker">
-    <Position X="3.25" Y="0.5" Width="1.5" />
+    <Position X="10.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Enumerados.cs</FileName>
@@ -95,13 +104,6 @@
     <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
-      <FileName>Enumerados.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Entidades.TremoloType">
-    <Position X="12" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enumerados.cs</FileName>
     </TypeIdentifier>
   </Enum>

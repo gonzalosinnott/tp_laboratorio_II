@@ -6,25 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Tuners : Part
     {
-        private TunersMakers tunersMaker;
-
-        public Tuners()
+        public Tuners() : base()
         {
-            this.tunersMaker = TunersMaker;
-        }
 
-        public TunersMakers TunersMaker
-        {
-            get 
-            {
-                return this.tunersMaker;
-            } 
-            set
-            {
-                this.tunersMaker = value;
-            }
         }
+        public override string Name { get { return this.name; } set { this.name = value; } }
+        public override string Type { get { return "N/A"; } set { this.type = value; } }
+        public override string Manufacturer { get { return this.manufacturer; } set { this.manufacturer = value; } }
     }
 }

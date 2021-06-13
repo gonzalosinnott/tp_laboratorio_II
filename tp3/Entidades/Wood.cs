@@ -6,24 +6,16 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Wood : Part
     {
-        private WoodType type;
         public Wood() : base()
         {
-            this.type = Type;
+
         }
 
-        public WoodType Type
-        {
-            get
-            { 
-                return this.type;
-            } 
-            set
-            { 
-                this.type = value;
-            }
-        }
+        public override string Name { get { return this.name; } set { this.name = value; } }
+        public override string Type { get { return this.type; } set { this.type = value; } }
+        public override string Manufacturer { get { return this.manufacturer; } set { this.manufacturer = value; } }
     }
 }

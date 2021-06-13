@@ -6,38 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Serializable]
     public class Pickup : Part
-    {
-        private PickupsMaker maker;
-        private PickupsType pickupType;
+    {       
         public Pickup() : base()
         {
-            this.maker = Maker;
-            this.pickupType = Type;
-        }
-
-        public PickupsMaker Maker
-        { 
-            get
-            { 
-                return this.maker;
-            }
-            set
-            {
-                this.maker = value; 
-            }
-        }
-
-        public PickupsType Type
-        {
-            get
-            {
-                return this.pickupType;
-            }
-            set
-            {
-                this.pickupType = value;
-            }
-        }
+            
+        }        
+        public override string Name { get { return this.name; } set { this.name = value; } }
+        public override string Type { get { return this.type; } set { this.type = value; } }
+        public override string Manufacturer { get { return this.manufacturer; } set { this.manufacturer = value; } }
     }
 }

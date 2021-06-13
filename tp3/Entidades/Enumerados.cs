@@ -34,12 +34,6 @@ namespace Entidades
         Grover
     }
 
-    public enum TremoloType
-    {
-        Bigsby,
-        Fender
-    }
-
     public enum ElectronicType
     {
         Gibson,

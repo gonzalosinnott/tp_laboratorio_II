@@ -8,16 +8,16 @@ namespace Entidades
 {
     public class Factory
     {
-        private List<Part> partsList;
-        private List<Guitar> guitarsList;
+        public static List<Part> partsList;
+        private static List<Guitar> guitarsList;
 
         public Factory()
         {
-            this.partsList = new List<Part>();
-            this.guitarsList = new List<Guitar>();
+            partsList = new List<Part>();
+            guitarsList = new List<Guitar>();
         }
 
-        public List<Part> PartsList 
+        public static List<Part> PartsList 
         {
             get
             {
@@ -25,10 +25,10 @@ namespace Entidades
             }
             set
             {
-                this.partsList = value;
+                partsList = value;
             }
         }
-        public List<Guitar> GuitarsList
+        public static List<Guitar> GuitarsList
         {
             get
             {
@@ -36,22 +36,36 @@ namespace Entidades
             }
             set
             {
-                this.guitarsList = value;
+                guitarsList = value;
             }
         }
 
-        public bool addPart()
+        public static void AddPart(string piece, string name, string type, DateTime entryDate, string manufacturer)
         {
-            return true;
+            Part part;
+            if (string.IsNullOrWhiteSpace(name) != true)
+            {
+                switch (piece)
+                {
+                    case "CLAVIJAS":
+                        part = new Tuners { Name = name, Type = type, EntryDate = entryDate, Manufacturer = manufacturer };
+                        partsList.Add(part);
+                        break;
+                    case "ELECTRONICA":
+                        part = new Electronics { Name = name, Type = type, EntryDate = entryDate, Manufacturer = manufacturer };
+                        partsList.Add(part);
+                        break;
+                    case "MADERA":
+                        part = new Wood { Name = name, Type = type, EntryDate = entryDate, Manufacturer = manufacturer };
+                        partsList.Add(part);
+                        break;
+                    case "PICKUPS":
+                        part = new Pickup { Name = name, Type = type, EntryDate = entryDate, Manufacturer = manufacturer };
+                        partsList.Add(part);
+                        break;
+                }                
+            }            
         }
-
-
-
-
-
         
-
-
-
     }
 }

@@ -6,17 +6,32 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Part
+    public abstract class Part : IParts
     {
+        protected string classType;
         protected string name;
+        protected string type;
         protected DateTime entryDate;
+        protected string manufacturer;
 
-        public Part()
+        protected Part()
         {
+            this.classType = ClassType;
             this.name = Name;
+            this.type = Type;
             this.entryDate = EntryDate;
+            this.manufacturer = Manufacturer;
         }
-        public virtual string Name { get { return this.name; } set { this.name = value; } }
-        public virtual DateTime EntryDate { get { return this.entryDate; } set { this.entryDate = value; } }
+
+        public string ClassType { get { return getClassType(); } }
+        public abstract string Name { get; set; }
+        public abstract string Type { get; set; }
+        public DateTime EntryDate { get; set; }
+        public abstract string Manufacturer { get; set; }
+
+        public string getClassType()
+        {
+            return this.GetType().Name;
+        }
     }
 }
