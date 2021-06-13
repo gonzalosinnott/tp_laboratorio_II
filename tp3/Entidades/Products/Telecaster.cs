@@ -6,40 +6,28 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class LesPaul : Guitar
+    class Telecaster : Guitar
     {
-        public LesPaul() : base()
+        public Telecaster() : base()
         {
-
         }
 
-        public override string Body
-        {            
-            get
-            {
-                return WoodType.Cedro.ToString();
-            }
-            set
-            {
-                this.body = value;
-            }
-        }
-        public override string Neck
+        public override string Wood
         {
             get
             {
-                return WoodType.Caoba.ToString();
+                return this.wood;
             }
             set
             {
-                this.neck = value;
-            }            
+                this.wood = value;
+            }
         }
         public override string Pickups
-        {            
+        {
             get
             {
-                return PickupsType.Humbucker.ToString();
+                return this.pickups;
             }
             set
             {
@@ -50,25 +38,25 @@ namespace Entidades
         {
             get
             {
-                return TunersMakers.Grover.ToString();
+                return this.tuners;
             }
             set
             {
                 this.tuners = value;
             }
-            
+
         }
         public override string Electronics
         {
             get
             {
-                return ElectronicType.Gibson.ToString();
+                return ElectronicType.Fender.ToString();
             }
             set
             {
                 this.electronics = value;
             }
-            
+
         }       
     }
 }

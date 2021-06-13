@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
+    [Serializable]
+    [XmlInclude(typeof(Electronics))]
+    [XmlInclude(typeof(Pickup))]
+    [XmlInclude(typeof(Tuners))]
+    [XmlInclude(typeof(Wood))]
     public abstract class Part : IParts
     {
         protected string classType;
@@ -14,7 +20,8 @@ namespace Entidades
         protected DateTime entryDate;
         protected string manufacturer;
 
-        protected Part()
+        public Part() { }
+        protected Part(string classType, string name, string type, DateTime entryDate, string manufacturer)
         {
             this.classType = ClassType;
             this.name = Name;

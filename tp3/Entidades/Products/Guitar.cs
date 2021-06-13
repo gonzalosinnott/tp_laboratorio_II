@@ -8,30 +8,26 @@ namespace Entidades
 {
     public abstract class Guitar : IGuitar
     {
-        protected string body;
-        protected string neck;
+        protected string wood;
         protected string pickups;
         protected string tuners;
         protected string electronics;
-        protected string serialNumber;
-        protected string manufactureDate;
+        protected DateTime manufactureDate;
 
         public Guitar()
         {
-            this.body = Body;
-            this.neck = Neck;
+            this.wood = Wood;
             this.pickups = Pickups;
             this.tuners = Tuners;
             this.electronics = Electronics;
             this.manufactureDate = ManufactureDate;
         }
 
-        public abstract string Body { get; set; }
-        public abstract string Neck { get; set; }
+        public abstract string Wood { get; set; }
         public abstract string Pickups { get; set; }
         public abstract string Tuners { get; set; }
         public abstract string Electronics { get; set; }
-        public string ManufactureDate
+        public DateTime ManufactureDate
         {
             get
             {
@@ -41,6 +37,11 @@ namespace Entidades
             {
                 this.manufactureDate = value;
             }
-        }       
+        }
+
+        public virtual string Datos()
+        {
+            return $"Piezas necesarias para armar la guitarra {typeof(Guitar)}"; 
+        }
     }
 }

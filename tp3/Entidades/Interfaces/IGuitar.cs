@@ -8,11 +8,11 @@ namespace Entidades
 {
     public interface IGuitar
     {
-        string Body { get; set; }
-        string Neck { get; set; }
+        string Wood { get; set; }
         string Pickups { get; set; }
         string Tuners { get; set; }
         string Electronics { get; set; }
-        string ManufactureDate { get; set; }
+        DateTime ManufactureDate { get; set; }
+        string Datos();
     }
 }

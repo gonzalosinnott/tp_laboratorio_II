@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,33 +10,138 @@ using MetroSet_UI.Forms;
 using MaterialSkin.Animations;
 using MaterialSkin.Controls;
 using Entidades;
-using SerializationAndFiles;
+using System.Xml.Serialization;
+using System.Xml;
+using System.Linq;
+using System.Linq.Expressions;
+using System.IO;
 
 namespace GUI
 {
     public partial class frmMain : MaterialForm
     {
-        
+        Factory miFabrica = new Factory();
+        string partsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
+        string guitarsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLGuitars.xml";
+        string pathDestinationGuitars = AppDomain.CurrentDomain.BaseDirectory + "Guitars.html";
+        string pathDestinationParts = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
+        string pathStyle = AppDomain.CurrentDomain.BaseDirectory + "Style.xml";
+
+
         public frmMain()
         {
             InitializeComponent();
+
             Factory miFabrica = new Factory();
+
+            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "classType",
+                DataPropertyName = "ClassType",
+                HeaderText = "PIEZA"
+            });
+
+            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "name",
+                DataPropertyName = "Name",
+                HeaderText = "NOMBRE"
+            });
+
+            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "type",
+                DataPropertyName = "Type",
+                HeaderText = "TIPO"
+            });
+
+            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "manufacturer",
+                DataPropertyName = "Manufacturer",
+                HeaderText = "FABRICANTE"
+            });
+
+            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "entryDate",
+                DataPropertyName = "EntryDate",
+                HeaderText = "FECHA DE INGRESO"
+            });
+
+            dgvPieces.DataSource = miFabrica.PartsList;
+            dgvGuitars.DataSource = miFabrica.GuitarsList;
+
+            //dgvWood.DataSource = miFabrica.PartsList;
+            //dgvPickups.DataSource = miFabrica.PartsList;
+            //dgvElectronics.DataSource = miFabrica.PartsList;
+            //dgvTuners.DataSource = miFabrica.PartsList;
+        }
+
+        private void refreshGrids()
+        {
+            dgvPieces.DataSource = miFabrica.PartsList.ToList();
+            dgvGuitars.DataSource = miFabrica.GuitarsList.ToList();
+            dgvWood.DataSource = miFabrica.PartsList.OfType<Wood>().ToList();
+            dgvPickups.DataSource = miFabrica.PartsList.OfType<Pickup>().ToList(); ;
+            dgvElectronics.DataSource = miFabrica.PartsList.OfType<Electronics>().ToList();
+            dgvTuners.DataSource = miFabrica.PartsList.OfType<Tuners>().ToList();
+
+            dgvPieces.ClearSelection();
+            dgvWood.ClearSelection();
+            dgvPickups.ClearSelection();
+            dgvElectronics.ClearSelection();
+            dgvTuners.ClearSelection();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             tbMain.Enabled = false;
+            btnSave.Enabled = false;
             tbMain.SelectTab(0);
-        }
+            
+            try
+            {
+                miFabrica.OpenPartsFile(partsPath);
+                tbMain.Enabled = true;
+                btnSave.Enabled = true;
+            }
+            
+            catch(Exception)
+            {
+                MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN LA RUTA {partsPath}.\nRevise la existencia del archivo y vuelva a abrir el programa.", "Error", MessageBoxButtons.OK);
+            }
 
-        private void btnOpen_Click(object sender, EventArgs e)
-        {
-            tbMain.Enabled = true;
+            try
+            {
+                miFabrica.OpenGuitarsFile(guitarsPath);
+                tbMain.Enabled = true;
+                btnSave.Enabled = true;
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN LA RUTA {guitarsPath}.\n Fabrique una guitarra para crear el archivo.", "Error", MessageBoxButtons.OK);
+            }
+
+            refreshGrids();
+            dgvGuitars.DataSource = miFabrica.GuitarsList.ToList();
         }
+       
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ///SerializationAndFiles.XmlSerializer<Factory>.Save(@"..\files\file.xml", Factory.partsList);
+
+            try
+            {
+                miFabrica.SavePartsFile(partsPath);
+                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {partsPath}", "", MessageBoxButtons.OK);
+
+            }
+            catch (Exception)
+            {
+               MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN LA RUTA {partsPath}.los cambios no han podido ser guardados\n", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void cmbPieceType_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,48 +173,77 @@ namespace GUI
                     break;
                 
             }
-        }
-       
+        }       
 
         private void btnAddStock_Click(object sender, EventArgs e)
         {
             
             try
             {
-                Factory.AddPart(cmbPieceType.Text, txtName.Text, cmbCustomType.Text, dtpDate.Value.Date, cmbManufacturer.Text);
-                dgvPieces.DataSource = Factory.PartsList.ToList();
+                miFabrica.AddPart(cmbPieceType.Text, txtName.Text, cmbCustomType.Text, dtpDateStock.Value.Date, cmbManufacturer.Text);
+                refreshGrids();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("ASEGURESE DE COMPLETAR TODOS LOS CAMPOS", "Error", MessageBoxButtons.OK);
             }
+        }
+
+
+        private void btnDeleteStock_Click(object sender, EventArgs e)
+        {
+            if(dgvPieces.CurrentRow != null)
+            {
+                miFabrica.removePart(dgvPieces.CurrentRow.Index);
+                refreshGrids();
+
+            }
+        }        
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                miFabrica.AddGuitar(dgvWood.CurrentRow.Cells.ToString(), dgvPickups.CurrentRow.DataBoundItem.ToString(), dgvElectronics.CurrentRow.DataBoundItem.ToString(), dgvTuners.CurrentRow.DataBoundItem.ToString(), cmbGuitarModel.Text, dtpDateGuitars.Value.Date);
+
+                miFabrica.removePart(dgvWood.CurrentRow.Index);
+                miFabrica.removePart(dgvPickups.CurrentRow.Index);
+                miFabrica.removePart(dgvElectronics.CurrentRow.Index);
+                miFabrica.removePart(dgvTuners.CurrentRow.Index);
+
+                refreshGrids();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ASEGURESE DE TENER EL STOCK DE MATERIALES NECESARIO", "Error", MessageBoxButtons.OK);
+            }
+
+            try
+            {
+                miFabrica.SaveGuitarsFile(guitarsPath);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show($"FALLO ALGO A LA HORA DE GUARDAR EL ARCHIVO EN LA RUTA {guitarsPath}", "Error", MessageBoxButtons.OK);
+
+            }
+
+        }
+
+
+        private void btnStockReport_Click(object sender, EventArgs e)
+        {
+            string pathOrigin = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
             
-
-        }
-
-        private void btnRecallStock_Click(object sender, EventArgs e)
-        {
-            ShowQltyForm();
-        }
-
-        private void btnRecallProduct_Click(object sender, EventArgs e)
-        {
-            ShowQltyForm();
-        }
-
-        private void ShowQltyForm()
-        {
-            frmQltyCtrl form = new frmQltyCtrl();
-            form.ShowDialog();
-        }
-
-        private void ShowError()
-        {
-            MessageBox.Show("ASEGURESE DE COMPLETAR TODOS LOS CAMPOS", "Error", MessageBoxButtons.OK);
-        }
-
-      
-
-        
+            try
+            {
+                FilesConfig.MakeHTML(partsPath, pathDestinationParts, pathStyle);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        }                      
     }
 }

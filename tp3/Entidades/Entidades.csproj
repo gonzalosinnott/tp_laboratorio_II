@@ -40,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,20 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory.cs" />
-    <Compile Include="Electronics.cs" />
-    <Compile Include="Enumerados.cs" />
-    <Compile Include="Guitar.cs" />
-    <Compile Include="IGuitar.cs" />
-    <Compile Include="IPart.cs" />
-    <Compile Include="LesPaul.cs" />
-    <Compile Include="Part.cs" />
-    <Compile Include="Pickup.cs" />
+    <Compile Include="Interfaces\ISerializacion.cs" />
+    <Compile Include="Process\Factory.cs" />
+    <Compile Include="Parts\Electronics.cs" />
+    <Compile Include="Process\Enumerados.cs" />
+    <Compile Include="Serializacion y Archivos\FilesConfig.cs" />
+    <Compile Include="Products\Guitar.cs" />
+    <Compile Include="Interfaces\IGuitar.cs" />
+    <Compile Include="Interfaces\IPart.cs" />
+    <Compile Include="Products\LesPaul.cs" />
+    <Compile Include="Parts\Part.cs" />
+    <Compile Include="Parts\Pickup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Telecaster.cs" />
-    <Compile Include="SG.cs" />
-    <Compile Include="Tuners.cs" />
-    <Compile Include="Wood.cs" />
+    <Compile Include="Serializacion y Archivos\SerializeConfig.cs" />
+    <Compile Include="Products\Telecaster.cs" />
+    <Compile Include="Products\SG.cs" />
+    <Compile Include="Parts\Tuners.cs" />
+    <Compile Include="Parts\Wood.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EntidadesDiagram.cd" />

@@ -1,0 +1,26 @@
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="bookstore">
+  <HTML>
+    <BODY>
+      <TABLE BORDER="2">
+        <TR>
+		  <TD>PIEZA</TD>
+          <TD>NOMBRE</TD>
+          <TD>TIPO</TD>
+		  <TD>FECHA DE INGRESO</TD>
+          <TD>FABRICANTE</TD>
+        </TR>
+        <xsl:apply-templates select="Part"/>
+      </TABLE>
+    </BODY>
+  </HTML>
+</xsl:template>
+<xsl:template match="@Part">
+  <TR>
+    <TD><xsl:value-of select="Name"/></TD>
+    <TD><xsl:value-of select="Type"/></TD>
+	<TD><xsl:value-of select="EntryDate"/></TD>
+    <TD><xsl:value-of select="Manufacturer"/></TD>	
+  </TR>  
+</xsl:template>
+</xsl:stylesheet>

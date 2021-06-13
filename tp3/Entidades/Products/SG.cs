@@ -6,39 +6,30 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Telecaster : Guitar
+    public class SG : Guitar
     {
-        public Telecaster() : base()
+        public SG() : base()
         {
+
         }
 
-        public override string Body
+        public override string Wood
         {
             get
             {
-                return WoodType.Fresno.ToString();
+                return this.wood;
             }
             set
             {
-                this.body = value;
+                this.wood = value;
             }
         }
-        public override string Neck
-        {
-            get
-            {
-                return WoodType.Nogal.ToString();
-            }
-            set
-            {
-                this.neck = value;
-            }
-        }
+        
         public override string Pickups
         {
             get
             {
-                return PickupsType.SingleCoil.ToString();
+                return this.pickups;
             }
             set
             {
@@ -49,7 +40,7 @@ namespace Entidades
         {
             get
             {
-                return TunersMakers.Grover.ToString();
+                return this.tuners;
             }
             set
             {
@@ -61,13 +52,13 @@ namespace Entidades
         {
             get
             {
-                return ElectronicType.Fender.ToString();
+                return this.electronics;
             }
             set
             {
                 this.electronics = value;
             }
 
-        }       
+        }
     }
 }
