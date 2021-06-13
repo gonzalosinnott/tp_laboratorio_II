@@ -11,15 +11,22 @@ namespace Entidades
 {
     public class Factory
     {
+        /// <summary>
+        /// Atributos de la clase Factory
+        /// </summary>
         protected List<Part> partsList;
         protected List<Guitar> guitarsList;
-
+        /// <summary>
+        /// COsntructores de la clase Factory
+        /// </summary>
         public Factory()
         {
             partsList = new List<Part>();
             guitarsList = new List<Guitar>();
         }
-
+        /// <summary>
+        /// Propiedades de la clase Factory
+        /// </summary>
         public List<Part> PartsList
         {
             get
@@ -42,7 +49,9 @@ namespace Entidades
                 guitarsList = value;
             }
         }
-
+        /// <summary>
+        /// A partir de los parametros que le damos genera un objeto en la lista de piezas con dichas caracteristicas
+        /// </summary>
         public void AddPart(string piece, string name, string type, DateTime entryDate, string manufacturer)
         {
             
@@ -73,12 +82,16 @@ namespace Entidades
                 }
             }
         }
-
+        /// <summary>
+        /// Remueve un objeto de la lista de partes a partir del indice pasado
+        /// </summary>
         public void removePart(int index)
         {
             PartsList.RemoveAt(index);
         }
-
+        /// <summary>
+        /// Agrega un obhjeto a la lista de productos con los parametros obtenidos como caracteristicas
+        /// </summary>
         public void AddGuitar(string wood, string pickup, string electronic, string tuner, string guitarType, DateTime manufatureDate)
         {
             if (string.IsNullOrWhiteSpace(wood) != true ||
@@ -107,7 +120,9 @@ namespace Entidades
             }
         }        
         
-
+        /// <summary>
+        ///Genera una lista de piezas a partir del archivo xml ubicado en el PATH pasado como parametro.
+        /// </summary>
         public bool OpenPartsFile(string filePath)
         {
             SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
@@ -128,7 +143,9 @@ namespace Entidades
             return true;
         }
         
-
+        /// <summary>
+        /// Guarda en un archivo XML la lista de piezas en el PATH pasado como paramentro
+        /// </summary>
         public void SavePartsFile(string filePath)
         {
             SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
@@ -142,6 +159,9 @@ namespace Entidades
             }
 
         }
+        /// <summary>
+        ///Genera una lista de productos a partir del archivo xml ubicado en el PATH pasado como parametro.
+        /// </summary>
         public void SaveGuitarsFile(string filePath)
         {
             SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
@@ -154,7 +174,9 @@ namespace Entidades
                 throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
             }
         }
-
+        /// <summary>
+        /// Guarda en un archivo XML la lista de productos en el PATH pasado como paramentro
+        /// </summary>
         public bool OpenGuitarsFile(string filePath)
         {
             SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
@@ -174,8 +196,5 @@ namespace Entidades
 
             return true;
         }
-
-        
-
     }
 }

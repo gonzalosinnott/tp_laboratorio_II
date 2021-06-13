@@ -72,12 +72,12 @@ namespace GUI
             dgvPieces.DataSource = miFabrica.PartsList;
             dgvGuitars.DataSource = miFabrica.GuitarsList;
 
-            //dgvWood.DataSource = miFabrica.PartsList;
-            //dgvPickups.DataSource = miFabrica.PartsList;
-            //dgvElectronics.DataSource = miFabrica.PartsList;
-            //dgvTuners.DataSource = miFabrica.PartsList;
+            refreshGrids();
+            
         }
-
+        /// <summary>
+        /// Actualiza los valores de los datagrids del form
+        /// </summary>
         private void refreshGrids()
         {
             dgvPieces.DataSource = miFabrica.PartsList.ToList();
@@ -128,7 +128,9 @@ namespace GUI
             dgvGuitars.DataSource = miFabrica.GuitarsList.ToList();
         }
        
-
+        /// <summary>
+        /// Guarda los datos del datagrid correspondiente al stock de piezas en un archivo xml
+        /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -143,7 +145,10 @@ namespace GUI
                MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN LA RUTA {partsPath}.los cambios no han podido ser guardados\n", "Error", MessageBoxButtons.OK);
             }
         }
-
+        /// <summary>
+        /// Maneja las posibles opciones que puede elegir el usuario en el form de ingreso de stock
+        /// a paritr del tipo de pieza que pretende ingresar
+        /// </summary>
         private void cmbPieceType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbCustomType.Enabled = true;
@@ -174,7 +179,9 @@ namespace GUI
                 
             }
         }       
-
+        /// <summary>
+        /// Agrega un objeto a la lista de stock de piezas
+        /// </summary>
         private void btnAddStock_Click(object sender, EventArgs e)
         {
             
@@ -189,7 +196,9 @@ namespace GUI
             }
         }
 
-
+        /// <summary>
+        /// Borra un objeto de la lista del stock de piezas
+        /// </summary>
         private void btnDeleteStock_Click(object sender, EventArgs e)
         {
             if(dgvPieces.CurrentRow != null)
@@ -199,7 +208,9 @@ namespace GUI
 
             }
         }        
-
+        /// <summary>
+        /// Crea un objeto de la lista de productos
+        /// </summary>
         private void btnCreate_Click(object sender, EventArgs e)
         {
 
@@ -231,7 +242,9 @@ namespace GUI
 
         }
 
-
+        /// <summary>
+        /// Genera un archivo HTML a partir del xml dado
+        /// </summary>
         private void btnStockReport_Click(object sender, EventArgs e)
         {
             string pathOrigin = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";

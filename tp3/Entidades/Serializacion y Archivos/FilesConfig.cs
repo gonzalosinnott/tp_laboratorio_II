@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Xml;
 using System.Xml.Xsl;
-using iText;
 
 
 
 namespace Entidades
 {
     public class FilesConfig
-    {
+    {   
+        /// <summary>
+        /// Convierte el archivo xml pasado como parametro en un archivo HTML en la ubicacion pasada como parametro a partir
+        /// del formato pasado como estilo.
+        /// </summary>  
         public static void MakeHTML(string loadPath, string savePath, string stylePath)
         {
             XslCompiledTransform xslt = new XslCompiledTransform();
             xslt.Load(stylePath);
 
-            xslt.Transform(loadPath, savePath);            
+            xslt.Transform(loadPath, savePath);
         }
-
-        public static void MakePDF(string loadPath, string savePath)
-        {
-
-           
-        }
-
 
     }
 }

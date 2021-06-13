@@ -13,10 +13,3 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\obj\Debug\GUI.frmMain.resources
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\Entidades.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\Entidades.pdb
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\Bytescout.PDF.Converters.dll
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\Bytescout.PDF.dll
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\Bytescout.PDF.xml
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\Bytescout.PDF.Converters.xml
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\BouncyCastle.Crypto.dll
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\itextsharp.dll
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\GUI\bin\Debug\itextsharp.xml

@@ -13,6 +13,10 @@ namespace Entidades
 {
     public class SerializeConfig<T> : ISerializacion<T>
     {
+        /// <summary>
+        /// Guarda los datos que le pasamos como paramentro en el PATH indicado como parametro
+        /// </summary>        
+        /// <returns></returns>
         public bool Serialize(T data, string path)
         {
             bool retorno = false;
@@ -29,7 +33,9 @@ namespace Entidades
 
             return retorno;
         }
-
+        /// <summary>
+        /// Convierte los datos alojados en el xml que pasamos como parametro a la lista pasada como parametro.
+        /// </summary>        
         public bool Deserialize(string path, out T data)
         {
             bool retorno = false;
