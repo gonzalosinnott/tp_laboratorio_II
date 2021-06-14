@@ -52,7 +52,7 @@ namespace Entidades
         /// <summary>
         /// A partir de los parametros que le damos genera un objeto en la lista de piezas con dichas caracteristicas
         /// </summary>
-        public void AddPart(string piece, string name, string type, DateTime entryDate, string manufacturer)
+        public bool AddPart(string piece, string name, string type, DateTime entryDate, string manufacturer)
         {
             
             if (string.IsNullOrWhiteSpace(name) != true ||
@@ -78,9 +78,13 @@ namespace Entidades
                     case "PICKUPS":
                         part = new Pickup { Name = name, Type = type, EntryDate = entryDate, Manufacturer = manufacturer };
                         PartsList.Add(part);
-                        break;
+                        break;                   
                 }
+
+                return true;
             }
+
+            return false;
         }
         /// <summary>
         /// Remueve un objeto de la lista de partes a partir del indice pasado
@@ -127,36 +131,59 @@ namespace Entidades
         {
             SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
             List<Part> deserealizedList = new List<Part>();
-
-            try
+            if (filePath != null)
             {
-                auxList.Deserialize(filePath, out deserealizedList);
+                try
+                {
+                    auxList.Deserialize(filePath, out deserealizedList);
 
+                    PartsList = deserealizedList;
+
+                    return true;
+
+                }
+                catch
+                {
+                    throw new Exception($"Error al querer Leer el achivo desde : {filePath}.");
+                }
             }
-            catch
+
+            return false;            
+        }
+
+        public string ShowPartsData()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Partes en Stock:");
+            foreach (Part item in partsList)
             {
-                throw new Exception($"Error al querer Leer el achivo desde : {filePath}.");
+                sb.AppendLine(item.Data());
+                sb.AppendLine("-------------------");
             }
 
-            PartsList = deserealizedList;
-
-            return true;
+            return sb.ToString();
         }
         
         /// <summary>
         /// Guarda en un archivo XML la lista de piezas en el PATH pasado como paramentro
         /// </summary>
-        public void SavePartsFile(string filePath)
+        public bool SavePartsFile(string filePath)
         {
-            SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
-            try
+            if (filePath != null)
             {
-                auxList.Serialize(partsList, filePath);
+                SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
+                try
+                {
+                    auxList.Serialize(partsList, filePath);
+                }
+                catch
+                {
+                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
+                }
+                return true;
             }
-            catch
-            {
-                throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
-            }
+            return false;
 
         }
         /// <summary>

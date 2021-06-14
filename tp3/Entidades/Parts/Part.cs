@@ -40,5 +40,18 @@ namespace Entidades
         {
             return this.GetType().Name;
         }
+
+        public string Data()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"{classType}");
+            sb.AppendLine($"{name}");
+            sb.AppendLine($"{type}");
+            sb.AppendLine($"{entryDate}");
+            sb.AppendLine($"{manufacturer}");
+
+            return sb.ToString();
+        }
     }
 }

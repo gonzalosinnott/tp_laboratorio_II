@@ -14,12 +14,13 @@ namespace Entidades
         {
 
         }
-        protected Electronics(string classType, string name, string type, DateTime entryDate, string manufacturer) : base(classType,  name,  type,  entryDate,  manufacturer)
+        protected Electronics(string classType, string name, string type, DateTime entryDate, string manufacturer) : base(classType, name, type, entryDate, manufacturer)
         {
-            
+
         }
         public override string Name { get { return this.name; } set { this.name = value; } }
         public override string Type { get { return this.type; } set { this.type = value; } }
         public override string Manufacturer { get { return this.manufacturer; } set { this.manufacturer = value; } }
-    }
+
+    }  
 }

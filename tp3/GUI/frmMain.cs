@@ -23,7 +23,6 @@ namespace GUI
         Factory miFabrica = new Factory();
         string partsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
         string guitarsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLGuitars.xml";
-        string pathDestinationGuitars = AppDomain.CurrentDomain.BaseDirectory + "Guitars.html";
         string pathDestinationParts = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
         string pathStyle = AppDomain.CurrentDomain.BaseDirectory + "Style.xml";
 
@@ -102,9 +101,11 @@ namespace GUI
             
             try
             {
-                miFabrica.OpenPartsFile(partsPath);
-                tbMain.Enabled = true;
-                btnSave.Enabled = true;
+                if (miFabrica.OpenPartsFile(partsPath) == true)
+                {
+                    tbMain.Enabled = true;
+                    btnSave.Enabled = true;
+                }
             }
             
             catch(Exception)
@@ -115,10 +116,7 @@ namespace GUI
             try
             {
                 miFabrica.OpenGuitarsFile(guitarsPath);
-                tbMain.Enabled = true;
-                btnSave.Enabled = true;
             }
-
             catch (Exception)
             {
                 MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN LA RUTA {guitarsPath}.\n Fabrique una guitarra para crear el archivo.", "Error", MessageBoxButtons.OK);
