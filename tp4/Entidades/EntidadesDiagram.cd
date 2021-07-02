@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Entidades.Part">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAQAAIAAAAAAAAAAAAAACAAAABhBAAAQAAAAAAAEA=</HashCode>
+      <FileName>Parts\Part.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.Pickup">
+    <Position X="0.5" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Parts\Pickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Wood">
+    <Position X="3.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Parts\Wood.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Tuners">
+    <Position X="6.25" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Parts\Tuners.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Electronics">
+    <Position X="9.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Parts\Electronics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Guitar">
+    <Position X="0.5" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACBAAAAgAAAAAAAAAQAAAAEAEAAAABBgAAAAQA=</HashCode>
+      <FileName>Products\Guitar.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.LesPaul">
+    <Position X="0.5" Y="12.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\LesPaul.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Telecaster">
+    <Position X="7.25" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\Telecaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.SG">
+    <Position X="3.75" Y="12.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\SG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.SerializeConfig&lt;T&gt;">
+    <Position X="0.5" Y="15.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serializacion y Archivos\SerializeConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Entidades.Factory">
+    <Position X="0.5" Y="17.5" Width="6.75" />
+    <TypeIdentifier>
+      <HashCode>AKAIABAAAEAQAAAAAAAAAAACAiAAAAAgAQAAAAEAAAA=</HashCode>
+      <FileName>Process\Factory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.DAO">
+    <Position X="0.5" Y="21.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\DAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Entidades.IGuitar">
+    <Position X="3.5" Y="8.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACAAAAAAAAAAAAAAAAAAAAEAEAAAAABgAAAAAA=</HashCode>
+      <FileName>Interfaces\IGuitar.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.IParts">
+    <Position X="3.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAQAAAAAAAAAAAAAAAAACAAAAABAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPart.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Entidades.Interfaces.ISerializacion&lt;T&gt;">
+    <Position X="4.25" Y="15.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISerializacion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Entidades.PickupsType">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAQAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Process\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Entidades.WoodType">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAgAAEAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Process\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Entidades.PickupsMaker">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Process\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Entidades.TunersMakers">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Process\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Entidades.ElectronicType">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Process\Enumerados.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

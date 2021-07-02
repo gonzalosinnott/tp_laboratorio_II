@@ -30,6 +30,7 @@ namespace GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnSave = new System.Windows.Forms.Button();
             this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.btnStockReport = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -81,6 +82,7 @@ namespace GUI
             this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
             this.lblGuitarModel = new MetroSet_UI.Controls.MetroSetLabel();
             this.cmbGuitarModel = new MetroSet_UI.Controls.MetroSetComboBox();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.tbReports.SuspendLayout();
             this.tbStock.SuspendLayout();
             this.pnlPieceProperties.SuspendLayout();
@@ -111,7 +113,7 @@ namespace GUI
             this.tbReports.BaseColor = System.Drawing.Color.White;
             this.tbReports.Controls.Add(this.btnStockReport);
             this.tbReports.Font = null;
-            this.tbReports.ImageIndex = 3;
+            this.tbReports.ImageIndex = 2;
             this.tbReports.ImageKey = null;
             this.tbReports.IsDerivedStyle = true;
             this.tbReports.Location = new System.Drawing.Point(4, 42);
@@ -414,11 +416,12 @@ namespace GUI
             this.tbMain.Controls.Add(this.tbAssembly);
             this.tbMain.Controls.Add(this.tbReports);
             this.tbMain.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tbMain.ImageList = this.imageList2;
             this.tbMain.IsDerivedStyle = true;
             this.tbMain.ItemSize = new System.Drawing.Size(100, 38);
             this.tbMain.Location = new System.Drawing.Point(12, 68);
             this.tbMain.Name = "tbMain";
-            this.tbMain.SelectedIndex = 1;
+            this.tbMain.SelectedIndex = 2;
             this.tbMain.SelectedTextColor = System.Drawing.Color.White;
             this.tbMain.Size = new System.Drawing.Size(1199, 693);
             this.tbMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -452,8 +455,8 @@ namespace GUI
             this.tbAssembly.Controls.Add(this.cmbGuitarModel);
             this.tbAssembly.Font = null;
             this.tbAssembly.ImageIndex = 1;
-            this.tbAssembly.ImageKey = null;
-            this.tbAssembly.IsDerivedStyle = true;
+            this.tbAssembly.ImageKey = "save.png";
+            this.tbAssembly.IsDerivedStyle = false;
             this.tbAssembly.Location = new System.Drawing.Point(4, 42);
             this.tbAssembly.Name = "tbAssembly";
             this.tbAssembly.Size = new System.Drawing.Size(1191, 647);
@@ -818,10 +821,19 @@ namespace GUI
             this.cmbGuitarModel.ThemeAuthor = "Narwin";
             this.cmbGuitarModel.ThemeName = "MetroLite";
             // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "open.png");
+            this.imageList2.Images.SetKeyName(1, "save.png");
+            this.imageList2.Images.SetKeyName(2, "search.png");
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1138, 707);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbMain);
@@ -899,6 +911,7 @@ namespace GUI
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
         private MetroSet_UI.Controls.MetroSetLabel lblGuitarModel;
         private MetroSet_UI.Controls.MetroSetComboBox cmbGuitarModel;
+        private System.Windows.Forms.ImageList imageList2;
     }
 }
 

@@ -18,13 +18,15 @@ using System.IO;
 
 namespace GUI
 {
+
     public partial class frmMain : MaterialForm
     {
+
         Factory miFabrica = new Factory();
-        string partsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
-        string guitarsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLGuitars.xml";
-        string pathDestinationParts = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
-        string pathStyle = AppDomain.CurrentDomain.BaseDirectory + "Style.xml";
+        string partsPath = AppDomain.CurrentDomain.BaseDirectory + @"\XMLParts.xml";
+        string guitarsPath = AppDomain.CurrentDomain.BaseDirectory + @"\XMLGuitars.xml";
+        string pathDestinationParts = AppDomain.CurrentDomain.BaseDirectory + @"\XMLParts.xml";
+        string pathStyle = AppDomain.CurrentDomain.BaseDirectory + @"\Style.xml";
 
 
         public frmMain()
@@ -255,6 +257,6 @@ namespace GUI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
-        }                      
+        }
     }
 }
