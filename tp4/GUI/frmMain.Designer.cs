@@ -30,8 +30,6 @@ namespace GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.btnStockReport = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tbStock = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.btnAddStock = new MaterialSkin.Controls.MaterialRaisedButton();
             this.pnlPieceProperties = new System.Windows.Forms.Panel();
@@ -73,7 +71,10 @@ namespace GUI
             this.btnCreate = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblGuitarModel = new MetroSet_UI.Controls.MetroSetLabel();
             this.cmbGuitarModel = new MetroSet_UI.Controls.MetroSetComboBox();
-            this.tbReports.SuspendLayout();
+            this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.btnProductsReportPdf = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnProductsReportXml = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnPartsReportXml = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tbStock.SuspendLayout();
             this.pnlPieceProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPieces)).BeginInit();
@@ -87,38 +88,8 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.pickupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.woodBindingSource)).BeginInit();
+            this.tbReports.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tbReports
-            // 
-            this.tbReports.BaseColor = System.Drawing.Color.White;
-            this.tbReports.Controls.Add(this.btnStockReport);
-            this.tbReports.Font = null;
-            this.tbReports.ImageIndex = 3;
-            this.tbReports.ImageKey = null;
-            this.tbReports.IsDerivedStyle = true;
-            this.tbReports.Location = new System.Drawing.Point(4, 42);
-            this.tbReports.Name = "tbReports";
-            this.tbReports.Size = new System.Drawing.Size(1191, 647);
-            this.tbReports.Style = MetroSet_UI.Enums.Style.Light;
-            this.tbReports.StyleManager = null;
-            this.tbReports.TabIndex = 3;
-            this.tbReports.Text = "INFORMES";
-            this.tbReports.ThemeAuthor = "Narwin";
-            this.tbReports.ThemeName = "MetroLite";
-            this.tbReports.ToolTipText = null;
-            // 
-            // btnStockReport
-            // 
-            this.btnStockReport.Depth = 0;
-            this.btnStockReport.Location = new System.Drawing.Point(-4, 14);
-            this.btnStockReport.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnStockReport.Name = "btnStockReport";
-            this.btnStockReport.Primary = true;
-            this.btnStockReport.Size = new System.Drawing.Size(819, 27);
-            this.btnStockReport.TabIndex = 45;
-            this.btnStockReport.Text = "INFORME DE STOCK DE MATERIALES";
-            this.btnStockReport.UseVisualStyleBackColor = true;
             // 
             // tbStock
             // 
@@ -342,12 +313,12 @@ namespace GUI
             this.tbMain.Controls.Add(this.tbStock);
             this.tbMain.Controls.Add(this.tbAssembly);
             this.tbMain.Controls.Add(this.tbReports);
-            this.tbMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbMain.IsDerivedStyle = true;
             this.tbMain.ItemSize = new System.Drawing.Size(100, 38);
             this.tbMain.Location = new System.Drawing.Point(12, 68);
             this.tbMain.Name = "tbMain";
-            this.tbMain.SelectedIndex = 2;
+            this.tbMain.SelectedIndex = 1;
             this.tbMain.SelectedTextColor = System.Drawing.Color.White;
             this.tbMain.Size = new System.Drawing.Size(1199, 693);
             this.tbMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -728,6 +699,66 @@ namespace GUI
             this.cmbGuitarModel.ThemeAuthor = "Narwin";
             this.cmbGuitarModel.ThemeName = "MetroLite";
             // 
+            // tbReports
+            // 
+            this.tbReports.BaseColor = System.Drawing.Color.White;
+            this.tbReports.Controls.Add(this.btnProductsReportPdf);
+            this.tbReports.Controls.Add(this.btnProductsReportXml);
+            this.tbReports.Controls.Add(this.btnPartsReportXml);
+            this.tbReports.Font = null;
+            this.tbReports.ImageIndex = 3;
+            this.tbReports.ImageKey = null;
+            this.tbReports.IsDerivedStyle = true;
+            this.tbReports.Location = new System.Drawing.Point(4, 42);
+            this.tbReports.Name = "tbReports";
+            this.tbReports.Size = new System.Drawing.Size(1191, 647);
+            this.tbReports.Style = MetroSet_UI.Enums.Style.Light;
+            this.tbReports.StyleManager = null;
+            this.tbReports.TabIndex = 3;
+            this.tbReports.Text = "INFORMES";
+            this.tbReports.ThemeAuthor = "Narwin";
+            this.tbReports.ThemeName = "MetroLite";
+            this.tbReports.ToolTipText = null;
+            // 
+            // btnProductsReportPdf
+            // 
+            this.btnProductsReportPdf.Depth = 0;
+            this.btnProductsReportPdf.Location = new System.Drawing.Point(3, 84);
+            this.btnProductsReportPdf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnProductsReportPdf.Name = "btnProductsReportPdf";
+            this.btnProductsReportPdf.Primary = true;
+            this.btnProductsReportPdf.Size = new System.Drawing.Size(819, 27);
+            this.btnProductsReportPdf.TabIndex = 47;
+            this.btnProductsReportPdf.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.btnProductsReportPdf.UseVisualStyleBackColor = true;
+            this.btnProductsReportPdf.Click += new System.EventHandler(this.btnProductsReportPdf_Click);
+            // 
+            // btnProductsReportXml
+            // 
+            this.btnProductsReportXml.Depth = 0;
+            this.btnProductsReportXml.Location = new System.Drawing.Point(3, 51);
+            this.btnProductsReportXml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnProductsReportXml.Name = "btnProductsReportXml";
+            this.btnProductsReportXml.Primary = true;
+            this.btnProductsReportXml.Size = new System.Drawing.Size(819, 27);
+            this.btnProductsReportXml.TabIndex = 46;
+            this.btnProductsReportXml.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO XML)";
+            this.btnProductsReportXml.UseVisualStyleBackColor = true;
+            this.btnProductsReportXml.Click += new System.EventHandler(this.btnProductsReportXml_Click);
+            // 
+            // btnPartsReportXml
+            // 
+            this.btnPartsReportXml.Depth = 0;
+            this.btnPartsReportXml.Location = new System.Drawing.Point(3, 18);
+            this.btnPartsReportXml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnPartsReportXml.Name = "btnPartsReportXml";
+            this.btnPartsReportXml.Primary = true;
+            this.btnPartsReportXml.Size = new System.Drawing.Size(819, 27);
+            this.btnPartsReportXml.TabIndex = 45;
+            this.btnPartsReportXml.Text = "INFORME DE STOCK DE MATERIALES (FORMATO XML)";
+            this.btnPartsReportXml.UseVisualStyleBackColor = true;
+            this.btnPartsReportXml.Click += new System.EventHandler(this.btnStockReportXml_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,7 +772,6 @@ namespace GUI
             this.Text = "GUITAR CUSTOM SHOP";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.tbReports.ResumeLayout(false);
             this.tbStock.ResumeLayout(false);
             this.pnlPieceProperties.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPieces)).EndInit();
@@ -755,13 +785,12 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.pickupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.woodBindingSource)).EndInit();
+            this.tbReports.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private MetroSet_UI.Child.MetroSetSetTabPage tbReports;
-        private MaterialSkin.Controls.MaterialRaisedButton btnStockReport;
         private MetroSet_UI.Child.MetroSetSetTabPage tbStock;
         private System.Windows.Forms.Panel pnlPieceProperties;
         private MetroSet_UI.Controls.MetroSetComboBox cmbManufacturer;
@@ -803,6 +832,10 @@ namespace GUI
         private System.Windows.Forms.BindingSource electronicsBindingSource;
         private System.Windows.Forms.BindingSource pickupBindingSource;
         private MetroSet_UI.Controls.MetroSetRichTextBox rtbGuitarsInfo;
+        private MetroSet_UI.Child.MetroSetSetTabPage tbReports;
+        private MaterialSkin.Controls.MaterialRaisedButton btnProductsReportPdf;
+        private MaterialSkin.Controls.MaterialRaisedButton btnProductsReportXml;
+        private MaterialSkin.Controls.MaterialRaisedButton btnPartsReportXml;
     }
 }
 

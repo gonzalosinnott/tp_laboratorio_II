@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Xml;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
+
 
 
 namespace Entidades
@@ -161,9 +165,74 @@ namespace Entidades
         public void DeleteDB(int id)
         {
             dao.DeletePiece(id);
+        } 
+        
+        /// <summary>
+        /// Guarda en un archivo XML la lista de piezas en el PATH pasado como parametro
+        /// </summary>
+        public bool SavePartsXml(string filePath)
+        {
+            if (filePath != null)
+            {
+                SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
+                try
+                {
+                    auxList.Serialize(PartsList, filePath);
+                }
+                catch
+                {
+                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
+                }
+                return true;
+            }
+            return false;
+
+        }
+        /// <summary>
+        ///Genera una lista de productos a partir del archivo xml ubicado en el PATH pasado como parametro.
+        /// </summary>
+        public bool SaveGuitarsXml(string filePath)
+        {
+            if (filePath != null)
+            {
+                SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
+                try
+                {
+                    auxList.Serialize(GuitarsList, filePath);
+                }
+                catch
+                {
+                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
+                }
+                return true;
+            }
+            return false;
         }
 
-       
+        
+        /// <summary>
+        /// Guarda en un archivo XML la lista de productos en el PATH pasado como paramentro
+        /// </summary>
+        public bool OpenGuitarsFile(string filePath)
+        {
+            SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
+            List<Guitar> deserealizedList = new List<Guitar>();
+
+            try
+            {
+                auxList.Deserialize(filePath, out deserealizedList);
+
+            }
+            catch
+            {
+                throw new Exception($"Error al querer Leer el achivo desde : {filePath}.");
+            }
+
+            GuitarsList = deserealizedList;
+
+            return true;
+        }
+
         /// <summary>
         ///Genera una lista de piezas a partir del archivo xml ubicado en el PATH pasado como parametro.
         /// </summary>
@@ -188,69 +257,10 @@ namespace Entidades
                 }
             }
 
-            return false;            
-        }
-
-        
-        
-        /// <summary>
-        /// Guarda en un archivo XML la lista de piezas en el PATH pasado como paramentro
-        /// </summary>
-        public bool SavePartsFile(string filePath)
-        {
-            if (filePath != null)
-            {
-                SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
-                try
-                {
-                    auxList.Serialize(partsList, filePath);
-                }
-                catch
-                {
-                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
-                }
-                return true;
-            }
             return false;
-
         }
-        /// <summary>
-        ///Genera una lista de productos a partir del archivo xml ubicado en el PATH pasado como parametro.
-        /// </summary>
-        public void SaveGuitarsFile(string filePath)
-        {
-            SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
-            try
-            {
-                auxList.Serialize(guitarsList, filePath);
-            }
-            catch
-            {
-                throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
-            }
-        }
-        /// <summary>
-        /// Guarda en un archivo XML la lista de productos en el PATH pasado como paramentro
-        /// </summary>
-        public bool OpenGuitarsFile(string filePath)
-        {
-            SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
-            List<Guitar> deserealizedList = new List<Guitar>();
 
-            try
-            {
-                auxList.Deserialize(filePath, out deserealizedList);
 
-            }
-            catch
-            {
-                throw new Exception($"Error al querer Leer el achivo desde : {filePath}.");
-            }
-
-            GuitarsList = deserealizedList;
-
-            return true;
-        }
 
         public string StockInfo()
         {
@@ -284,7 +294,6 @@ namespace Entidades
                         break;
                 }
                 sb.AppendLine("---------------------");
-
             }
 
             return sb.ToString();

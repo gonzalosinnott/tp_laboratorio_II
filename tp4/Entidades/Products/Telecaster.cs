@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Telecaster : Guitar
+    [Serializable]
+
+    public class Telecaster : Guitar
     {
         public Telecaster() : base()
         {

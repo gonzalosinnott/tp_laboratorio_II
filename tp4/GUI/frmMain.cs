@@ -15,6 +15,9 @@ using System.Xml;
 using System.Linq;
 using System.Linq.Expressions;
 using System.IO;
+using System.Diagnostics;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace GUI
 {
@@ -23,8 +26,9 @@ namespace GUI
     {
 
         Factory miFabrica = new Factory();
-        string partsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
-        string guitarsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLGuitars.xml";
+        string partsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLParts.xml";
+        string guitarsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLProducts.xml";
+        string guitarsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFProducts.pdf";
 
         public frmMain()
         {
@@ -103,16 +107,8 @@ namespace GUI
             }
 
             refreshGrids();
-        }
-       
-        /// <summary>
-        /// Guarda los datos del datagrid correspondiente al stock de piezas en un archivo xml
-        /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
-        {            
-                miFabrica.SavePartsFile(partsPath);
-                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {partsPath}", "", MessageBoxButtons.OK);            
-        }
+        }     
+      
         /// <summary>
         /// Maneja las posibles opciones que puede elegir el usuario en el form de ingreso de stock
         /// a paritr del tipo de pieza que pretende ingresar
@@ -250,6 +246,50 @@ namespace GUI
             if (result == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void btnStockReportXml_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                miFabrica.SavePartsXml(partsPathXml);
+                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {partsPathXml}", "", MessageBoxButtons.OK);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show($"Error al guardar el archivo en {partsPathXml}", "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnProductsReportXml_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                miFabrica.SaveGuitarsXml(guitarsPathXml);
+                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {guitarsPathXml}", "", MessageBoxButtons.OK);
+                Process.Start(guitarsPathXml);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Error al guardar el archivo en {guitarsPathXml}", "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnProductsReportPdf_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                iTextSharp.text.Document doc = new iTextSharp.text.Document();
+                PdfWriter.GetInstance(doc, new FileStream(guitarsPathPdf, FileMode.Create));
+                doc.Open();
+                doc.Add(new iTextSharp.text.Paragraph(rtbGuitarsInfo.Text));
+                doc.Close();
+                Process.Start(guitarsPathPdf);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show($"Error al guardar el archivo en {guitarsPathPdf}", "", MessageBoxButtons.OK);
             }
         }
     }

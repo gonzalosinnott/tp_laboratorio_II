@@ -28,3 +28,6 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.csproj.CopyComplete
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.exe
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\BouncyCastle.Crypto.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\itextsharp.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\itextsharp.xml

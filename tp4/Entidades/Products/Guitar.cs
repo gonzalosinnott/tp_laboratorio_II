@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
+    [Serializable]
+    [XmlInclude(typeof(LesPaul))]
+    [XmlInclude(typeof(SG))]
+    [XmlInclude(typeof(Telecaster))]
     public class Guitar : IGuitar
     {
         protected string classType;
