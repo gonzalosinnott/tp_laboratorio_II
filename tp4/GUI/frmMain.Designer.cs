@@ -30,7 +30,6 @@ namespace GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnSave = new System.Windows.Forms.Button();
             this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.btnStockReport = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tbStock = new MetroSet_UI.Child.MetroSetSetTabPage();
@@ -90,16 +89,6 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.woodBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSave
-            // 
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Location = new System.Drawing.Point(790, 27);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(45, 35);
-            this.btnSave.TabIndex = 28;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // tbReports
             // 
             this.tbReports.BaseColor = System.Drawing.Color.White;
@@ -122,11 +111,11 @@ namespace GUI
             // btnStockReport
             // 
             this.btnStockReport.Depth = 0;
-            this.btnStockReport.Location = new System.Drawing.Point(59, 34);
+            this.btnStockReport.Location = new System.Drawing.Point(-4, 14);
             this.btnStockReport.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnStockReport.Name = "btnStockReport";
             this.btnStockReport.Primary = true;
-            this.btnStockReport.Size = new System.Drawing.Size(856, 27);
+            this.btnStockReport.Size = new System.Drawing.Size(819, 27);
             this.btnStockReport.TabIndex = 45;
             this.btnStockReport.Text = "INFORME DE STOCK DE MATERIALES";
             this.btnStockReport.UseVisualStyleBackColor = true;
@@ -342,7 +331,6 @@ namespace GUI
             this.dgvPieces.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPieces.Size = new System.Drawing.Size(464, 552);
             this.dgvPieces.TabIndex = 0;
-            this.dgvPieces.SelectionChanged += new System.EventHandler(this.dgvPieces_SelectionChanged);
             // 
             // tbMain
             // 
@@ -354,12 +342,12 @@ namespace GUI
             this.tbMain.Controls.Add(this.tbStock);
             this.tbMain.Controls.Add(this.tbAssembly);
             this.tbMain.Controls.Add(this.tbReports);
-            this.tbMain.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tbMain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbMain.IsDerivedStyle = true;
             this.tbMain.ItemSize = new System.Drawing.Size(100, 38);
             this.tbMain.Location = new System.Drawing.Point(12, 68);
             this.tbMain.Name = "tbMain";
-            this.tbMain.SelectedIndex = 1;
+            this.tbMain.SelectedIndex = 2;
             this.tbMain.SelectedTextColor = System.Drawing.Color.White;
             this.tbMain.Size = new System.Drawing.Size(1199, 693);
             this.tbMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -415,11 +403,11 @@ namespace GUI
             this.rtbGuitarsInfo.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.rtbGuitarsInfo.IsDerivedStyle = true;
             this.rtbGuitarsInfo.Lines = null;
-            this.rtbGuitarsInfo.Location = new System.Drawing.Point(0, 369);
+            this.rtbGuitarsInfo.Location = new System.Drawing.Point(312, 93);
             this.rtbGuitarsInfo.MaxLength = 32767;
             this.rtbGuitarsInfo.Name = "rtbGuitarsInfo";
             this.rtbGuitarsInfo.ReadOnly = false;
-            this.rtbGuitarsInfo.Size = new System.Drawing.Size(606, 216);
+            this.rtbGuitarsInfo.Size = new System.Drawing.Size(510, 492);
             this.rtbGuitarsInfo.Style = MetroSet_UI.Enums.Style.Light;
             this.rtbGuitarsInfo.StyleManager = null;
             this.rtbGuitarsInfo.TabIndex = 55;
@@ -438,7 +426,7 @@ namespace GUI
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12});
             this.dgvElectronics.DataSource = this.electronicsBindingSource;
-            this.dgvElectronics.Location = new System.Drawing.Point(306, 240);
+            this.dgvElectronics.Location = new System.Drawing.Point(0, 470);
             this.dgvElectronics.Name = "dgvElectronics";
             this.dgvElectronics.ReadOnly = true;
             this.dgvElectronics.RowHeadersVisible = false;
@@ -487,7 +475,7 @@ namespace GUI
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
             this.dgvTuners.DataSource = this.tunersBindingSource;
-            this.dgvTuners.Location = new System.Drawing.Point(306, 97);
+            this.dgvTuners.Location = new System.Drawing.Point(0, 321);
             this.dgvTuners.Name = "dgvTuners";
             this.dgvTuners.ReadOnly = true;
             this.dgvTuners.RowHeadersVisible = false;
@@ -536,7 +524,7 @@ namespace GUI
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.dgvPickups.DataSource = this.pickupBindingSource;
-            this.dgvPickups.Location = new System.Drawing.Point(0, 240);
+            this.dgvPickups.Location = new System.Drawing.Point(0, 176);
             this.dgvPickups.Name = "dgvPickups";
             this.dgvPickups.ReadOnly = true;
             this.dgvPickups.RowHeadersVisible = false;
@@ -578,7 +566,7 @@ namespace GUI
             // 
             this.lblWood.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblWood.IsDerivedStyle = true;
-            this.lblWood.Location = new System.Drawing.Point(3, 79);
+            this.lblWood.Location = new System.Drawing.Point(3, 16);
             this.lblWood.Name = "lblWood";
             this.lblWood.Size = new System.Drawing.Size(86, 15);
             this.lblWood.Style = MetroSet_UI.Enums.Style.Light;
@@ -592,7 +580,7 @@ namespace GUI
             // 
             this.lblPickups.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblPickups.IsDerivedStyle = true;
-            this.lblPickups.Location = new System.Drawing.Point(3, 224);
+            this.lblPickups.Location = new System.Drawing.Point(0, 159);
             this.lblPickups.Name = "lblPickups";
             this.lblPickups.Size = new System.Drawing.Size(86, 23);
             this.lblPickups.Style = MetroSet_UI.Enums.Style.Light;
@@ -606,7 +594,7 @@ namespace GUI
             // 
             this.lblElectronics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblElectronics.IsDerivedStyle = true;
-            this.lblElectronics.Location = new System.Drawing.Point(306, 224);
+            this.lblElectronics.Location = new System.Drawing.Point(0, 448);
             this.lblElectronics.Name = "lblElectronics";
             this.lblElectronics.Size = new System.Drawing.Size(106, 23);
             this.lblElectronics.Style = MetroSet_UI.Enums.Style.Light;
@@ -620,7 +608,7 @@ namespace GUI
             // 
             this.lblTuners.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblTuners.IsDerivedStyle = true;
-            this.lblTuners.Location = new System.Drawing.Point(306, 79);
+            this.lblTuners.Location = new System.Drawing.Point(0, 303);
             this.lblTuners.Name = "lblTuners";
             this.lblTuners.Size = new System.Drawing.Size(86, 15);
             this.lblTuners.Style = MetroSet_UI.Enums.Style.Light;
@@ -642,7 +630,7 @@ namespace GUI
             this.entryDateDataGridViewTextBoxColumn});
             this.dgvWood.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvWood.DataSource = this.woodBindingSource;
-            this.dgvWood.Location = new System.Drawing.Point(0, 97);
+            this.dgvWood.Location = new System.Drawing.Point(0, 34);
             this.dgvWood.MultiSelect = false;
             this.dgvWood.Name = "dgvWood";
             this.dgvWood.ReadOnly = true;
@@ -684,11 +672,11 @@ namespace GUI
             // btnCreate
             // 
             this.btnCreate.Depth = 0;
-            this.btnCreate.Location = new System.Drawing.Point(409, 15);
+            this.btnCreate.Location = new System.Drawing.Point(654, 0);
             this.btnCreate.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Primary = true;
-            this.btnCreate.Size = new System.Drawing.Size(403, 58);
+            this.btnCreate.Size = new System.Drawing.Size(168, 58);
             this.btnCreate.TabIndex = 43;
             this.btnCreate.Text = "FABRICAR";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -698,7 +686,7 @@ namespace GUI
             // 
             this.lblGuitarModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblGuitarModel.IsDerivedStyle = true;
-            this.lblGuitarModel.Location = new System.Drawing.Point(3, 31);
+            this.lblGuitarModel.Location = new System.Drawing.Point(312, 19);
             this.lblGuitarModel.Name = "lblGuitarModel";
             this.lblGuitarModel.Size = new System.Drawing.Size(86, 23);
             this.lblGuitarModel.Style = MetroSet_UI.Enums.Style.Light;
@@ -729,7 +717,7 @@ namespace GUI
             "LES PAUL",
             "SG",
             "TELECASTER"});
-            this.cmbGuitarModel.Location = new System.Drawing.Point(95, 28);
+            this.cmbGuitarModel.Location = new System.Drawing.Point(404, 16);
             this.cmbGuitarModel.Name = "cmbGuitarModel";
             this.cmbGuitarModel.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.cmbGuitarModel.SelectedItemForeColor = System.Drawing.Color.White;
@@ -745,13 +733,13 @@ namespace GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 707);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tbMain);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GUITAR CUSTOM SHOP";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.tbReports.ResumeLayout(false);
             this.tbStock.ResumeLayout(false);
@@ -772,7 +760,6 @@ namespace GUI
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSave;
         private MetroSet_UI.Child.MetroSetSetTabPage tbReports;
         private MaterialSkin.Controls.MaterialRaisedButton btnStockReport;
         private MetroSet_UI.Child.MetroSetSetTabPage tbStock;

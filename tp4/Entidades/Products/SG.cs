@@ -12,6 +12,10 @@ namespace Entidades
         {
 
         }
+        protected SG(int id, string classType, string wood, string pickups, string tuners, string electronics, string manufactureDate) : base(id, classType, wood, pickups, tuners, electronics, manufactureDate)
+        {
+
+        }
 
         public override string Wood
         {

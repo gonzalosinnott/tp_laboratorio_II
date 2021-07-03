@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Guitar : IGuitar
+    public class Guitar : IGuitar
     {
         protected string classType;
         protected int id;
@@ -16,7 +16,8 @@ namespace Entidades
         protected string electronics;
         protected string manufactureDate;
 
-        public Guitar()
+        public Guitar() { }
+        protected Guitar(int id, string classType, string wood, string pickups, string tuners, string electronics, string manufactureDate)
         {
             this.id = Id;
             this.classType = ClassType;
@@ -28,10 +29,10 @@ namespace Entidades
         }
         public int Id { get; set; }
         public virtual string ClassType { get { return getClassType(); } set { this.classType = getClassType(); } }
-        public abstract string Wood { get; set; }
-        public abstract string Pickups { get; set; }
-        public abstract string Tuners { get; set; }
-        public abstract string Electronics { get; set; }
+        public virtual string Wood { get; set; }
+        public virtual string Pickups { get; set; }
+        public virtual string Tuners { get; set; }
+        public virtual string Electronics { get; set; }
         public string ManufactureDate
         {
             get

@@ -11,7 +11,8 @@ namespace Entidades
 {
     public class Factory
     {
-        DAO parts = new DAO();
+        DAO dao = new DAO();
+
         /// <summary>
         /// Atributos de la clase Factory
         /// </summary>
@@ -50,6 +51,8 @@ namespace Entidades
                 guitarsList = value;
             }
         }
+
+        
         /// <summary>
         /// A partir de los parametros que le damos genera un objeto en la lista de piezas con dichas caracteristicas
         /// </summary>
@@ -60,10 +63,18 @@ namespace Entidades
                 string.IsNullOrWhiteSpace(manufacturer) != true)
             {
                 Part part;
+                int maxId;
 
-                int maxId = PartsList.Max(t => t.Id);
+                if (!PartsList.Any())
+                {
+                    maxId = 0;
+                }
+                else
+                {
+                   maxId = PartsList.Max(t => t.Id);
+                }
                 int id = maxId + 1;
-                
+
                 switch (piece)
                 {
                     case "CLAVIJAS":
@@ -83,10 +94,9 @@ namespace Entidades
                         PartsList.Add(part);
                         break;                   
                 }
-
+                dao.SavePiece(id, piece, type, manufacturer, DateTime.Now.ToString("dd.MM.yy"));
                 return true;
             }
-
             return false;
         }
         /// <summary>
@@ -108,32 +118,52 @@ namespace Entidades
                 string.IsNullOrWhiteSpace(guitarType) != true)
             {
                 Guitar guitar;
+                int maxId;
+
+                if (!GuitarsList.Any())
+                {
+                    maxId = 0;
+                }
+                else
+                {
+                    maxId = GuitarsList.Max(t => t.Id);
+                }
+                int id = maxId + 1;
 
                 switch (guitarType)
                 {
                     case "LES PAUL":
-                        guitar = new LesPaul { Wood = wood, Pickups = pickup, Electronics = electronic, Tuners = tuner, ManufactureDate = DateTime.Now.ToString("dd.MM.yy") };
+                        guitar = new LesPaul {Id = id, Wood = wood, Pickups = pickup, Electronics = electronic, Tuners = tuner, ManufactureDate = DateTime.Now.ToString("dd.MM.yy") };
                         guitarsList.Add(guitar);
                         break;
                     case "SG":
-                        guitar = new SG { Wood = wood, Pickups = pickup, Electronics = electronic, Tuners = tuner, ManufactureDate = DateTime.Now.ToString("dd.MM.yy") };
+                        guitar = new SG {Id = id, Wood = wood, Pickups = pickup, Electronics = electronic, Tuners = tuner, ManufactureDate = DateTime.Now.ToString("dd.MM.yy") };
                         guitarsList.Add(guitar);
                         break;
                     case "TELECASTER":
-                        guitar = new Telecaster { Wood = wood, Pickups = pickup, Electronics = electronic, Tuners = tuner, ManufactureDate = DateTime.Now.ToString("dd.MM.yy") };
+                        guitar = new Telecaster {Id = id, Wood = wood, Pickups = pickup, Electronics = electronic, Tuners = tuner, ManufactureDate = DateTime.Now.ToString("dd.MM.yy") };
                         guitarsList.Add(guitar);
                         break;
                 }
+                dao.SaveProduct(id, guitarType, wood, electronic, tuner, pickup, DateTime.Now.ToString("dd.MM.yy"));
                 return true;
             }
+
             return false;
         }
         
         public void OpenDB()
         {
-            PartsList = parts.GetAll("Piezas");
+            PartsList = dao.GetAllParts();
+            GuitarsList = dao.GetAllProducts();
         }
-        
+
+        public void DeleteDB(int id)
+        {
+            dao.DeletePiece(id);
+        }
+
+       
         /// <summary>
         ///Genera una lista de piezas a partir del archivo xml ubicado en el PATH pasado como parametro.
         /// </summary>
@@ -229,12 +259,30 @@ namespace Entidades
             sb.AppendLine("---------------------");
             foreach (Guitar item in GuitarsList)
             {
+                string model;
+
+                
                 sb.AppendLine($"Model: {item.ClassType}");
                 sb.AppendLine($"{item.Wood} ");
                 sb.AppendLine($"{item.Electronics} ");
                 sb.AppendLine($"{item.Pickups} ");
                 sb.AppendLine($"{item.Tuners} ");
                 sb.AppendLine($"Manufacture Date: {item.ManufactureDate} ");
+                switch (item.ClassType)
+                {
+                    case "LesPaul":
+                        model = "LP-";
+                        sb.AppendLine($"Serial Number: {model}{item.Id}");
+                        break;
+                    case "SG":
+                        model = "SG-";
+                        sb.AppendLine($"Serial Number: {model}{item.Id}");
+                        break;
+                    case "Telecaster":
+                        model = "TL-";
+                        sb.AppendLine($"Serial Number: {model}{item.Id}");
+                        break;
+                }
                 sb.AppendLine("---------------------");
 
             }

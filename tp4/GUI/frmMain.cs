@@ -66,10 +66,6 @@ namespace GUI
                 DataPropertyName = "EntryDate",
                 HeaderText = "INGRESO"
             });
-
-            dgvPieces.DataSource = miFabrica.PartsList;
-
-            
         }
         /// <summary>
         /// Actualiza los valores de los datagrids del form
@@ -82,39 +78,28 @@ namespace GUI
             dgvElectronics.DataSource = miFabrica.PartsList.OfType<Electronics>().ToList();
             dgvTuners.DataSource = miFabrica.PartsList.OfType<Tuners>().ToList();
             rtbGuitarsInfo.Text = miFabrica.StockInfo();
-
+            
             dgvPieces.ClearSelection();
             dgvWood.ClearSelection();
             dgvPickups.ClearSelection();
             dgvElectronics.ClearSelection();
-            dgvTuners.ClearSelection();
+            dgvTuners.ClearSelection();           
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             tbMain.Enabled = false;
-            btnSave.Enabled = false;
             tbMain.SelectTab(0);
             
             try
             {
                 miFabrica.OpenDB();
                 tbMain.Enabled = true;
-                btnSave.Enabled = true;
             }
             
             catch(Exception)
             {
                 MessageBox.Show($"ERROR AL ABRIR BASE DE DATOS.\nRevise la existencia del archivo y vuelva a abrir el programa.", "Error", MessageBoxButtons.OK);
-            }
-
-            try
-            {
-                miFabrica.OpenGuitarsFile(guitarsPath);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN LA RUTA {guitarsPath}.\n Fabrique una guitarra para crear el archivo.", "Error", MessageBoxButtons.OK);
             }
 
             refreshGrids();
@@ -124,18 +109,9 @@ namespace GUI
         /// Guarda los datos del datagrid correspondiente al stock de piezas en un archivo xml
         /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
+        {            
                 miFabrica.SavePartsFile(partsPath);
-                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {partsPath}", "", MessageBoxButtons.OK);
-
-            }
-            catch (Exception)
-            {
-               MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN LA RUTA {partsPath}.los cambios no han podido ser guardados\n", "Error", MessageBoxButtons.OK);
-            }
+                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {partsPath}", "", MessageBoxButtons.OK);            
         }
         /// <summary>
         /// Maneja las posibles opciones que puede elegir el usuario en el form de ingreso de stock
@@ -176,16 +152,16 @@ namespace GUI
         /// </summary>
         private void btnAddStock_Click(object sender, EventArgs e)
         {
-            
-            try
-            {
-                miFabrica.AddPart(cmbPieceType.Text, cmbCustomType.Text, cmbManufacturer.Text);
-                refreshGrids();
-            }
-            catch (Exception)
+            if (this.cmbPieceType.SelectedItem == null || this.cmbPieceType.SelectedIndex == -1)
             {
                 MessageBox.Show("ASEGURESE DE COMPLETAR TODOS LOS CAMPOS", "Error", MessageBoxButtons.OK);
             }
+            else
+            {
+                miFabrica.AddPart(cmbPieceType.Text, cmbCustomType.Text, cmbManufacturer.Text);
+            }      
+
+            refreshGrids();
         }
 
         /// <summary>
@@ -193,13 +169,26 @@ namespace GUI
         /// </summary>
         private void btnDeleteStock_Click(object sender, EventArgs e)
         {
-            if(dgvPieces.CurrentRow != null)
+            try
             {
-                miFabrica.removePart(dgvPieces.CurrentRow.Index);
-                refreshGrids();
-
+                if (dgvPieces.CurrentCell.Selected != false)
+                {
+                    Part part = dgvPieces.CurrentRow.DataBoundItem as Part;
+                    miFabrica.removePart(dgvPieces.CurrentRow.Index);
+                    miFabrica.DeleteDB(part.Id); 
+                }
+                else
+                {
+                    MessageBox.Show($"SELECCIONE UN ITEM A ELIMINAR DEL STOCK", "Error", MessageBoxButtons.OK);
+                }
             }
-        }        
+            catch (Exception)
+            {
+                MessageBox.Show("NO HAY ITEMS PARA ELIMINAR", "Error", MessageBoxButtons.OK);
+            }
+            refreshGrids();
+
+        }
         /// <summary>
         /// Crea un objeto de la lista de productos
         /// </summary>
@@ -215,41 +204,53 @@ namespace GUI
                 }
                 else
                 {
-                    Wood madera = dgvWood.CurrentRow.DataBoundItem as Wood;
-                    Pickup pickup = dgvPickups.CurrentRow.DataBoundItem as Pickup;
-                    Electronics electronic = dgvElectronics.CurrentRow.DataBoundItem as Electronics;
-                    Tuners tuners = dgvTuners.CurrentRow.DataBoundItem as Tuners;
-
-                    if(miFabrica.AddGuitar(madera.Data(), pickup.Data(), electronic.Data(), tuners.Data(), cmbGuitarModel.Text) ==true)
+                    if (dgvWood.CurrentCell.Selected != false &&
+                        dgvPickups.CurrentCell.Selected != false &&
+                        dgvElectronics.CurrentCell.Selected != false &&
+                        dgvTuners.CurrentCell.Selected != false)
                     {
+                        Wood wood = dgvWood.CurrentRow.DataBoundItem as Wood;
+                        Pickup pickup = dgvPickups.CurrentRow.DataBoundItem as Pickup;
+                        Electronics electronic = dgvElectronics.CurrentRow.DataBoundItem as Electronics;
+                        Tuners tuners = dgvTuners.CurrentRow.DataBoundItem as Tuners;
+
+                        miFabrica.AddGuitar(wood.Data(), pickup.Data(), electronic.Data(), tuners.Data(), cmbGuitarModel.Text); 
+                        
                         miFabrica.removePart(dgvWood.CurrentRow.Index);
                         miFabrica.removePart(dgvPickups.CurrentRow.Index);
                         miFabrica.removePart(dgvElectronics.CurrentRow.Index);
                         miFabrica.removePart(dgvTuners.CurrentRow.Index);
-                    }                    
+
+                        miFabrica.DeleteDB(wood.Id);
+                        miFabrica.DeleteDB(pickup.Id);
+                        miFabrica.DeleteDB(electronic.Id);
+                        miFabrica.DeleteDB(tuners.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"ASEGURESE DE SELECCIONAR TODOS LOS\nMATERIALES DE LA LISTA DE MATERIALES.", "Error", MessageBoxButtons.OK);
+
+                    }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("ASEGURESE DE TENER EL STOCK DE MATERIALES NECESARIO", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("STOCK DE MATERIALES INSUFICIENTES", "Error", MessageBoxButtons.OK);
             }
 
-            /*try
-            {
-                miFabrica.SaveGuitarsFile(guitarsPath);
-            }
-            catch(Exception)
-            {
-                MessageBox.Show($"FALLO ALGO A LA HORA DE GUARDAR EL ARCHIVO EN LA RUTA {guitarsPath}", "Error", MessageBoxButtons.OK);
-
-            }*/
-            refreshGrids();
-
+             refreshGrids();
         }
 
-        private void dgvPieces_SelectionChanged(object sender, EventArgs e)
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            const string message = "¿DESEA SALIR";
+            const string caption = "";
+            var result = MessageBox.Show(message, caption,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
