@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace GUI
 {
-    
+    public delegate void RefreshProducts();
     public partial class frmMain : MaterialForm
     {
 
@@ -19,10 +19,14 @@ namespace GUI
         string productsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLProducts.xml";
         string partsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFParts.pdf";
         string productsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFProducts.pdf";
+        public Thread refreshThread;
+        RefreshProducts refreshGuitarList;
 
         public frmMain()
         {
             InitializeComponent();
+            refreshGuitarList += updateList;
+            refreshThread = new Thread(Start);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -42,9 +46,27 @@ namespace GUI
             }
 
             refreshGrids();
+            refreshThread.Start();
         }
-
-
+        public void Start()
+        {
+            while(true)
+            {
+                Thread.Sleep(1000);
+                refreshGuitarList.Invoke();
+            }
+        }
+        public void updateList()
+        {
+            if(rtbGuitarsInfo.InvokeRequired)
+            {
+                rtbGuitarsInfo.BeginInvoke((MethodInvoker)delegate () { rtbGuitarsInfo.Text = miFabrica.ProductsInfo(); });
+            }
+            else
+            {
+                rtbGuitarsInfo.Text = miFabrica.ProductsInfo();
+            }
+        }
 
 
         /// <summary>
@@ -56,8 +78,7 @@ namespace GUI
             dgvWood.DataSource = miFabrica.PartsList.OfType<Wood>().ToList();
             dgvPickups.DataSource = miFabrica.PartsList.OfType<Pickup>().ToList(); ;
             dgvElectronics.DataSource = miFabrica.PartsList.OfType<Electronics>().ToList();
-            dgvTuners.DataSource = miFabrica.PartsList.OfType<Tuners>().ToList();
-            rtbGuitarsInfo.Text = miFabrica.ProductsInfo();
+            dgvTuners.DataSource = miFabrica.PartsList.OfType<Tuners>().ToList();           
 
             dgvPieces.ClearSelection();
             dgvWood.ClearSelection();
@@ -325,7 +346,7 @@ namespace GUI
             }
             catch (Exception)
             {
-                MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN {path}\nARCHIVO INEXISTENTE", "Error", MessageBoxButtons.OK);
+                MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN {path}\nARCHIVO INEXISTENTE. CREELO PRIMERO", "Error", MessageBoxButtons.OK);
             }
         }
 

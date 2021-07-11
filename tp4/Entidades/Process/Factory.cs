@@ -208,22 +208,8 @@ namespace Entidades
                 sb.AppendLine($"{item.Electronics} ");
                 sb.AppendLine($"{item.Pickups} ");
                 sb.AppendLine($"{item.Tuners} ");
-                sb.AppendLine($"Manufacture Date: {item.ManufactureDate} ");
-                switch (item.ClassType)
-                {
-                    case "LesPaul":
-                        model = "LP-";
-                        sb.AppendLine($"Serial Number: {model}{item.Id}");
-                        break;
-                    case "SG":
-                        model = "SG-";
-                        sb.AppendLine($"Serial Number: {model}{item.Id}");
-                        break;
-                    case "Telecaster":
-                        model = "TL-";
-                        sb.AppendLine($"Serial Number: {model}{item.Id}");
-                        break;
-                }
+                sb.AppendLine($"Manufacture Date: {item.ManufactureDate} ");                
+                sb.AppendLine($"Serial Number: {item.ClassType.TipoProducto()}{item.Id}");              
                 sb.AppendLine("---------------------");
             }
             return sb.ToString();
@@ -236,31 +222,11 @@ namespace Entidades
             sb.AppendLine("---------------------");
             foreach (Part item in PartsList)
             {
-                string classType;
-
                 sb.AppendLine($"Piece: {item.ClassType}");
                 sb.AppendLine($"Type: {item.Type} ");
                 sb.AppendLine($"Manufacturer: {item.Manufacturer} ");
                 sb.AppendLine($"Entry Date: {item.EntryDate} ");
-                switch (item.ClassType)
-                {
-                    case "Electronics":
-                        classType = "EL-";
-                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
-                        break;
-                    case "Pickup":
-                        classType = "PI-";
-                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
-                        break;
-                    case "Tuners":
-                        classType = "TU-";
-                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
-                        break;
-                    case "Wood":
-                        classType = "WO-";
-                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
-                        break;
-                }
+                sb.AppendLine($"Serial Number: {item.ClassType.TipoProducto()}{item.Id}");
                 sb.AppendLine("---------------------");
             }
             return sb.ToString();

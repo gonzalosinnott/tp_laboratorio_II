@@ -381,12 +381,12 @@ namespace GUI
             this.tbMain.Controls.Add(this.tbStock);
             this.tbMain.Controls.Add(this.tbAssembly);
             this.tbMain.Controls.Add(this.tbReports);
-            this.tbMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbMain.IsDerivedStyle = true;
             this.tbMain.ItemSize = new System.Drawing.Size(100, 38);
             this.tbMain.Location = new System.Drawing.Point(12, 68);
             this.tbMain.Name = "tbMain";
-            this.tbMain.SelectedIndex = 2;
+            this.tbMain.SelectedIndex = 1;
             this.tbMain.SelectedTextColor = System.Drawing.Color.White;
             this.tbMain.Size = new System.Drawing.Size(1199, 693);
             this.tbMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -834,7 +834,7 @@ namespace GUI
             this.btnPartsReportPdf.Primary = true;
             this.btnPartsReportPdf.Size = new System.Drawing.Size(396, 27);
             this.btnPartsReportPdf.TabIndex = 48;
-            this.btnPartsReportPdf.Text = "INFORME DE STOCK DE MATERIALES (FORMATO PDF)";
+            this.btnPartsReportPdf.Text = "CREAR INFORME DE STOCK DE MATERIALES (FORMATO PDF)";
             this.btnPartsReportPdf.UseVisualStyleBackColor = true;
             this.btnPartsReportPdf.Click += new System.EventHandler(this.btnPartsReportPdf_Click);
             // 
@@ -847,7 +847,7 @@ namespace GUI
             this.btnProductsReportPdf.Primary = true;
             this.btnProductsReportPdf.Size = new System.Drawing.Size(396, 27);
             this.btnProductsReportPdf.TabIndex = 47;
-            this.btnProductsReportPdf.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.btnProductsReportPdf.Text = "CREAR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
             this.btnProductsReportPdf.UseVisualStyleBackColor = true;
             this.btnProductsReportPdf.Click += new System.EventHandler(this.btnProductsReportPdf_Click);
             // 
@@ -860,7 +860,7 @@ namespace GUI
             this.btnProductsReportXml.Primary = true;
             this.btnProductsReportXml.Size = new System.Drawing.Size(396, 27);
             this.btnProductsReportXml.TabIndex = 46;
-            this.btnProductsReportXml.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO XML)";
+            this.btnProductsReportXml.Text = "CREAR INFORME DE STOCK DE PRODUCTOS (FORMATO XML)";
             this.btnProductsReportXml.UseVisualStyleBackColor = true;
             this.btnProductsReportXml.Click += new System.EventHandler(this.btnProductsReportXml_Click);
             // 
@@ -873,7 +873,7 @@ namespace GUI
             this.btnPartsReportXml.Primary = true;
             this.btnPartsReportXml.Size = new System.Drawing.Size(396, 27);
             this.btnPartsReportXml.TabIndex = 45;
-            this.btnPartsReportXml.Text = "INFORME DE STOCK DE MATERIALES (FORMATO XML)";
+            this.btnPartsReportXml.Text = "CREAR INFORME DE STOCK DE MATERIALES (FORMATO XML)";
             this.btnPartsReportXml.UseVisualStyleBackColor = true;
             this.btnPartsReportXml.Click += new System.EventHandler(this.btnPartsReportXml_Click);
             // 
@@ -912,7 +912,7 @@ namespace GUI
             this.openProductsPdf.Primary = true;
             this.openProductsPdf.Size = new System.Drawing.Size(403, 27);
             this.openProductsPdf.TabIndex = 55;
-            this.openProductsPdf.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.openProductsPdf.Text = "ABRIR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
             this.openProductsPdf.UseVisualStyleBackColor = true;
             this.openProductsPdf.Click += new System.EventHandler(this.openProductsPdf_Click);
             // 
@@ -925,7 +925,7 @@ namespace GUI
             this.openProductsXml.Primary = true;
             this.openProductsXml.Size = new System.Drawing.Size(403, 27);
             this.openProductsXml.TabIndex = 56;
-            this.openProductsXml.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.openProductsXml.Text = "ABRIR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
             this.openProductsXml.UseVisualStyleBackColor = true;
             this.openProductsXml.Click += new System.EventHandler(this.openProductsXml_Click);
             // 

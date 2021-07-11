@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\DAO.cs" />
+    <Compile Include="Extensora.cs" />
     <Compile Include="Interfaces\ILogs.cs" />
     <Compile Include="Interfaces\ISerializacion.cs" />
     <Compile Include="Process\Factory.cs" />
@@ -78,6 +79,9 @@
   <ItemGroup>
     <None Include="EntidadesDiagram.cd" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensora\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
