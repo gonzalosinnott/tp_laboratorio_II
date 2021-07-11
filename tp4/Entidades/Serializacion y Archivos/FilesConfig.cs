@@ -11,7 +11,7 @@ using iTextSharp.text.pdf;
 namespace Entidades
 
 {
-    public class SerializeConfig<T> : ISerializacion<T>
+    public class FilesConfig<T> : ISerializacion<T>
     {
 
         /// <summary>
@@ -21,16 +21,17 @@ namespace Entidades
         {
             if (filePath != null)
             {
-                SerializeConfig<List<T>> auxList = new SerializeConfig<List<T>>();
+                FilesConfig<List<T>> auxList = new FilesConfig<List<T>>();
                 try
                 {
                     auxList.Serialize(list, filePath);
+                    return true;
                 }
                 catch
                 {
                     throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
                 }
-                return true;
+                
             }
             return false;
 
@@ -48,12 +49,13 @@ namespace Entidades
                     doc.Add(new iTextSharp.text.Paragraph($"Documento creado en fecha: {DateTime.Now}"));
                     doc.Add(new iTextSharp.text.Paragraph(info));
                     doc.Close();
+                    return true;
                 }
                 catch (Exception)
                 {
                     throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
                 }
-                return true;
+                
             }
             return false;
         }

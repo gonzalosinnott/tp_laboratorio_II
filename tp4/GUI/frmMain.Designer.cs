@@ -386,7 +386,7 @@ namespace GUI
             this.tbMain.ItemSize = new System.Drawing.Size(100, 38);
             this.tbMain.Location = new System.Drawing.Point(12, 68);
             this.tbMain.Name = "tbMain";
-            this.tbMain.SelectedIndex = 1;
+            this.tbMain.SelectedIndex = 0;
             this.tbMain.SelectedTextColor = System.Drawing.Color.White;
             this.tbMain.Size = new System.Drawing.Size(1199, 693);
             this.tbMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;

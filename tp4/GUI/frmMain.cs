@@ -43,7 +43,7 @@ namespace GUI
 
             catch (Exception)
             {
-                MessageBox.Show($"ERROR AL ABRIR BASE DE DATOS.\nRevise la existencia del archivo y vuelva a abrir el programa.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show($"ERROR AL ABRIR BASE DE DATOS.\nRevise la existencia del archivo, la connection string de la clase DAO y vuelva a abrir el programa.\nEl backup se encuentra dentro de la carpeta raiz del TP", "Error", MessageBoxButtons.OK);
             }
 
             refreshGrids();
@@ -233,10 +233,14 @@ namespace GUI
             const string caption = "";
             var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.No)
+            if (result != DialogResult.No)
+            {
+                Environment.Exit(Environment.ExitCode);
+            }
+            else
             {
                 e.Cancel = true;
-            }           
+            }
         }
         
         /// <summary>

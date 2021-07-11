@@ -18,7 +18,7 @@ namespace Entidades
     public class Factory
     {
         DAO dao = new DAO();
-        SerializeConfig<object> fileManager = new SerializeConfig<object>();
+        FilesConfig<object> fileManager = new FilesConfig<object>();
 
         /// <summary>
         /// Atributos de la clase Factory
@@ -204,8 +204,10 @@ namespace Entidades
         {
             if (info != null && path != null)
             {
-                fileManager.PdfCreation(info, path);
-                return true;
+                if(fileManager.PdfCreation(info, path) == true)
+                {
+                    return true;
+                }
             }
             return false;
         }

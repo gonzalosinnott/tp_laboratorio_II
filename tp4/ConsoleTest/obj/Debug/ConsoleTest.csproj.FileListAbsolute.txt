@@ -13,3 +13,21 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\ConsoleTest\obj\Debug\ConsoleTest.csproj.CopyComplete
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\ConsoleTest\obj\Debug\ConsoleTest.exe
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp3\ConsoleTest\obj\Debug\ConsoleTest.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\obj\Debug\ConsoleTest.csprojAssemblyReference.cache
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\obj\Debug\ConsoleTest.csproj.CoreCompileInputs.cache
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\obj\Debug\ConsoleTest.exe
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\obj\Debug\ConsoleTest.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\ConsoleTest.exe.config
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\ConsoleTest.exe
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\ConsoleTest.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\Entidades.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\GUI.exe
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\itextsharp.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\MaterialSkin.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\MetroSet UI.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\BouncyCastle.Crypto.dll
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\Entidades.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\GUI.pdb
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\GUI.exe.config
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\bin\Debug\itextsharp.xml
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\ConsoleTest\obj\Debug\ConsoleTest.csproj.CopyComplete

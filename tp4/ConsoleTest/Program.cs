@@ -12,63 +12,46 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
             Factory miFabrica = new Factory();
-            Part part;
-            DateTime dateTime = new DateTime(2019, 7, 25);
-            string partsPath = AppDomain.CurrentDomain.BaseDirectory + "XMLParts.xml";
+            DAO dao = new DAO();
+            string partsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFParts.pdf";
 
             ///INGRESO DE STOCK
-            Console.WriteLine("INGRESO DE STOCK\n");           
+            Console.WriteLine("LEYENDO BASE DE DATOS.....\n");
+            miFabrica.OpenDB();
 
-            part = new Pickup { Name = "Noise Reduction", Type = "HUMBUCKER", EntryDate = dateTime, Manufacturer = "EMG" };
-            miFabrica.PartsList.Add(part);
+            Console.WriteLine("STOCK DE PIEZAS.....\n");
+            Console.WriteLine(miFabrica.PartsInfo());
+            Console.WriteLine("Presione una tecla para seguir con la prueba de consola.\n");
+            Console.ReadKey();
 
-            part = new Pickup { Name = "METAL ZONE", Type = "SINGLECOIL", EntryDate = dateTime, Manufacturer = "DIMARZIO" };
-            miFabrica.PartsList.Add(part);
-
-            part = new Pickup { Name = "BLUES WAVES", Type = "P90", EntryDate = dateTime, Manufacturer = "EMG" };
-            miFabrica.PartsList.Add(part);
-
-            Console.WriteLine(miFabrica.ShowPartsData());
-
+            Console.WriteLine("STOCK DE PRODUCTOS.....\n");
+            Console.WriteLine(miFabrica.ProductsInfo());
             Console.WriteLine("Presione una tecla para seguir con la prueba de consola.\n");
             Console.ReadKey();
 
             ///ELIMINACION DE UN ITEM
-            Console.WriteLine("Eliminacion de Primer Item\n");
-            miFabrica.removePart(1);
-            Console.WriteLine(miFabrica.ShowPartsData());
-
+            Console.WriteLine("ELIMINAR UNA PIEZA.....\n");
+            Console.WriteLine("ELIMINAR LA PIEZA WO-2.....\n");
+            int id = 8;
+            miFabrica.removePart(id);
+            dao.DeletePiece(id);
+            Console.WriteLine("STOCK DE PIEZAS.....\n");
+            Console.WriteLine(miFabrica.PartsInfo());
             Console.WriteLine("Presione una tecla para seguir con la prueba de consola.\n");
             Console.ReadKey();
 
             ///GUARDADO DE ARCHIVOS
-            Console.WriteLine("Prueba de apertura y guardado de Archivo\n");
-            
-            if (miFabrica.SavePartsFile(partsPath) == true)
+            Console.WriteLine("GUARDADO DE ARCHIVOS.....\n");
+            if (miFabrica.CreatePdf(miFabrica.PartsInfo(), partsPathPdf) ==true)
             {
-                Console.WriteLine("Archivo guardado con exito\n");
-
+                Console.WriteLine("ARCHIVO GUARDADO CON EXITO.\n");
             }
             else
             {
-                Console.WriteLine("Error archivo no guardado.\n");
-
+                Console.WriteLine("ALGO FALLO.\n");
             }
-            
-            if (miFabrica.OpenPartsFile(partsPath) == true)
-            {
-                Console.WriteLine("Archivo abierto con exito\n");
-
-            }
-            else
-            {
-                Console.WriteLine("Error archivo no existente.\n");
-
-            }
-
-            Console.WriteLine("Presione una tecla para finalizar.\n");
+            Console.WriteLine("Presione una tecla para seguir con la prueba de consola.\n");
             Console.ReadKey();
-
         }
     }
 }
