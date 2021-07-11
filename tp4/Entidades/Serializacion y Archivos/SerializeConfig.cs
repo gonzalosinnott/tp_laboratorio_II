@@ -1,18 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using Entidades.Interfaces;
+using iTextSharp.text.pdf;
+
 
 namespace Entidades
 
 {
     public class SerializeConfig<T> : ISerializacion<T>
     {
+
+        /// <summary>
+        /// Guarda en un archivo XML la lista de piezas en el PATH pasado como parametro
+        /// </summary>
+        public bool XmlCreation<T>(string filePath, List<T> list)
+        {
+            if (filePath != null)
+            {
+                SerializeConfig<List<T>> auxList = new SerializeConfig<List<T>>();
+                try
+                {
+                    auxList.Serialize(list, filePath);
+                }
+                catch
+                {
+                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
+                }
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool PdfCreation(string info, string filePath)
+        {
+            if (info != null)
+            {
+                try
+                {
+                    iTextSharp.text.Document doc = new iTextSharp.text.Document();
+                    PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
+                    doc.Open();
+                    doc.Add(new iTextSharp.text.Paragraph($"Documento creado en fecha: {DateTime.Now}"));
+                    doc.Add(new iTextSharp.text.Paragraph(info));
+                    doc.Close();
+                }
+                catch (Exception)
+                {
+                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
+                }
+                return true;
+            }
+            return false;
+        }
         /// <summary>
         /// Guarda los datos que le pasamos como paramentro en el PATH indicado como parametro
         /// </summary>        

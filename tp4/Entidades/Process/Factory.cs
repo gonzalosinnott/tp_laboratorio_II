@@ -8,6 +8,8 @@ using System.Xml;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
+using System.Diagnostics;
+
 
 
 
@@ -16,6 +18,7 @@ namespace Entidades
     public class Factory
     {
         DAO dao = new DAO();
+        SerializeConfig<object> fileManager = new SerializeConfig<object>();
 
         /// <summary>
         /// Atributos de la clase Factory
@@ -170,99 +173,27 @@ namespace Entidades
         /// <summary>
         /// Guarda en un archivo XML la lista de piezas en el PATH pasado como parametro
         /// </summary>
-        public bool SavePartsXml(string filePath)
+        public bool CreateXml<T>(string filePath, List<T> list)
         {
-            if (filePath != null)
+            if (filePath != null && list != null)
             {
-                SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
-                try
-                {
-                    auxList.Serialize(PartsList, filePath);
-                }
-                catch
-                {
-                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
-                }
+                fileManager.XmlCreation<T>(filePath, list);
                 return true;
             }
             return false;
+        }     
 
-        }
-        /// <summary>
-        ///Genera una lista de productos a partir del archivo xml ubicado en el PATH pasado como parametro.
-        /// </summary>
-        public bool SaveGuitarsXml(string filePath)
+        public bool CreatePdf(string info, string path)
         {
-            if (filePath != null)
+            if (info != null && path != null)
             {
-                SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
-                try
-                {
-                    auxList.Serialize(GuitarsList, filePath);
-                }
-                catch
-                {
-                    throw new Exception($"Error al querer gaurdar el achivo en la ruta: {filePath}.");
-                }
+                fileManager.PdfCreation(info, path);
                 return true;
             }
             return false;
         }
 
-        
-        /// <summary>
-        /// Guarda en un archivo XML la lista de productos en el PATH pasado como paramentro
-        /// </summary>
-        public bool OpenGuitarsFile(string filePath)
-        {
-            SerializeConfig<List<Guitar>> auxList = new SerializeConfig<List<Guitar>>();
-            List<Guitar> deserealizedList = new List<Guitar>();
-
-            try
-            {
-                auxList.Deserialize(filePath, out deserealizedList);
-
-            }
-            catch
-            {
-                throw new Exception($"Error al querer Leer el achivo desde : {filePath}.");
-            }
-
-            GuitarsList = deserealizedList;
-
-            return true;
-        }
-
-        /// <summary>
-        ///Genera una lista de piezas a partir del archivo xml ubicado en el PATH pasado como parametro.
-        /// </summary>
-        public bool OpenPartsFile(string filePath)
-        {
-            SerializeConfig<List<Part>> auxList = new SerializeConfig<List<Part>>();
-            List<Part> deserealizedList = new List<Part>();
-            if (filePath != null)
-            {
-                try
-                {
-                    auxList.Deserialize(filePath, out deserealizedList);
-
-                    PartsList = deserealizedList;
-
-                    return true;
-
-                }
-                catch
-                {
-                    throw new Exception($"Error al querer Leer el achivo desde : {filePath}.");
-                }
-            }
-
-            return false;
-        }
-
-
-
-        public string StockInfo()
+        public string ProductsInfo()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("GUITARRAS FABRICADAS");
@@ -295,7 +226,43 @@ namespace Entidades
                 }
                 sb.AppendLine("---------------------");
             }
+            return sb.ToString();
+        }
 
+        public string PartsInfo()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("PIEZAS EN STOCK");
+            sb.AppendLine("---------------------");
+            foreach (Part item in PartsList)
+            {
+                string classType;
+
+                sb.AppendLine($"Piece: {item.ClassType}");
+                sb.AppendLine($"Type: {item.Type} ");
+                sb.AppendLine($"Manufacturer: {item.Manufacturer} ");
+                sb.AppendLine($"Entry Date: {item.EntryDate} ");
+                switch (item.ClassType)
+                {
+                    case "Electronics":
+                        classType = "EL-";
+                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
+                        break;
+                    case "Pickup":
+                        classType = "PI-";
+                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
+                        break;
+                    case "Tuners":
+                        classType = "TU-";
+                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
+                        break;
+                    case "Wood":
+                        classType = "WO-";
+                        sb.AppendLine($"Serial Number: {classType}{item.Id}");
+                        break;
+                }
+                sb.AppendLine("---------------------");
+            }
             return sb.ToString();
         }
     }

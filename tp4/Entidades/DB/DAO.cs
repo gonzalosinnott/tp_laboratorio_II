@@ -17,74 +17,99 @@ namespace Entidades
 
         public List<Part> GetAllParts()
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Id, Pieza, Tipo,Fabricante,Fecha_Ingreso FROM Piezas", con))
+                using (SqlCommand cmd = new SqlCommand($"SELECT Id, Pieza, Tipo,Fabricante,Fecha_Ingreso FROM Piezas", connection))
                 {
-                    List<Part> parts = new List<Part>();
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    try
                     {
-                        while (dataReader.Read())
+                        List<Part> parts = new List<Part>();
+                        cmd.CommandType = CommandType.Text;
+                        connection.Open();
+                        using (SqlDataReader dataReader = cmd.ExecuteReader())
                         {
-                            Part part = new Part();
-                            switch (dataReader["Pieza"].ToString())
+                            while (dataReader.Read())
                             {
-                                case "CLAVIJAS":
-                                    part = new Tuners { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
-                                    break;
-                                case "ELECTRONICA":
-                                    part = new Electronics { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
-                                    break;
-                                case "MADERA":
-                                    part = new Wood { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
-                                    break;
-                                case "PICKUPS":
-                                    part = new Pickup { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
-                                    break;
+                                Part part = new Part();
+                                switch (dataReader["Pieza"].ToString())
+                                {
+                                    case "CLAVIJAS":
+                                        part = new Tuners { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
+                                        break;
+                                    case "ELECTRONICA":
+                                        part = new Electronics { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
+                                        break;
+                                    case "MADERA":
+                                        part = new Wood { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
+                                        break;
+                                    case "PICKUPS":
+                                        part = new Pickup { Id = Convert.ToInt32(dataReader["Id"]), Type = dataReader["Tipo"].ToString(), EntryDate = dataReader["Fecha_Ingreso"].ToString(), Manufacturer = dataReader["Fabricante"].ToString() };
+                                        break;
+                                }
+                                parts.Add(part);
                             }
-                            parts.Add(part);
+                        }
+                        return parts;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            connection.Close();
                         }
                     }
-                    con.Close();
-                    return parts;
                 }
             }
         }
 
         public List<Guitar> GetAllProducts()
         {
-
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Serial_Number, Guitar_Type, Wood, Electronics, Pickups, Tuners, Manufacture_Date FROM Productos", con))
+                using (SqlCommand cmd = new SqlCommand($"SELECT Serial_Number, Guitar_Type, Wood, Electronics, Pickups, Tuners, Manufacture_Date FROM Productos", connection))
                 {
-                    List<Guitar> parts = new List<Guitar>();
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    try
                     {
-                        while (dataReader.Read())
+                        List<Guitar> parts = new List<Guitar>();
+                        cmd.CommandType = CommandType.Text;
+                        connection.Open();
+                        using (SqlDataReader dataReader = cmd.ExecuteReader())
                         {
-                            Guitar part = new Guitar();
-                            switch (dataReader["Guitar_Type"].ToString())
+                            while (dataReader.Read())
                             {
-                                case "LES PAUL":
-                                    part = new LesPaul { Id = Convert.ToInt32(dataReader["Serial_Number"]), ClassType = dataReader["Guitar_Type"].ToString(), Wood = dataReader["Wood"].ToString(), Pickups = dataReader["Pickups"].ToString(), Tuners = dataReader["Tuners"].ToString(), Electronics = dataReader["Electronics"].ToString(), ManufactureDate = dataReader["Manufacture_Date"].ToString() };
-                                    break;
-                                case "SG":
-                                    part = new SG { Id = Convert.ToInt32(dataReader["Serial_Number"]), ClassType = dataReader["Guitar_Type"].ToString(), Wood = dataReader["Wood"].ToString(), Pickups = dataReader["Pickups"].ToString(), Tuners = dataReader["Tuners"].ToString(), Electronics = dataReader["Electronics"].ToString(), ManufactureDate = dataReader["Manufacture_Date"].ToString() };
-                                    break;
-                                case "TELECASTER":
-                                    part = new Telecaster { Id = Convert.ToInt32(dataReader["Serial_Number"]), ClassType = dataReader["Guitar_Type"].ToString(), Wood = dataReader["Wood"].ToString(), Pickups = dataReader["Pickups"].ToString(), Tuners = dataReader["Tuners"].ToString(), Electronics = dataReader["Electronics"].ToString(), ManufactureDate = dataReader["Manufacture_Date"].ToString() };
-                                    break;
+                                Guitar part = new Guitar();
+                                switch (dataReader["Guitar_Type"].ToString())
+                                {
+                                    case "LES PAUL":
+                                        part = new LesPaul { Id = Convert.ToInt32(dataReader["Serial_Number"]), ClassType = dataReader["Guitar_Type"].ToString(), Wood = dataReader["Wood"].ToString(), Pickups = dataReader["Pickups"].ToString(), Tuners = dataReader["Tuners"].ToString(), Electronics = dataReader["Electronics"].ToString(), ManufactureDate = dataReader["Manufacture_Date"].ToString() };
+                                        break;
+                                    case "SG":
+                                        part = new SG { Id = Convert.ToInt32(dataReader["Serial_Number"]), ClassType = dataReader["Guitar_Type"].ToString(), Wood = dataReader["Wood"].ToString(), Pickups = dataReader["Pickups"].ToString(), Tuners = dataReader["Tuners"].ToString(), Electronics = dataReader["Electronics"].ToString(), ManufactureDate = dataReader["Manufacture_Date"].ToString() };
+                                        break;
+                                    case "TELECASTER":
+                                        part = new Telecaster { Id = Convert.ToInt32(dataReader["Serial_Number"]), ClassType = dataReader["Guitar_Type"].ToString(), Wood = dataReader["Wood"].ToString(), Pickups = dataReader["Pickups"].ToString(), Tuners = dataReader["Tuners"].ToString(), Electronics = dataReader["Electronics"].ToString(), ManufactureDate = dataReader["Manufacture_Date"].ToString() };
+                                        break;
+                                }
+                                parts.Add(part);
                             }
-                            parts.Add(part);
                         }
+                        return parts;
                     }
-                    con.Close();
-                    return parts;
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }                               
+                    finally
+                    {
+                        if (connection.State == ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
+                    }                    
                 }
             }
         }
@@ -111,7 +136,6 @@ namespace Entidades
                 connection.Open();
                 command.ExecuteNonQuery();
 
-
                 retorno = true;
             }
             catch (Exception ex)
@@ -121,7 +145,9 @@ namespace Entidades
             finally
             {
                 if (connection.State == ConnectionState.Open)
+                {
                     connection.Close();
+                }
             }
 
             return retorno;
@@ -156,7 +182,9 @@ namespace Entidades
             finally
             {
                 if (connection.State == ConnectionState.Open)
+                {
                     connection.Close();
+                }
             }
 
             return retorno;
@@ -187,7 +215,9 @@ namespace Entidades
             finally
             {
                 if (connection.State == ConnectionState.Open)
+                {
                     connection.Close();
+                }
             }
 
             return retorno;

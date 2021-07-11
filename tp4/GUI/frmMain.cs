@@ -1,76 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetroSet_UI.Forms;
-using MaterialSkin.Animations;
+using System.Threading;
 using MaterialSkin.Controls;
 using Entidades;
-using System.Xml.Serialization;
-using System.Xml;
 using System.Linq;
-using System.Linq.Expressions;
-using System.IO;
 using System.Diagnostics;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
+
 
 namespace GUI
 {
-
+    
     public partial class frmMain : MaterialForm
     {
 
         Factory miFabrica = new Factory();
         string partsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLParts.xml";
-        string guitarsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLProducts.xml";
-        string guitarsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFProducts.pdf";
+        string productsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLProducts.xml";
+        string partsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFParts.pdf";
+        string productsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFProducts.pdf";
 
         public frmMain()
         {
             InitializeComponent();
-
-            Factory miFabrica = new Factory();
-
-            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "id",
-                DataPropertyName = "Id",
-                HeaderText = "ID"
-            });
-
-            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "classType",
-                DataPropertyName = "ClassType",
-                HeaderText = "PIEZA"
-            });            
-
-            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "type",
-                DataPropertyName = "Type",
-                HeaderText = "TIPO"
-            });
-
-            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "manufacturer",
-                DataPropertyName = "Manufacturer",
-                HeaderText = "FABRICANTE"
-            });
-
-            dgvPieces.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "entryDate",
-                DataPropertyName = "EntryDate",
-                HeaderText = "INGRESO"
-            });
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            tbMain.Enabled = false;
+            tbMain.SelectTab(0);
+
+            try
+            {
+                miFabrica.OpenDB();
+                tbMain.Enabled = true;
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show($"ERROR AL ABRIR BASE DE DATOS.\nRevise la existencia del archivo y vuelva a abrir el programa.", "Error", MessageBoxButtons.OK);
+            }
+
+            refreshGrids();
+        }
+
+
+
+
         /// <summary>
         /// Actualiza los valores de los datagrids del form
         /// </summary>
@@ -81,34 +57,15 @@ namespace GUI
             dgvPickups.DataSource = miFabrica.PartsList.OfType<Pickup>().ToList(); ;
             dgvElectronics.DataSource = miFabrica.PartsList.OfType<Electronics>().ToList();
             dgvTuners.DataSource = miFabrica.PartsList.OfType<Tuners>().ToList();
-            rtbGuitarsInfo.Text = miFabrica.StockInfo();
-            
+            rtbGuitarsInfo.Text = miFabrica.ProductsInfo();
+
             dgvPieces.ClearSelection();
             dgvWood.ClearSelection();
             dgvPickups.ClearSelection();
             dgvElectronics.ClearSelection();
-            dgvTuners.ClearSelection();           
+            dgvTuners.ClearSelection();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            tbMain.Enabled = false;
-            tbMain.SelectTab(0);
-            
-            try
-            {
-                miFabrica.OpenDB();
-                tbMain.Enabled = true;
-            }
-            
-            catch(Exception)
-            {
-                MessageBox.Show($"ERROR AL ABRIR BASE DE DATOS.\nRevise la existencia del archivo y vuelva a abrir el programa.", "Error", MessageBoxButtons.OK);
-            }
-
-            refreshGrids();
-        }     
-      
         /// <summary>
         /// Maneja las posibles opciones que puede elegir el usuario en el form de ingreso de stock
         /// a paritr del tipo de pieza que pretende ingresar
@@ -140,9 +97,8 @@ namespace GUI
                     cmbCustomType.DataSource = Enum.GetNames(typeof(PickupsType));
                     cmbManufacturer.DataSource = Enum.GetNames(typeof(PickupsMaker));
                     break;
-                
             }
-        }       
+        }
         /// <summary>
         /// Agrega un objeto a la lista de stock de piezas
         /// </summary>
@@ -155,9 +111,8 @@ namespace GUI
             else
             {
                 miFabrica.AddPart(cmbPieceType.Text, cmbCustomType.Text, cmbManufacturer.Text);
-            }      
-
-            refreshGrids();
+                refreshGrids();
+            }
         }
 
         /// <summary>
@@ -167,11 +122,12 @@ namespace GUI
         {
             try
             {
-                if (dgvPieces.CurrentCell.Selected != false)
+                if (dgvPieces.CurrentRow.Selected != false)
                 {
                     Part part = dgvPieces.CurrentRow.DataBoundItem as Part;
                     miFabrica.removePart(dgvPieces.CurrentRow.Index);
-                    miFabrica.DeleteDB(part.Id); 
+                    miFabrica.DeleteDB(part.Id);
+                    refreshGrids();
                 }
                 else
                 {
@@ -182,9 +138,9 @@ namespace GUI
             {
                 MessageBox.Show("NO HAY ITEMS PARA ELIMINAR", "Error", MessageBoxButtons.OK);
             }
-            refreshGrids();
 
         }
+
         /// <summary>
         /// Crea un objeto de la lista de productos
         /// </summary>
@@ -193,25 +149,25 @@ namespace GUI
 
             try
             {
-               
-                if(this.cmbGuitarModel.SelectedItem == null || this.cmbGuitarModel.SelectedIndex == -1)
+
+                if (this.cmbGuitarModel.SelectedItem == null || this.cmbGuitarModel.SelectedIndex == -1)
                 {
                     MessageBox.Show("SELECCIONE UN MODELO DE GUITARRA A FABRICAR", "Error", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (dgvWood.CurrentCell.Selected != false &&
-                        dgvPickups.CurrentCell.Selected != false &&
-                        dgvElectronics.CurrentCell.Selected != false &&
-                        dgvTuners.CurrentCell.Selected != false)
+                    if (dgvWood.CurrentRow.Selected != false &&
+                        dgvPickups.CurrentRow.Selected != false &&
+                        dgvElectronics.CurrentRow.Selected != false &&
+                        dgvTuners.CurrentRow.Selected != false)
                     {
                         Wood wood = dgvWood.CurrentRow.DataBoundItem as Wood;
                         Pickup pickup = dgvPickups.CurrentRow.DataBoundItem as Pickup;
                         Electronics electronic = dgvElectronics.CurrentRow.DataBoundItem as Electronics;
                         Tuners tuners = dgvTuners.CurrentRow.DataBoundItem as Tuners;
 
-                        miFabrica.AddGuitar(wood.Data(), pickup.Data(), electronic.Data(), tuners.Data(), cmbGuitarModel.Text); 
-                        
+                        miFabrica.AddGuitar(wood.Data(), pickup.Data(), electronic.Data(), tuners.Data(), cmbGuitarModel.Text);
+
                         miFabrica.removePart(dgvWood.CurrentRow.Index);
                         miFabrica.removePart(dgvPickups.CurrentRow.Index);
                         miFabrica.removePart(dgvElectronics.CurrentRow.Index);
@@ -221,11 +177,11 @@ namespace GUI
                         miFabrica.DeleteDB(pickup.Id);
                         miFabrica.DeleteDB(electronic.Id);
                         miFabrica.DeleteDB(tuners.Id);
+                        refreshGrids();
                     }
                     else
                     {
                         MessageBox.Show($"ASEGURESE DE SELECCIONAR TODOS LOS\nMATERIALES DE LA LISTA DE MATERIALES.", "Error", MessageBoxButtons.OK);
-
                     }
                 }
             }
@@ -234,63 +190,163 @@ namespace GUI
                 MessageBox.Show("STOCK DE MATERIALES INSUFICIENTES", "Error", MessageBoxButtons.OK);
             }
 
-             refreshGrids();
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             const string message = "¿DESEA SALIR";
             const string caption = "";
-            var result = MessageBox.Show(message, caption,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.No)
             {
                 e.Cancel = true;
             }
-        }
 
-        private void btnStockReportXml_Click(object sender, EventArgs e)
+        }        
+
+        private void btnPartsReportXml_Click(object sender, EventArgs e)
         {
+            pbPartXml.Value = 0;
+            Thread thread = new Thread(() => SaveDocumentProgress(pbPartXml));
+            thread.Start();
+
             try
             {
-                miFabrica.SavePartsXml(partsPathXml);
-                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {partsPathXml}", "", MessageBoxButtons.OK);
+                miFabrica.CreateXml(partsPathXml, miFabrica.PartsList);
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MessageBox.Show($"Error al guardar el archivo en {partsPathXml}", "", MessageBoxButtons.OK);
+                MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN {partsPathXml}", "Error", MessageBoxButtons.OK);
+            }
+            finally
+            {
+                pbPartXml.Value = 0;
             }
         }
 
         private void btnProductsReportXml_Click(object sender, EventArgs e)
         {
+            pbProductXml.Value = 0;
+            Thread thread = new Thread(() => SaveDocumentProgress(pbProductXml));
+            thread.Start();
+
             try
             {
-                miFabrica.SaveGuitarsXml(guitarsPathXml);
-                MessageBox.Show($"CAMBIOS GUARDADOS CON EXITO en {guitarsPathXml}", "", MessageBoxButtons.OK);
-                Process.Start(guitarsPathXml);
+                miFabrica.CreateXml(productsPathXml, miFabrica.GuitarsList);
             }
             catch (Exception)
+            { 
+               MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN {productsPathXml}", "Error", MessageBoxButtons.OK);
+            }
+            finally
             {
-                MessageBox.Show($"Error al guardar el archivo en {guitarsPathXml}", "", MessageBoxButtons.OK);
+                pbProductXml.Value = 0;
             }
         }
 
         private void btnProductsReportPdf_Click(object sender, EventArgs e)
         {
+            Thread thread = new Thread(() => SaveDocumentProgress(pbProductPdf));
+            thread.Start();
+
             try
             {
-                iTextSharp.text.Document doc = new iTextSharp.text.Document();
-                PdfWriter.GetInstance(doc, new FileStream(guitarsPathPdf, FileMode.Create));
-                doc.Open();
-                doc.Add(new iTextSharp.text.Paragraph(rtbGuitarsInfo.Text));
-                doc.Close();
-                Process.Start(guitarsPathPdf);
+                miFabrica.CreatePdf(miFabrica.ProductsInfo(), productsPathPdf);
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MessageBox.Show($"Error al guardar el archivo en {guitarsPathPdf}", "", MessageBoxButtons.OK);
+                MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN {productsPathPdf}\nASEGURESE DE QUE EL ARCHIVO NO SE ENCUENTRE ABIERTO", "Error", MessageBoxButtons.OK);
             }
+            finally
+            {
+                pbProductPdf.Value = 0;
+            }
+        }
+
+        private void btnPartsReportPdf_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(() => SaveDocumentProgress(pbPartPdf));
+            thread.Start();
+
+            try
+            {
+                miFabrica.CreatePdf(miFabrica.PartsInfo(), partsPathPdf);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"ERROR AL GUARDAR EL ARCHIVO EN {partsPathPdf}\nASEGURESE DE QUE EL ARCHIVO NO SE ENCUENTRE ABIERTO", "Error", MessageBoxButtons.OK);
+            }
+            finally
+            {
+                pbPartPdf.Value = 0;                
+            }
+        }       
+
+        private void SaveDocumentProgress(ProgressBar bar)
+        {
+            int done = 0;
+            if(bar.InvokeRequired)
+            {
+                bar.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    while (done < 100)
+                    {
+                        done += 1;
+                        Thread.Sleep(25);
+                        if (done > bar.Value)
+                        {
+                            bar.Value = done;
+                        }
+                    }
+                }
+                );
+            }
+            else
+            {
+                while (done < 100)
+                {
+                    done += 1;
+                    Thread.Sleep(25);
+                    if (done > bar.Value)
+                    {
+                        bar.Value = done;
+                    }
+                }
+            }            
+        }
+
+        private void openFile(string path)
+        {
+            try
+            {
+                Process.Start(path);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"ERROR AL ABRIR EL ARCHIVO EN {path}\nARCHIVO INEXISTENTE", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void openProductsPdf_Click(object sender, EventArgs e)
+        {
+            openFile(productsPathPdf);
+        }
+
+        private void openPartsPdf_Click(object sender, EventArgs e)
+        {
+            openFile(partsPathPdf);
+        }
+
+        private void openPartsXml_Click(object sender, EventArgs e)
+        {
+            openFile(partsPathXml);
+        }
+
+        private void openProductsXml_Click(object sender, EventArgs e)
+        {
+            openFile(productsPathXml);
         }
     }
 }

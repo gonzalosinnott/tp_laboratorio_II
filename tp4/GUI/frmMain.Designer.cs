@@ -41,6 +41,12 @@ namespace GUI
             this.lblType = new MetroSet_UI.Controls.MetroSetLabel();
             this.btnDeleteStock = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dgvPieces = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.classTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.manufacturerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entryDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbMain = new MetroSet_UI.Controls.MetroSetTabControl();
             this.tbAssembly = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.rtbGuitarsInfo = new MetroSet_UI.Controls.MetroSetRichTextBox();
@@ -72,12 +78,22 @@ namespace GUI
             this.lblGuitarModel = new MetroSet_UI.Controls.MetroSetLabel();
             this.cmbGuitarModel = new MetroSet_UI.Controls.MetroSetComboBox();
             this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.pbPartPdf = new System.Windows.Forms.ProgressBar();
+            this.pbProductXml = new System.Windows.Forms.ProgressBar();
+            this.pbProductPdf = new System.Windows.Forms.ProgressBar();
+            this.pbPartXml = new System.Windows.Forms.ProgressBar();
+            this.btnPartsReportPdf = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnProductsReportPdf = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnProductsReportXml = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnPartsReportXml = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openPartsPdf = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openPartsXml = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openProductsPdf = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openProductsXml = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tbStock.SuspendLayout();
             this.pnlPieceProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPieces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partBindingSource)).BeginInit();
             this.tbMain.SuspendLayout();
             this.tbAssembly.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvElectronics)).BeginInit();
@@ -290,18 +306,70 @@ namespace GUI
             this.dgvPieces.AllowUserToAddRows = false;
             this.dgvPieces.AllowUserToResizeColumns = false;
             this.dgvPieces.AllowUserToResizeRows = false;
+            this.dgvPieces.AutoGenerateColumns = false;
             this.dgvPieces.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPieces.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPieces.BackgroundColor = System.Drawing.Color.White;
             this.dgvPieces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPieces.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.classTypeDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn1,
+            this.manufacturerDataGridViewTextBoxColumn1,
+            this.entryDateDataGridViewTextBoxColumn1});
+            this.dgvPieces.DataSource = this.partBindingSource;
             this.dgvPieces.Location = new System.Drawing.Point(355, 0);
             this.dgvPieces.MultiSelect = false;
             this.dgvPieces.Name = "dgvPieces";
             this.dgvPieces.ReadOnly = true;
             this.dgvPieces.RowHeadersWidth = 10;
             this.dgvPieces.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPieces.Size = new System.Drawing.Size(464, 552);
+            this.dgvPieces.Size = new System.Drawing.Size(439, 552);
             this.dgvPieces.TabIndex = 0;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 44;
+            // 
+            // classTypeDataGridViewTextBoxColumn
+            // 
+            this.classTypeDataGridViewTextBoxColumn.DataPropertyName = "ClassType";
+            this.classTypeDataGridViewTextBoxColumn.HeaderText = "ClassType";
+            this.classTypeDataGridViewTextBoxColumn.Name = "classTypeDataGridViewTextBoxColumn";
+            this.classTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.classTypeDataGridViewTextBoxColumn.Width = 99;
+            // 
+            // typeDataGridViewTextBoxColumn1
+            // 
+            this.typeDataGridViewTextBoxColumn1.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn1.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn1.Name = "typeDataGridViewTextBoxColumn1";
+            this.typeDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.typeDataGridViewTextBoxColumn1.Width = 65;
+            // 
+            // manufacturerDataGridViewTextBoxColumn1
+            // 
+            this.manufacturerDataGridViewTextBoxColumn1.DataPropertyName = "Manufacturer";
+            this.manufacturerDataGridViewTextBoxColumn1.HeaderText = "Manufacturer";
+            this.manufacturerDataGridViewTextBoxColumn1.Name = "manufacturerDataGridViewTextBoxColumn1";
+            this.manufacturerDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.manufacturerDataGridViewTextBoxColumn1.Width = 117;
+            // 
+            // entryDateDataGridViewTextBoxColumn1
+            // 
+            this.entryDateDataGridViewTextBoxColumn1.DataPropertyName = "EntryDate";
+            this.entryDateDataGridViewTextBoxColumn1.HeaderText = "EntryDate";
+            this.entryDateDataGridViewTextBoxColumn1.Name = "entryDateDataGridViewTextBoxColumn1";
+            this.entryDateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.entryDateDataGridViewTextBoxColumn1.Width = 96;
+            // 
+            // partBindingSource
+            // 
+            this.partBindingSource.DataSource = typeof(Entidades.Part);
             // 
             // tbMain
             // 
@@ -313,12 +381,12 @@ namespace GUI
             this.tbMain.Controls.Add(this.tbStock);
             this.tbMain.Controls.Add(this.tbAssembly);
             this.tbMain.Controls.Add(this.tbReports);
-            this.tbMain.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tbMain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbMain.IsDerivedStyle = true;
             this.tbMain.ItemSize = new System.Drawing.Size(100, 38);
             this.tbMain.Location = new System.Drawing.Point(12, 68);
             this.tbMain.Name = "tbMain";
-            this.tbMain.SelectedIndex = 1;
+            this.tbMain.SelectedIndex = 2;
             this.tbMain.SelectedTextColor = System.Drawing.Color.White;
             this.tbMain.Size = new System.Drawing.Size(1199, 693);
             this.tbMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -702,6 +770,15 @@ namespace GUI
             // tbReports
             // 
             this.tbReports.BaseColor = System.Drawing.Color.White;
+            this.tbReports.Controls.Add(this.openProductsXml);
+            this.tbReports.Controls.Add(this.openProductsPdf);
+            this.tbReports.Controls.Add(this.openPartsXml);
+            this.tbReports.Controls.Add(this.openPartsPdf);
+            this.tbReports.Controls.Add(this.pbPartPdf);
+            this.tbReports.Controls.Add(this.pbProductXml);
+            this.tbReports.Controls.Add(this.pbProductPdf);
+            this.tbReports.Controls.Add(this.pbPartXml);
+            this.tbReports.Controls.Add(this.btnPartsReportPdf);
             this.tbReports.Controls.Add(this.btnProductsReportPdf);
             this.tbReports.Controls.Add(this.btnProductsReportXml);
             this.tbReports.Controls.Add(this.btnPartsReportXml);
@@ -720,14 +797,55 @@ namespace GUI
             this.tbReports.ThemeName = "MetroLite";
             this.tbReports.ToolTipText = null;
             // 
+            // pbPartPdf
+            // 
+            this.pbPartPdf.Location = new System.Drawing.Point(419, 3);
+            this.pbPartPdf.Name = "pbPartPdf";
+            this.pbPartPdf.Size = new System.Drawing.Size(403, 27);
+            this.pbPartPdf.TabIndex = 52;
+            // 
+            // pbProductXml
+            // 
+            this.pbProductXml.Location = new System.Drawing.Point(419, 102);
+            this.pbProductXml.Name = "pbProductXml";
+            this.pbProductXml.Size = new System.Drawing.Size(403, 27);
+            this.pbProductXml.TabIndex = 51;
+            // 
+            // pbProductPdf
+            // 
+            this.pbProductPdf.Location = new System.Drawing.Point(419, 69);
+            this.pbProductPdf.Name = "pbProductPdf";
+            this.pbProductPdf.Size = new System.Drawing.Size(403, 27);
+            this.pbProductPdf.TabIndex = 50;
+            // 
+            // pbPartXml
+            // 
+            this.pbPartXml.Location = new System.Drawing.Point(419, 36);
+            this.pbPartXml.Name = "pbPartXml";
+            this.pbPartXml.Size = new System.Drawing.Size(403, 27);
+            this.pbPartXml.TabIndex = 49;
+            // 
+            // btnPartsReportPdf
+            // 
+            this.btnPartsReportPdf.Depth = 0;
+            this.btnPartsReportPdf.Location = new System.Drawing.Point(3, 3);
+            this.btnPartsReportPdf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnPartsReportPdf.Name = "btnPartsReportPdf";
+            this.btnPartsReportPdf.Primary = true;
+            this.btnPartsReportPdf.Size = new System.Drawing.Size(396, 27);
+            this.btnPartsReportPdf.TabIndex = 48;
+            this.btnPartsReportPdf.Text = "INFORME DE STOCK DE MATERIALES (FORMATO PDF)";
+            this.btnPartsReportPdf.UseVisualStyleBackColor = true;
+            this.btnPartsReportPdf.Click += new System.EventHandler(this.btnPartsReportPdf_Click);
+            // 
             // btnProductsReportPdf
             // 
             this.btnProductsReportPdf.Depth = 0;
-            this.btnProductsReportPdf.Location = new System.Drawing.Point(3, 84);
+            this.btnProductsReportPdf.Location = new System.Drawing.Point(3, 69);
             this.btnProductsReportPdf.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnProductsReportPdf.Name = "btnProductsReportPdf";
             this.btnProductsReportPdf.Primary = true;
-            this.btnProductsReportPdf.Size = new System.Drawing.Size(819, 27);
+            this.btnProductsReportPdf.Size = new System.Drawing.Size(396, 27);
             this.btnProductsReportPdf.TabIndex = 47;
             this.btnProductsReportPdf.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
             this.btnProductsReportPdf.UseVisualStyleBackColor = true;
@@ -736,11 +854,11 @@ namespace GUI
             // btnProductsReportXml
             // 
             this.btnProductsReportXml.Depth = 0;
-            this.btnProductsReportXml.Location = new System.Drawing.Point(3, 51);
+            this.btnProductsReportXml.Location = new System.Drawing.Point(3, 102);
             this.btnProductsReportXml.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnProductsReportXml.Name = "btnProductsReportXml";
             this.btnProductsReportXml.Primary = true;
-            this.btnProductsReportXml.Size = new System.Drawing.Size(819, 27);
+            this.btnProductsReportXml.Size = new System.Drawing.Size(396, 27);
             this.btnProductsReportXml.TabIndex = 46;
             this.btnProductsReportXml.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO XML)";
             this.btnProductsReportXml.UseVisualStyleBackColor = true;
@@ -749,15 +867,67 @@ namespace GUI
             // btnPartsReportXml
             // 
             this.btnPartsReportXml.Depth = 0;
-            this.btnPartsReportXml.Location = new System.Drawing.Point(3, 18);
+            this.btnPartsReportXml.Location = new System.Drawing.Point(3, 36);
             this.btnPartsReportXml.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnPartsReportXml.Name = "btnPartsReportXml";
             this.btnPartsReportXml.Primary = true;
-            this.btnPartsReportXml.Size = new System.Drawing.Size(819, 27);
+            this.btnPartsReportXml.Size = new System.Drawing.Size(396, 27);
             this.btnPartsReportXml.TabIndex = 45;
             this.btnPartsReportXml.Text = "INFORME DE STOCK DE MATERIALES (FORMATO XML)";
             this.btnPartsReportXml.UseVisualStyleBackColor = true;
-            this.btnPartsReportXml.Click += new System.EventHandler(this.btnStockReportXml_Click);
+            this.btnPartsReportXml.Click += new System.EventHandler(this.btnPartsReportXml_Click);
+            // 
+            // openPartsPdf
+            // 
+            this.openPartsPdf.Depth = 0;
+            this.openPartsPdf.Location = new System.Drawing.Point(-4, 200);
+            this.openPartsPdf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openPartsPdf.Name = "openPartsPdf";
+            this.openPartsPdf.Primary = true;
+            this.openPartsPdf.Size = new System.Drawing.Size(403, 27);
+            this.openPartsPdf.TabIndex = 53;
+            this.openPartsPdf.Text = "ABRIR INFORME DE STOCK DE MATERIALES (FORMATO PDF)";
+            this.openPartsPdf.UseVisualStyleBackColor = true;
+            this.openPartsPdf.Click += new System.EventHandler(this.openPartsPdf_Click);
+            // 
+            // openPartsXml
+            // 
+            this.openPartsXml.Depth = 0;
+            this.openPartsXml.Location = new System.Drawing.Point(419, 200);
+            this.openPartsXml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openPartsXml.Name = "openPartsXml";
+            this.openPartsXml.Primary = true;
+            this.openPartsXml.Size = new System.Drawing.Size(403, 27);
+            this.openPartsXml.TabIndex = 54;
+            this.openPartsXml.Text = "ABRIR INFORME DE STOCK DE MATERIALES (FORMATO XML)";
+            this.openPartsXml.UseVisualStyleBackColor = true;
+            this.openPartsXml.Click += new System.EventHandler(this.openPartsXml_Click);
+            // 
+            // openProductsPdf
+            // 
+            this.openProductsPdf.Depth = 0;
+            this.openProductsPdf.Location = new System.Drawing.Point(-4, 243);
+            this.openProductsPdf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openProductsPdf.Name = "openProductsPdf";
+            this.openProductsPdf.Primary = true;
+            this.openProductsPdf.Size = new System.Drawing.Size(403, 27);
+            this.openProductsPdf.TabIndex = 55;
+            this.openProductsPdf.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.openProductsPdf.UseVisualStyleBackColor = true;
+            this.openProductsPdf.Click += new System.EventHandler(this.openProductsPdf_Click);
+            // 
+            // openProductsXml
+            // 
+            this.openProductsXml.Depth = 0;
+            this.openProductsXml.Location = new System.Drawing.Point(419, 243);
+            this.openProductsXml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openProductsXml.Name = "openProductsXml";
+            this.openProductsXml.Primary = true;
+            this.openProductsXml.Size = new System.Drawing.Size(403, 27);
+            this.openProductsXml.TabIndex = 56;
+            this.openProductsXml.Text = "INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.openProductsXml.UseVisualStyleBackColor = true;
+            this.openProductsXml.Click += new System.EventHandler(this.openProductsXml_Click);
             // 
             // frmMain
             // 
@@ -775,6 +945,7 @@ namespace GUI
             this.tbStock.ResumeLayout(false);
             this.pnlPieceProperties.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPieces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partBindingSource)).EndInit();
             this.tbMain.ResumeLayout(false);
             this.tbAssembly.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvElectronics)).EndInit();
@@ -836,6 +1007,21 @@ namespace GUI
         private MaterialSkin.Controls.MaterialRaisedButton btnProductsReportPdf;
         private MaterialSkin.Controls.MaterialRaisedButton btnProductsReportXml;
         private MaterialSkin.Controls.MaterialRaisedButton btnPartsReportXml;
+        private MaterialSkin.Controls.MaterialRaisedButton btnPartsReportPdf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn classTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manufacturerDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entryDateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource partBindingSource;
+        private System.Windows.Forms.ProgressBar pbPartXml;
+        private System.Windows.Forms.ProgressBar pbPartPdf;
+        private System.Windows.Forms.ProgressBar pbProductXml;
+        private System.Windows.Forms.ProgressBar pbProductPdf;
+        private MaterialSkin.Controls.MaterialRaisedButton openProductsXml;
+        private MaterialSkin.Controls.MaterialRaisedButton openProductsPdf;
+        private MaterialSkin.Controls.MaterialRaisedButton openPartsXml;
+        private MaterialSkin.Controls.MaterialRaisedButton openPartsPdf;
     }
 }
 
