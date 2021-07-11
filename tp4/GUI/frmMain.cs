@@ -19,7 +19,8 @@ namespace GUI
         string productsPathXml = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/XMLProducts.xml";
         string partsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFParts.pdf";
         string productsPathPdf = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/PDFProducts.pdf";
-        public Thread refreshThread;
+        Thread refreshThread;
+        Thread refreshProgressBar;
         RefreshProducts refreshGuitarList;
 
         public frmMain()
@@ -48,6 +49,10 @@ namespace GUI
             refreshGrids();
             refreshThread.Start();
         }
+
+        /// <summary>
+        /// Refresca cada un segundo el thread con el metodo efreshGuitarList();
+        /// </summary>
         public void Start()
         {
             while(true)
@@ -56,6 +61,10 @@ namespace GUI
                 refreshGuitarList.Invoke();
             }
         }
+
+        /// <summary>
+        /// Vuelca la informacion de los productos existentes en el rich text box rtbGuitarsInfo
+        /// </summary>
         public void updateList()
         {
             if(rtbGuitarsInfo.InvokeRequired)
@@ -88,8 +97,8 @@ namespace GUI
         }
 
         /// <summary>
-        /// Maneja las posibles opciones que puede elegir el usuario en el form de ingreso de stock
-        /// a paritr del tipo de pieza que pretende ingresar
+        /// Maneja las posibles opciones que puede elegir el usuario en el form
+        /// de ingreso de stock a paritr del tipo de pieza que pretende ingresar
         /// </summary>
         private void cmbPieceType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -120,8 +129,9 @@ namespace GUI
                     break;
             }
         }
+
         /// <summary>
-        /// Agrega un objeto a la lista de stock de piezas
+        /// Llama al metodo AddPart de la clase Factory el cual agrega un objeto a la lista de stock de piezas
         /// </summary>
         private void btnAddStock_Click(object sender, EventArgs e)
         {
@@ -137,7 +147,9 @@ namespace GUI
         }
 
         /// <summary>
-        /// Borra un objeto de la lista del stock de piezas
+        /// Llama a los metodos removePart y deleteDB de la clase factory
+        /// los cuales borra un objeto de la lista del stock de piezas y 
+        /// de la base de datos respectivamente
         /// </summary>
         private void btnDeleteStock_Click(object sender, EventArgs e)
         {
@@ -147,7 +159,7 @@ namespace GUI
                 {
                     Part part = dgvPieces.CurrentRow.DataBoundItem as Part;
                     miFabrica.removePart(dgvPieces.CurrentRow.Index);
-                    miFabrica.DeleteDB(part.Id);
+                    miFabrica.deleteDB(part.Id);
                     refreshGrids();
                 }
                 else
@@ -159,11 +171,11 @@ namespace GUI
             {
                 MessageBox.Show("NO HAY ITEMS PARA ELIMINAR", "Error", MessageBoxButtons.OK);
             }
-
         }
 
         /// <summary>
-        /// Crea un objeto de la lista de productos
+        /// Llama al metodo AddGuitar de la clase Factory, el cual crea un producto a partir de la lista de partes existentes
+        /// Llama a los metodos removePart y removeDB que eliminan las partes utilizadas para fabricar el producto
         /// </summary>
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -194,10 +206,10 @@ namespace GUI
                         miFabrica.removePart(dgvElectronics.CurrentRow.Index);
                         miFabrica.removePart(dgvTuners.CurrentRow.Index);
 
-                        miFabrica.DeleteDB(wood.Id);
-                        miFabrica.DeleteDB(pickup.Id);
-                        miFabrica.DeleteDB(electronic.Id);
-                        miFabrica.DeleteDB(tuners.Id);
+                        miFabrica.deleteDB(wood.Id);
+                        miFabrica.deleteDB(pickup.Id);
+                        miFabrica.deleteDB(electronic.Id);
+                        miFabrica.deleteDB(tuners.Id);
                         refreshGrids();
                     }
                     else
@@ -210,9 +222,11 @@ namespace GUI
             {
                 MessageBox.Show("STOCK DE MATERIALES INSUFICIENTES", "Error", MessageBoxButtons.OK);
             }
-
         }
 
+        /// <summary>
+        /// Genera un cuadro de dialogo para cerrar el formulario
+        /// </summary>
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             const string message = "¿DESEA SALIR";
@@ -222,15 +236,17 @@ namespace GUI
             if (result == DialogResult.No)
             {
                 e.Cancel = true;
-            }
-
-        }        
-
+            }           
+        }
+        
+        /// <summary>
+        /// El evento de estos botones genera el reporte de piezas y productos en formato xml y pdf
+        /// </summary>
         private void btnPartsReportXml_Click(object sender, EventArgs e)
         {
             pbPartXml.Value = 0;
-            Thread thread = new Thread(() => SaveDocumentProgress(pbPartXml));
-            thread.Start();
+            refreshProgressBar = new Thread(() => SaveDocumentProgress(pbPartXml));
+            refreshProgressBar.Start();
 
             try
             {
@@ -244,13 +260,13 @@ namespace GUI
             {
                 pbPartXml.Value = 0;
             }
-        }
 
+        }
         private void btnProductsReportXml_Click(object sender, EventArgs e)
         {
             pbProductXml.Value = 0;
-            Thread thread = new Thread(() => SaveDocumentProgress(pbProductXml));
-            thread.Start();
+            refreshProgressBar = new Thread(() => SaveDocumentProgress(pbProductXml));
+            refreshProgressBar.Start();
 
             try
             {
@@ -265,11 +281,10 @@ namespace GUI
                 pbProductXml.Value = 0;
             }
         }
-
         private void btnProductsReportPdf_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() => SaveDocumentProgress(pbProductPdf));
-            thread.Start();
+            refreshProgressBar = new Thread(() => SaveDocumentProgress(pbProductPdf));
+            refreshProgressBar.Start();
 
             try
             {
@@ -284,11 +299,10 @@ namespace GUI
                 pbProductPdf.Value = 0;
             }
         }
-
         private void btnPartsReportPdf_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() => SaveDocumentProgress(pbPartPdf));
-            thread.Start();
+            refreshProgressBar = new Thread(() => SaveDocumentProgress(pbPartPdf));
+            refreshProgressBar.Start();
 
             try
             {
@@ -305,6 +319,9 @@ namespace GUI
             }
         }       
 
+        /// <summary>
+        /// Animacion del ProgressBar del guardado de documentos
+        /// </summary>
         private void SaveDocumentProgress(ProgressBar bar)
         {
             int done = 0;
@@ -333,11 +350,14 @@ namespace GUI
                     if (done > bar.Value)
                     {
                         bar.Value = done;
-                    }
+                    }                    
                 }
             }            
         }
 
+        /// <summary>
+        /// Abre el archivo en el path indicado por parametro
+        /// </summary>
         private void openFile(string path)
         {
             try
@@ -350,21 +370,21 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// El evento de estos botones Abre el reporte de piezas y productos en formato xml y pdf
+        /// </summary>
         private void openProductsPdf_Click(object sender, EventArgs e)
         {
             openFile(productsPathPdf);
         }
-
         private void openPartsPdf_Click(object sender, EventArgs e)
         {
             openFile(partsPathPdf);
         }
-
         private void openPartsXml_Click(object sender, EventArgs e)
         {
             openFile(partsPathXml);
         }
-
         private void openProductsXml_Click(object sender, EventArgs e)
         {
             openFile(productsPathXml);

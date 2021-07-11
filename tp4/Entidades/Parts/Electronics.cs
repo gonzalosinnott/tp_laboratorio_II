@@ -9,7 +9,6 @@ namespace Entidades
     [Serializable]
     public class Electronics : Part
     {
-
         public Electronics() : base()
         {
 

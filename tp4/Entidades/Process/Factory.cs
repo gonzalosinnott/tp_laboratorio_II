@@ -25,14 +25,16 @@ namespace Entidades
         /// </summary>
         protected List<Part> partsList;
         protected List<Guitar> guitarsList;
+
         /// <summary>
-        /// COsntructores de la clase Factory
+        /// Constructores de la clase Factory
         /// </summary>
         public Factory()
         {
             partsList = new List<Part>();
             guitarsList = new List<Guitar>();
         }
+
         /// <summary>
         /// Propiedades de la clase Factory
         /// </summary>
@@ -59,13 +61,14 @@ namespace Entidades
             }
         }
 
-        
+
         /// <summary>
         /// A partir de los parametros que le damos genera un objeto en la lista de piezas con dichas caracteristicas
+        /// Ademas llama al metodo SavePiece de la clase DAO que guarda la infomracion en la base de datos
         /// </summary>
-        public bool AddPart(string piece, string type,string manufacturer)
+        public bool AddPart(string piece, string type, string manufacturer)
         {
-            if (string.IsNullOrWhiteSpace(piece) != true || 
+            if (string.IsNullOrWhiteSpace(piece) != true ||
                 string.IsNullOrWhiteSpace(type) != true ||
                 string.IsNullOrWhiteSpace(manufacturer) != true)
             {
@@ -78,34 +81,35 @@ namespace Entidades
                 }
                 else
                 {
-                   maxId = PartsList.Max(t => t.Id);
+                    maxId = PartsList.Max(t => t.Id);
                 }
                 int id = maxId + 1;
 
                 switch (piece)
                 {
                     case "CLAVIJAS":
-                        part = new Tuners {Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
+                        part = new Tuners { Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
                         PartsList.Add(part);
                         break;
                     case "ELECTRONICA":
-                        part = new Electronics {Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
+                        part = new Electronics { Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
                         PartsList.Add(part);
                         break;
                     case "MADERA":
-                        part = new Wood {Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
+                        part = new Wood { Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
                         PartsList.Add(part);
                         break;
                     case "PICKUPS":
-                        part = new Pickup {Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
+                        part = new Pickup { Id = id, Type = type, EntryDate = DateTime.Now.ToString("dd.MM.yy"), Manufacturer = manufacturer };
                         PartsList.Add(part);
-                        break;                   
+                        break;
                 }
                 dao.SavePiece(id, piece, type, manufacturer, DateTime.Now.ToString("dd.MM.yy"));
                 return true;
             }
             return false;
         }
+    
         /// <summary>
         /// Remueve un objeto de la lista de partes a partir del indice pasado
         /// </summary>
@@ -113,8 +117,10 @@ namespace Entidades
         {
             PartsList.RemoveAt(index);
         }
+
         /// <summary>
-        /// Agrega un obhjeto a la lista de productos con los parametros obtenidos como caracteristicas
+        /// Agrega un objeto a la lista de productos con los parametros obtenidos como caracteristicas
+        /// Ademas llama al metodo SaveProduct de la clase DAO que lo guarda en la base de datos
         /// </summary>
         public bool AddGuitar(string wood, string pickup, string electronic, string tuner, string guitarType)
         {
@@ -159,13 +165,21 @@ namespace Entidades
             return false;
         }
         
+        /// <summary>
+        /// Carga las listas de partes y productos con la informacion de
+        /// la base de datos
+        /// </summary>
         public void OpenDB()
         {
             PartsList = dao.GetAllParts();
             GuitarsList = dao.GetAllProducts();
         }
 
-        public void DeleteDB(int id)
+        /// <summary>
+        /// Elimina de la base de datos el objeto con Id que
+        /// coincida con el valor pasado como parametro
+        /// </summary>
+        public void deleteDB(int id)
         {
             dao.DeletePiece(id);
         } 
@@ -181,8 +195,11 @@ namespace Entidades
                 return true;
             }
             return false;
-        }     
+        }
 
+        /// <summary>
+        /// Guarda en un archivo PDF la lista de piezas en el PATH pasado como parametro
+        /// </summary>
         public bool CreatePdf(string info, string path)
         {
             if (info != null && path != null)
@@ -193,28 +210,35 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Crea un string a partir de un stringbuilder con la informacion
+        /// de todos los productos de la lista de productos
+        /// </summary>
+        /// <returns></returns>
         public string ProductsInfo()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("GUITARRAS FABRICADAS");
             sb.AppendLine("---------------------");
             foreach (Guitar item in GuitarsList)
-            {
-                string model;
-
-                
+            {               
                 sb.AppendLine($"Model: {item.ClassType}");
                 sb.AppendLine($"{item.Wood} ");
                 sb.AppendLine($"{item.Electronics} ");
                 sb.AppendLine($"{item.Pickups} ");
                 sb.AppendLine($"{item.Tuners} ");
                 sb.AppendLine($"Manufacture Date: {item.ManufactureDate} ");                
-                sb.AppendLine($"Serial Number: {item.ClassType.TipoProducto()}{item.Id}");              
+                sb.AppendLine($"Serial Number: {item.ClassType.TipoProducto()}-{item.Id}");              
                 sb.AppendLine("---------------------");
             }
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Crea un string a partir de un stringbuilder con la informacion
+        /// de todos las partes de la lista de partes
+        /// </summary>
+        /// <returns></returns>
         public string PartsInfo()
         {
             StringBuilder sb = new StringBuilder();
@@ -226,7 +250,7 @@ namespace Entidades
                 sb.AppendLine($"Type: {item.Type} ");
                 sb.AppendLine($"Manufacturer: {item.Manufacturer} ");
                 sb.AppendLine($"Entry Date: {item.EntryDate} ");
-                sb.AppendLine($"Serial Number: {item.ClassType.TipoProducto()}{item.Id}");
+                sb.AppendLine($"Serial Number: {item.ClassType.TipoProducto()}-{item.Id}");
                 sb.AppendLine("---------------------");
             }
             return sb.ToString();

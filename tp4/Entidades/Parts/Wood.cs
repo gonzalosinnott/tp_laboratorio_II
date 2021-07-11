@@ -32,5 +32,5 @@ namespace Entidades
 
             return sb.ToString();
         }
-    }
+    }   
 }

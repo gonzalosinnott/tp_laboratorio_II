@@ -14,7 +14,10 @@ namespace Entidades
         private SqlCommand command;
         private static string connectionString = "Server = localhost; Database=Stock; Trusted_Connection=true";
         
-
+        /// <summary>
+        /// Crea una lista de Partes a partir de la informacion de la 
+        /// tabla Piezas de la Base De Datos Stock
+        /// </summary>
         public List<Part> GetAllParts()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -66,6 +69,10 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Crea una lista de Productos a partir de la informacion de la 
+        /// tabla Productos de la Base De Datos Stock
+        /// </summary>
         public List<Guitar> GetAllProducts()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -114,6 +121,10 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Crea un item en la tabla Productos a partir de los
+        /// parametros pasados en la funcion
+        /// </summary>
         public bool SaveProduct(int id, string classType, string wood, string electronics, string pickups, string Tuners, string manufactureDate)
         {
             bool retorno = false;
@@ -153,6 +164,10 @@ namespace Entidades
             return retorno;
         }
 
+        // <summary>
+        /// Crea un item en la tabla Piezas a partir de los
+        /// parametros pasados en la funcion
+        /// </summary>
         public bool SavePiece(int id, string classType, string type, string manufacturer, string manufactureDate)
         {
             bool retorno = false;
@@ -190,6 +205,10 @@ namespace Entidades
             return retorno;
         }
 
+        /// <summary>
+        /// Elimina de la tabla Piezas el item con el id 
+        /// que coincida con el parametro pasado
+        /// </summary>
         public bool DeletePiece(int id)
         {
             bool retorno = false;

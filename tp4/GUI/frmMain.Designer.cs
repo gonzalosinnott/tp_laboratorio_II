@@ -78,6 +78,10 @@ namespace GUI
             this.lblGuitarModel = new MetroSet_UI.Controls.MetroSetLabel();
             this.cmbGuitarModel = new MetroSet_UI.Controls.MetroSetComboBox();
             this.tbReports = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.openProductsXml = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openProductsPdf = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openPartsXml = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.openPartsPdf = new MaterialSkin.Controls.MaterialRaisedButton();
             this.pbPartPdf = new System.Windows.Forms.ProgressBar();
             this.pbProductXml = new System.Windows.Forms.ProgressBar();
             this.pbProductPdf = new System.Windows.Forms.ProgressBar();
@@ -86,10 +90,6 @@ namespace GUI
             this.btnProductsReportPdf = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnProductsReportXml = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnPartsReportXml = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.openPartsPdf = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.openPartsXml = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.openProductsPdf = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.openProductsXml = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tbStock.SuspendLayout();
             this.pnlPieceProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPieces)).BeginInit();
@@ -797,6 +797,58 @@ namespace GUI
             this.tbReports.ThemeName = "MetroLite";
             this.tbReports.ToolTipText = null;
             // 
+            // openProductsXml
+            // 
+            this.openProductsXml.Depth = 0;
+            this.openProductsXml.Location = new System.Drawing.Point(419, 243);
+            this.openProductsXml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openProductsXml.Name = "openProductsXml";
+            this.openProductsXml.Primary = true;
+            this.openProductsXml.Size = new System.Drawing.Size(403, 27);
+            this.openProductsXml.TabIndex = 56;
+            this.openProductsXml.Text = "ABRIR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.openProductsXml.UseVisualStyleBackColor = true;
+            this.openProductsXml.Click += new System.EventHandler(this.openProductsXml_Click);
+            // 
+            // openProductsPdf
+            // 
+            this.openProductsPdf.Depth = 0;
+            this.openProductsPdf.Location = new System.Drawing.Point(-4, 243);
+            this.openProductsPdf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openProductsPdf.Name = "openProductsPdf";
+            this.openProductsPdf.Primary = true;
+            this.openProductsPdf.Size = new System.Drawing.Size(403, 27);
+            this.openProductsPdf.TabIndex = 55;
+            this.openProductsPdf.Text = "ABRIR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
+            this.openProductsPdf.UseVisualStyleBackColor = true;
+            this.openProductsPdf.Click += new System.EventHandler(this.openProductsPdf_Click);
+            // 
+            // openPartsXml
+            // 
+            this.openPartsXml.Depth = 0;
+            this.openPartsXml.Location = new System.Drawing.Point(419, 200);
+            this.openPartsXml.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openPartsXml.Name = "openPartsXml";
+            this.openPartsXml.Primary = true;
+            this.openPartsXml.Size = new System.Drawing.Size(403, 27);
+            this.openPartsXml.TabIndex = 54;
+            this.openPartsXml.Text = "ABRIR INFORME DE STOCK DE MATERIALES (FORMATO XML)";
+            this.openPartsXml.UseVisualStyleBackColor = true;
+            this.openPartsXml.Click += new System.EventHandler(this.openPartsXml_Click);
+            // 
+            // openPartsPdf
+            // 
+            this.openPartsPdf.Depth = 0;
+            this.openPartsPdf.Location = new System.Drawing.Point(-4, 200);
+            this.openPartsPdf.MouseState = MaterialSkin.MouseState.HOVER;
+            this.openPartsPdf.Name = "openPartsPdf";
+            this.openPartsPdf.Primary = true;
+            this.openPartsPdf.Size = new System.Drawing.Size(403, 27);
+            this.openPartsPdf.TabIndex = 53;
+            this.openPartsPdf.Text = "ABRIR INFORME DE STOCK DE MATERIALES (FORMATO PDF)";
+            this.openPartsPdf.UseVisualStyleBackColor = true;
+            this.openPartsPdf.Click += new System.EventHandler(this.openPartsPdf_Click);
+            // 
             // pbPartPdf
             // 
             this.pbPartPdf.Location = new System.Drawing.Point(419, 3);
@@ -876,58 +928,6 @@ namespace GUI
             this.btnPartsReportXml.Text = "CREAR INFORME DE STOCK DE MATERIALES (FORMATO XML)";
             this.btnPartsReportXml.UseVisualStyleBackColor = true;
             this.btnPartsReportXml.Click += new System.EventHandler(this.btnPartsReportXml_Click);
-            // 
-            // openPartsPdf
-            // 
-            this.openPartsPdf.Depth = 0;
-            this.openPartsPdf.Location = new System.Drawing.Point(-4, 200);
-            this.openPartsPdf.MouseState = MaterialSkin.MouseState.HOVER;
-            this.openPartsPdf.Name = "openPartsPdf";
-            this.openPartsPdf.Primary = true;
-            this.openPartsPdf.Size = new System.Drawing.Size(403, 27);
-            this.openPartsPdf.TabIndex = 53;
-            this.openPartsPdf.Text = "ABRIR INFORME DE STOCK DE MATERIALES (FORMATO PDF)";
-            this.openPartsPdf.UseVisualStyleBackColor = true;
-            this.openPartsPdf.Click += new System.EventHandler(this.openPartsPdf_Click);
-            // 
-            // openPartsXml
-            // 
-            this.openPartsXml.Depth = 0;
-            this.openPartsXml.Location = new System.Drawing.Point(419, 200);
-            this.openPartsXml.MouseState = MaterialSkin.MouseState.HOVER;
-            this.openPartsXml.Name = "openPartsXml";
-            this.openPartsXml.Primary = true;
-            this.openPartsXml.Size = new System.Drawing.Size(403, 27);
-            this.openPartsXml.TabIndex = 54;
-            this.openPartsXml.Text = "ABRIR INFORME DE STOCK DE MATERIALES (FORMATO XML)";
-            this.openPartsXml.UseVisualStyleBackColor = true;
-            this.openPartsXml.Click += new System.EventHandler(this.openPartsXml_Click);
-            // 
-            // openProductsPdf
-            // 
-            this.openProductsPdf.Depth = 0;
-            this.openProductsPdf.Location = new System.Drawing.Point(-4, 243);
-            this.openProductsPdf.MouseState = MaterialSkin.MouseState.HOVER;
-            this.openProductsPdf.Name = "openProductsPdf";
-            this.openProductsPdf.Primary = true;
-            this.openProductsPdf.Size = new System.Drawing.Size(403, 27);
-            this.openProductsPdf.TabIndex = 55;
-            this.openProductsPdf.Text = "ABRIR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
-            this.openProductsPdf.UseVisualStyleBackColor = true;
-            this.openProductsPdf.Click += new System.EventHandler(this.openProductsPdf_Click);
-            // 
-            // openProductsXml
-            // 
-            this.openProductsXml.Depth = 0;
-            this.openProductsXml.Location = new System.Drawing.Point(419, 243);
-            this.openProductsXml.MouseState = MaterialSkin.MouseState.HOVER;
-            this.openProductsXml.Name = "openProductsXml";
-            this.openProductsXml.Primary = true;
-            this.openProductsXml.Size = new System.Drawing.Size(403, 27);
-            this.openProductsXml.TabIndex = 56;
-            this.openProductsXml.Text = "ABRIR INFORME DE STOCK DE PRODUCTOS (FORMATO PDF)";
-            this.openProductsXml.UseVisualStyleBackColor = true;
-            this.openProductsXml.Click += new System.EventHandler(this.openProductsXml_Click);
             // 
             // frmMain
             // 
