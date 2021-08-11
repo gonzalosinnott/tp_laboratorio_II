@@ -20,7 +20,6 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\MaterialSkin.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\MetroSet UI.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\Entidades.pdb
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.frmMain.resources
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.Properties.Resources.resources
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
@@ -31,3 +30,4 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\BouncyCastle.Crypto.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\itextsharp.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\bin\Debug\itextsharp.xml
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache

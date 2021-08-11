@@ -18,4 +18,4 @@ D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\Entidades\bin\Debug\BouncyCastle.Crypto.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\Entidades\bin\Debug\itextsharp.dll
 D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\Entidades\bin\Debug\itextsharp.xml
-D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+D:\Tecnicatura_en_Programación\Laboratorio_y_Programación_II\tp_laboratorio_II\tp4\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
